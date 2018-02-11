@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import Quakes from './src/components/App';
+import QuakesList from './src/components/quakesList';
 
-AppRegistry.registerComponent('quaketrack', () => Quakes);
+AppRegistry.registerComponent('quaketrack', () => QuakesList);

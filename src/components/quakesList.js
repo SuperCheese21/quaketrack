@@ -1,32 +1,15 @@
-import React, { Component } from 'react';
-import {
-    ActivityIndicator,
-    FlatList,
-    Text,
-    View
-} from 'react-native';
+import React, { PureComponent } from 'react';
+import { FlatList, Text, View } from 'react-native';
+import LoadingSpinner from './loadingSpinner';
 import moment from 'moment';
 
-const options = {
-    "format": "geojson",
-    "endtime": "",
-    "starttime": "",
-    "latitude": null,
-    "longitude": null,
-    "maxradiuskm": 20001.6,
-    "minmagnitude": null,
-    "maxmagnitude": null,
-    "offset": 1
-};
+class QuakesList extends PureComponent {
+    state = {
+        data: [],
+        isLoading: true
+    };
 
-export default class Quakes extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: [],
-            isLoading: true
-        }
-    }
+    _keyExtractor = (item, index) => item.id;
 
     componentDidMount() {
         this.getData();
@@ -43,7 +26,7 @@ export default class Quakes extends Component {
     getData() {
         let start = moment.utc().subtract(24, 'hours').format('YYYY-MM-DD HH:mm:ss');
 
-        fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_day.geojson')
+        fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
@@ -61,9 +44,7 @@ export default class Quakes extends Component {
     render() {
         if (this.state.isLoading) {
             return (
-                <View style={{flex: 1, paddingTop: 20}}>
-                    <ActivityIndicator />
-                </View>
+                <LoadingSpinner />
             );
         }
 
@@ -73,16 +54,18 @@ export default class Quakes extends Component {
                     onRefresh={() => this.onRefresh()}
                     refreshing={this.state.isLoading}
                     data={this.state.data}
+                    keyExtractor={this._keyExtractor}
                     renderItem={
-                        ({item}) => <Text>{
-                            moment.utc(item.properties.time).format("YYYY-MM-DD HH:mm:ss")
-                        }, {
-                            item.properties.title
-                        }</Text>
+                        ({item}) => <Text>
+                            {moment.utc(item.properties.time)
+                                .format("YYYY-MM-DD HH:mm:ss")},
+                            {item.properties.title}
+                        </Text>
                     }
-                    keyExtractor={({item}, index) => index}
                 />
             </View>
         );
     }
 }
+
+export default QuakesList;
