@@ -45,6 +45,7 @@ class QuakesListItem extends Component {
                     <Text style={{
                         textAlignVertical: 'center',
                         color: 'black',
+                        fontWeight: 'bold',
                         flex: 1
                     }}>
                         {this.state.data.place}

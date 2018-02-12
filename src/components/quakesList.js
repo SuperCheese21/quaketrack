@@ -5,16 +5,18 @@ import LoadingSpinner from './loadingSpinner';
 import QuakesListItem from './quakesListItem';
 import getJson from '../lib/getQuakesFeed';
 
+const options = {
+    "mag": "2.5",
+    "time": "week"
+};
+
 class QuakesList extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             data: [],
             isLoading: true,
-            options: {
-                "mag": "2.5",
-                "time": "week"
-            },
+            options: options,
             title: ""
         };
     }
@@ -53,14 +55,10 @@ class QuakesList extends PureComponent {
         }
 
         return (
-            <View style={{flex: 1, backgroundColor: '#e0e0e0'}}>
-                <Text style={{
-                    fontSize: 30,
-                    color: 'black',
-                    textAlign: 'center'
-                }}>
-                    Recent Earthquakes
-                </Text>
+            <View style={{
+                backgroundColor: '#e0e0e0',
+                flex: 1
+            }}>
                 <Text style={{
                     fontSize: 15,
                     color: 'black',
