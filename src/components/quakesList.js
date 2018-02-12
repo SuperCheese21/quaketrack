@@ -6,15 +6,18 @@ import QuakesListItem from './quakesListItem';
 import getJson from '../lib/getQuakesFeed';
 
 class QuakesList extends PureComponent {
-    state = {
-        data: [],
-        isLoading: true,
-        options: {
-            "mag": "2.5",
-            "time": "week"
-        },
-        title: ""
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            isLoading: true,
+            options: {
+                "mag": "2.5",
+                "time": "week"
+            },
+            title: ""
+        };
+    }
 
     _keyExtractor = (item, index) => item.id;
 
@@ -50,7 +53,7 @@ class QuakesList extends PureComponent {
         }
 
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: '#e0e0e0'}}>
                 <Text style={{
                     fontSize: 30,
                     color: 'black',
