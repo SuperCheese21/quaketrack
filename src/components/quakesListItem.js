@@ -10,7 +10,7 @@ class QuakesListItem extends Component {
         super(props);
         this.state = {
             data: this.props.data.properties,
-            color: getColor(this.props.data.properties.mag, 2.5, 9.7)
+            color: getColor(this.props.data.properties.mag, 1.0, 9.5)
         }
     }
 
