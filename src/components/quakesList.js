@@ -4,6 +4,7 @@ import { FlatList, Text, View } from 'react-native';
 import LoadingSpinner from './loadingSpinner';
 import QuakesListItem from './quakesListItem';
 import getJson from '../lib/getQuakesFeed';
+import formatTime from '../lib/formatTime';
 
 const options = {
     "mag": "2.5",
@@ -39,6 +40,8 @@ class QuakesList extends PureComponent {
         getJson(this.state.options).then((res) => {
             this.setState({
                 isLoading: false,
+                generated: res.metadata.generated,
+                count: res.metadata.count,
                 data: res.features,
                 title: res.metadata.title
             });
@@ -65,6 +68,13 @@ class QuakesList extends PureComponent {
                     textAlign: 'center'
                 }}>
                     {this.state.title}
+                </Text>
+                <Text style={{
+                    fontSize: 12,
+                    color: 'black',
+                    textAlign: 'center'
+                }}>
+                    {this.state.count} Earthquakes | Updated {formatTime(this.state.generated)}
                 </Text>
                 <FlatList
                     onRefresh={() => this.onRefresh()}

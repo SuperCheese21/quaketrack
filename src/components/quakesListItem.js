@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import moment from 'moment';
 
 import getColor from '../lib/getColor';
+import formatTime from '../lib/formatTime';
 
 class QuakesListItem extends Component {
 
@@ -12,10 +12,6 @@ class QuakesListItem extends Component {
             data: this.props.data.properties,
             color: getColor(this.props.data.properties.mag, 2.5, 9.7)
         }
-    }
-
-    formatTime(time) {
-        return time.format("YYYY-MM-DD HH:mm:ss") + " UTC";
     }
 
     render() {
@@ -55,7 +51,7 @@ class QuakesListItem extends Component {
                         color: 'black',
                         flex: 1
                     }}>
-                        {this.formatTime(moment.utc(this.state.data.time))}
+                        {formatTime(this.state.data.time)}
                     </Text>
                 </View>
             </View>
