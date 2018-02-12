@@ -1,12 +1,19 @@
 import React, { PureComponent } from 'react';
 import { FlatList, Text, View } from 'react-native';
+
 import LoadingSpinner from './loadingSpinner';
-import moment from 'moment';
+import QuakesListItem from './quakesListItem';
+import getJson from '../lib/getQuakesFeed';
 
 class QuakesList extends PureComponent {
     state = {
         data: [],
-        isLoading: true
+        isLoading: true,
+        options: {
+            "mag": "2.5",
+            "time": "week"
+        },
+        title: ""
     };
 
     _keyExtractor = (item, index) => item.id;
@@ -19,26 +26,20 @@ class QuakesList extends PureComponent {
         this.setState({
             isLoading: true
         }, function() {
-            this.getData()
+            this.getData();
         });
     }
 
     getData() {
-        let start = moment.utc().subtract(24, 'hours').format('YYYY-MM-DD HH:mm:ss');
-
-        fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson')
-            .then((res) => res.json())
-            .then((json) => {
-                this.setState({
-                    isLoading: false,
-                    data: json.features
-                }, function() {
-                    // do something with new state
-                });
-            })
-            .catch((e) => {
-                console.error(e);
+        getJson(this.state.options).then((res) => {
+            this.setState({
+                isLoading: false,
+                data: res.features,
+                title: res.metadata.title
             });
+        }, (err) => {
+            console.error(err);
+        });
     }
 
     render() {
@@ -49,18 +50,31 @@ class QuakesList extends PureComponent {
         }
 
         return (
-            <View style={{flex: 1, paddingTop: 20}}>
+            <View style={{flex: 1}}>
+                <Text style={{
+                    fontSize: 30,
+                    color: 'black',
+                    textAlign: 'center'
+                }}>
+                    Recent Earthquakes
+                </Text>
+                <Text style={{
+                    fontSize: 15,
+                    color: 'black',
+                    textAlign: 'center'
+                }}>
+                    {this.state.title}
+                </Text>
                 <FlatList
                     onRefresh={() => this.onRefresh()}
                     refreshing={this.state.isLoading}
                     data={this.state.data}
                     keyExtractor={this._keyExtractor}
-                    renderItem={
-                        ({item}) => <Text>
-                            {moment.utc(item.properties.time)
-                                .format("YYYY-MM-DD HH:mm:ss")},
-                            {item.properties.title}
-                        </Text>
+                    renderItem={({item}) =>
+                        <QuakesListItem
+                            id={item.id}
+                            data={item}
+                        />
                     }
                 />
             </View>
