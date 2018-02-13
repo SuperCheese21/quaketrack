@@ -3,7 +3,7 @@ import { FlatList, Text, View } from 'react-native';
 
 import LoadingSpinner from './loadingSpinner';
 import QuakesListItem from './quakesListItem';
-import getJson from '../lib/getQuakesFeed';
+import getJson from '../lib/getQuakes';
 import formatTime from '../lib/formatTime';
 
 import queryOptions from '../config/options.js';

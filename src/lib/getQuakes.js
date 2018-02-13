@@ -20,6 +20,9 @@ async function getJson(type, options) {
     try {
         let res = await fetch(url);
         let json = await res.json();
+
+        console.log('Data fetched');
+
         return json;
     } catch (err) {
         console.error(err);
