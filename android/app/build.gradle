@@ -136,7 +136,15 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs "../../node_modules/react-native-background-fetch/android/libs"
+    }
+}
+
 dependencies {
+    compile project(':react-native-background-fetch')
+    compile(name: 'tsbackgroundfetch', ext: 'aar')
     compile project(':react-native-push-notification')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"

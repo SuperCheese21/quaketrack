@@ -11,6 +11,7 @@
     "qs": "^6.5.1",
     "react": "16.2.0",
     "react-native": "0.53.0",
+    "react-native-background-fetch": "^2.3.0",
     "react-native-push-notification": "^3.0.2",
     "redux": "^3.7.2"
   },
