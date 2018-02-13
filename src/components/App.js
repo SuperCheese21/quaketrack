@@ -2,21 +2,13 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
 import QuakesList from './quakesList';
+import styles from './styles.js';
 
 class App extends Component {
     render() {
         return(
-            <View style = {{
-                flex: 1,
-                backgroundColor: '#ff0000'
-            }}>
-                <Text style={{
-                    fontSize: 30,
-                    color: 'black',
-                    fontWeight: 'bold',
-                    backgroundColor: '#e0e0e0',
-                    textAlign: 'center'
-                }}>
+            <View style = {{flex: 1}}>
+                <Text style={styles.listHeader}>
                     Recent Earthquakes
                 </Text>
                 <QuakesList />

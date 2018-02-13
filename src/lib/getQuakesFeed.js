@@ -1,20 +1,28 @@
-function buildURL(options) {
-    var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/";
+import settings from '../config/settings';
 
-    url += options.mag + "_" + options.time + ".geojson";
+import qs from 'qs';
+
+function buildURL(type, options) {
+    const str = qs.stringify(options);
+    var url = '';
+
+    if (type == 'database')
+        url = settings.DATABASE_API_URL + '?' + str;
+    else if (type == 'feed')
+        url = settings.FEED_API_URL + options.mag + '_' + options.time + '.geojson';
 
     return url;
 }
 
-async function getJson(options) {
-    let url = buildURL(options);
+async function getJson(type, options) {
+    const url = buildURL(type, options);
 
     try {
         let res = await fetch(url);
         let json = await res.json();
         return json;
-    } catch (error) {
-        console.error(error);
+    } catch (err) {
+        console.error(err);
     }
 }
 

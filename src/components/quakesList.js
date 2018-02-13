@@ -5,10 +5,18 @@ import LoadingSpinner from './loadingSpinner';
 import QuakesListItem from './quakesListItem';
 import getJson from '../lib/getQuakesFeed';
 import formatTime from '../lib/formatTime';
+import styles from './styles.js';
 
-const options = {
-    "mag": "2.5",
-    "time": "week"
+const databaseOptions = {
+    'format': 'geojson',
+    'orderby': 'time',
+    'minmagnitude': '4.5',
+    'starttime': '2018-02-11 00:00:00'
+};
+
+const feedOptions = {
+    'mag': '4.5',
+    'time': 'week'
 };
 
 class QuakesList extends PureComponent {
@@ -17,8 +25,9 @@ class QuakesList extends PureComponent {
         this.state = {
             data: [],
             isLoading: true,
-            options: options,
-            title: ""
+            type: 'feed',
+            options: feedOptions,
+            title: ''
         };
     }
 
@@ -37,7 +46,7 @@ class QuakesList extends PureComponent {
     }
 
     getData() {
-        getJson(this.state.options).then((res) => {
+        getJson(this.state.type, this.state.options).then((res) => {
             this.setState({
                 isLoading: false,
                 generated: res.metadata.generated,
@@ -58,22 +67,11 @@ class QuakesList extends PureComponent {
         }
 
         return (
-            <View style={{
-                backgroundColor: '#e0e0e0',
-                flex: 1
-            }}>
-                <Text style={{
-                    fontSize: 15,
-                    color: 'black',
-                    textAlign: 'center'
-                }}>
+            <View style={styles.listView}>
+                <Text style={styles.listTitle}>
                     {this.state.title}
                 </Text>
-                <Text style={{
-                    fontSize: 12,
-                    color: 'black',
-                    textAlign: 'center'
-                }}>
+                <Text style={styles.listInfo}>
                     {this.state.count} Earthquakes | Updated {formatTime(this.state.generated)}
                 </Text>
                 <FlatList
