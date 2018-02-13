@@ -5,19 +5,9 @@ import LoadingSpinner from './loadingSpinner';
 import QuakesListItem from './quakesListItem';
 import getJson from '../lib/getQuakesFeed';
 import formatTime from '../lib/formatTime';
+
+import queryOptions from '../config/options.js';
 import styles from './styles.js';
-
-const databaseOptions = {
-    'format': 'geojson',
-    'orderby': 'time',
-    'minmagnitude': '4.5',
-    'starttime': '2018-02-11 00:00:00'
-};
-
-const feedOptions = {
-    'mag': '4.5',
-    'time': 'week'
-};
 
 class QuakesList extends PureComponent {
     constructor(props) {
@@ -25,8 +15,7 @@ class QuakesList extends PureComponent {
         this.state = {
             data: [],
             isLoading: true,
-            type: 'feed',
-            options: feedOptions,
+            options: queryOptions.feed,
             title: ''
         };
     }
@@ -46,7 +35,7 @@ class QuakesList extends PureComponent {
     }
 
     getData() {
-        getJson(this.state.type, this.state.options).then((res) => {
+        getJson(this.state.options.type, this.state.options.query).then((res) => {
             this.setState({
                 isLoading: false,
                 generated: res.metadata.generated,
