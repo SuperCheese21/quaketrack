@@ -29,9 +29,10 @@ const styles = StyleSheet.create({
     },
     listItem: {
         flexDirection: 'row',
-        height: 60,
-        borderRadius: 5,
-        marginBottom: 5,
+        height: 65,
+        borderRadius: 8,
+        marginTop: 2.5,
+        marginBottom: 2.5,
         marginLeft: 5,
         marginRight: 5,
         padding: 5
@@ -51,8 +52,7 @@ const styles = StyleSheet.create({
     },
     timestampText: {
         textAlignVertical: 'center',
-        color: 'black',
-        flex: 1
+        color: 'black'
     }
 });
 

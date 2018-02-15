@@ -4,8 +4,8 @@ const queryOptions = {
         query: {
             'format': 'geojson',
             'orderby': 'time',
-            'minmagnitude': '2.5',
-            'starttime': '2000-01-01 00:00:00'
+            'minmagnitude': '4',
+            'starttime': '2018-02-01 00:00:00'
         }
     },
     feed: {

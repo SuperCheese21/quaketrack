@@ -17,7 +17,7 @@ class QuakesListItem extends Component {
     render() {
         return(
             <View style={[styles.listItem, {backgroundColor: this.state.color}]}>
-                <View style={{width: 55}}>
+                <View style={{width: 55, marginRight: 5}}>
                     <Text style={styles.magnitudeText}>
                         {this.state.data.mag}
                     </Text>
