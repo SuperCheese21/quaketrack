@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
-import QuakesList from './quakesList';
-import styles from './styles.js';
+import QuakesList from './QuakesList';
+import QuakeInfo from './QuakeInfo';
+import Settings from './Settings';
 
-class App extends Component {
-    render() {
-        return(
-            <View style = {{flex: 1}}>
-                <Text style={styles.listHeader}>
-                    Recent Earthquakes
-                </Text>
-                <QuakesList />
-            </View>
-        )
+const App = StackNavigator({
+    QuakesList: {
+        screen: QuakesList
+    },
+    QuakeInfo: {
+        screen: QuakeInfo
+    },
+    Settings: {
+        screen: Settings
     }
-}
+});
 
 export default App;

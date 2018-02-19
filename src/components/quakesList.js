@@ -56,25 +56,30 @@ class QuakesList extends PureComponent {
         }
 
         return (
-            <View style={styles.listView}>
-                <Text style={styles.listTitle}>
-                    {this.state.title}
+            <View style={{flex: 1}}>
+                <Text style={styles.listHeader}>
+                    Recent Earthquakes
                 </Text>
-                <Text style={styles.listInfo}>
-                    {this.state.count} Earthquakes | Updated {formatTime(this.state.generated)}
-                </Text>
-                <FlatList
-                    onRefresh={() => this.onRefresh()}
-                    refreshing={this.state.isLoading}
-                    data={this.state.data}
-                    keyExtractor={this._keyExtractor}
-                    renderItem={({item}) =>
-                        <QuakesListItem
-                            id={item.id}
-                            data={item}
-                        />
-                    }
-                />
+                <View style={styles.listView}>
+                    <Text style={styles.listTitle}>
+                        {this.state.title}
+                    </Text>
+                    <Text style={styles.listInfo}>
+                        {this.state.count} Earthquakes | Updated {formatTime(this.state.generated)}
+                    </Text>
+                    <FlatList
+                        onRefresh={() => this.onRefresh()}
+                        refreshing={this.state.isLoading}
+                        data={this.state.data}
+                        keyExtractor={this._keyExtractor}
+                        renderItem={({item}) =>
+                            <QuakesListItem
+                                id={item.id}
+                                data={item}
+                            />
+                        }
+                    />
+                </View>
             </View>
         );
     }
