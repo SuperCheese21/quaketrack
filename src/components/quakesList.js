@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { FlatList, Text, View } from 'react-native';
 
-import LoadingSpinner from './loadingSpinner';
-import QuakesListItem from './quakesListItem';
+import LoadingSpinner from './LoadingSpinner';
+import QuakesListItem from './QuakesListItem';
 import getJson from '../lib/getQuakes';
 import formatTime from '../lib/formatTime';
 
