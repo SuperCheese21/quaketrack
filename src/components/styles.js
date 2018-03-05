@@ -3,23 +3,25 @@ import { StyleSheet } from 'react-native';
 import colors from '../config/colors';
 
 const styles = StyleSheet.create({
+    headerStyle: {
+        backgroundColor: colors.header,
+        height: 65
+    },
+    headerTitleStyle: {
+        fontSize: 30,
+        alignSelf: 'center'
+    },
     listView: {
         backgroundColor: colors.background,
         flex: 1
     },
-    listHeader: {
-        fontSize: 30,
-        color: 'black',
-        fontWeight: 'bold',
-        backgroundColor: colors.background,
-        textAlign: 'center',
-        textAlignVertical: 'center',
-        flex: 0.1
-    },
     listTitle: {
         fontSize: 15,
         color: 'black',
-        textAlign: 'center'
+        fontWeight: 'bold',
+        textAlign: 'center',
+        textAlignVertical: 'bottom',
+        height: 30
     },
     listInfo: {
         fontSize: 12,

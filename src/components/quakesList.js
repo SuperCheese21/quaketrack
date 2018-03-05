@@ -22,6 +22,12 @@ class QuakesList extends PureComponent {
 
     _keyExtractor = (item, index) => item.id;
 
+    static navigationOptions = {
+        title: 'Recent Earthquakes',
+        headerStyle: styles.headerStyle,
+        headerTitleStyle: styles.headerTitleStyle
+    };
+
     componentDidMount() {
         this.getData();
     }
@@ -55,31 +61,29 @@ class QuakesList extends PureComponent {
             );
         }
 
+        //const { navigate } = this.props.navigation;
+
         return (
-            <View style={{flex: 1}}>
-                <Text style={styles.listHeader}>
-                    Recent Earthquakes
+            <View style={styles.listView}>
+                <Text style={styles.listTitle}>
+                    {this.state.title}
                 </Text>
-                <View style={styles.listView}>
-                    <Text style={styles.listTitle}>
-                        {this.state.title}
-                    </Text>
-                    <Text style={styles.listInfo}>
-                        {this.state.count} Earthquakes | Updated {formatTime(this.state.generated)}
-                    </Text>
-                    <FlatList
-                        onRefresh={() => this.onRefresh()}
-                        refreshing={this.state.isLoading}
-                        data={this.state.data}
-                        keyExtractor={this._keyExtractor}
-                        renderItem={({item}) =>
-                            <QuakesListItem
-                                id={item.id}
-                                data={item}
-                            />
-                        }
-                    />
-                </View>
+                <Text style={styles.listInfo}>
+                    {this.state.count} Earthquakes | Updated {formatTime(this.state.generated)}
+                </Text>
+                <FlatList
+                    onRefresh={() => this.onRefresh()}
+                    refreshing={this.state.isLoading}
+                    data={this.state.data}
+                    keyExtractor={this._keyExtractor}
+                    renderItem={({item}) =>
+                        <QuakesListItem
+                            navigation={this.props.navigation}
+                            id={item.id}
+                            data={item}
+                        />
+                    }
+                />
             </View>
         );
     }

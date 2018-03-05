@@ -14,6 +14,8 @@ const App = StackNavigator({
     Settings: {
         screen: Settings
     }
+}, {
+    initialRouteName: 'QuakesList'
 });
 
 export default App;

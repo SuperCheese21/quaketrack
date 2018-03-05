@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 
 import getColor from '../lib/getColor';
 import formatTime from '../lib/formatTime';
@@ -16,7 +16,14 @@ class QuakesListItem extends Component {
 
     render() {
         return(
-            <View style={[styles.listItem, {backgroundColor: this.state.color}]}>
+            <TouchableOpacity
+                style={[styles.listItem, {backgroundColor: this.state.color}]}
+                onPress={() => this.props.navigation.navigate('QuakeInfo', {
+                    'eventId': this.props.id,
+                    'color': this.state.color
+                })}
+                activeOpacity={0.6}
+            >
                 <View style={{width: 55, marginRight: 5}}>
                     <Text style={styles.magnitudeText}>
                         {this.state.data.mag}
@@ -30,7 +37,7 @@ class QuakesListItem extends Component {
                         {formatTime(this.state.data.time)}
                     </Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 }

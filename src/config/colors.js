@@ -1,5 +1,6 @@
 const colors = {
-    'background': '#e0e0e0'
+    'header': '#d8d8d8',
+    'background': '#ececec'
 }
 
 export default colors;
