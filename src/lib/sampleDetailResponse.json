@@ -1,0 +1,189 @@
+{
+    "type": "Feature",
+    "properties": {
+        "mag": 4.3,
+        "place": "158km SSE of Taron, Papua New Guinea",
+        "time": 1518328302700,
+        "updated": 1518330355040,
+        "tz": 600,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2000d0h3",
+        "felt": null,
+        "cdi": null,
+        "mmi": null,
+        "alert": null,
+        "status": "reviewed",
+        "tsunami": 0,
+        "sig": 284,
+        "net": "us",
+        "code": "2000d0h3",
+        "ids": ",us2000d0h3,",
+        "sources": ",us,",
+        "types": ",geoserve,origin,phase-data,",
+        "nst": null,
+        "dmin": 2.052,
+        "rms": 0.49,
+        "gap": 128,
+        "magType": "mb",
+        "type": "earthquake",
+        "title": "M 4.3 - 158km SSE of Taron, Papua New Guinea",
+        "products": {
+            "geoserve": [{
+                "indexid": "5252457",
+                "indexTime": 1518330361671,
+                "id": "urn:usgs-product:us:geoserve:us2000d0h3:1518330355040",
+                "type": "geoserve",
+                "code": "us2000d0h3",
+                "source": "us",
+                "updateTime": 1518330355040,
+                "status": "UPDATE",
+                "properties": {
+                    "eventsource": "us",
+                    "eventsourcecode": "2000d0h3",
+                    "location": "158km SSE of Taron, Papua New Guinea",
+                    "tsunamiFlag": "false",
+                    "utcOffset": "600"
+                },
+                "preferredWeight": 6,
+                "contents": {
+                    "geoserve.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1518330361000,
+                        "length": 7305,
+                        "url": "https://earthquake.usgs.gov/realtime/product/geoserve/us2000d0h3/us/1518330355040/geoserve.json"
+                    }
+                }
+            }],
+            "origin": [{
+                "indexid": "5252455",
+                "indexTime": 1518330358670,
+                "id": "urn:usgs-product:us:origin:us2000d0h3:1518330355040",
+                "type": "origin",
+                "code": "us2000d0h3",
+                "source": "us",
+                "updateTime": 1518330355040,
+                "status": "UPDATE",
+                "properties": {
+                    "azimuthal-gap": "128",
+                    "depth": "10",
+                    "depth-type": "operator assigned",
+                    "error-ellipse-azimuth": "87",
+                    "error-ellipse-intermediate": "13000",
+                    "error-ellipse-major": "20900",
+                    "error-ellipse-minor": "2800",
+                    "error-ellipse-plunge": "1",
+                    "error-ellipse-rotation": "91",
+                    "evaluation-status": "preliminary",
+                    "event-type": "earthquake",
+                    "eventParametersPublicID": "quakeml:us.anss.org/eventparameters/2000d0h3/1518330357",
+                    "eventsource": "us",
+                    "eventsourcecode": "2000d0h3",
+                    "eventtime": "2018-02-11T05:51:42.700Z",
+                    "eventtime-error": "0.98",
+                    "horizontal-error": "10.8",
+                    "latitude": "-5.8527",
+                    "latitude-error": "0.0764",
+                    "longitude": "153.3877",
+                    "longitude-error": "0.1239",
+                    "magnitude": "4.3",
+                    "magnitude-error": "0.111",
+                    "magnitude-num-stations-used": "23",
+                    "magnitude-source": "us",
+                    "magnitude-type": "mb",
+                    "minimum-distance": "2.052",
+                    "num-phases-used": "27",
+                    "origin-source": "us",
+                    "pdl-client-version": "Version 1.12.1 2017-05-24",
+                    "quakeml-magnitude-publicid": "quakeml:us.anss.org/magnitude/2000d0h3/mb",
+                    "quakeml-origin-publicid": "quakeml:us.anss.org/origin/2000d0h3",
+                    "quakeml-publicid": "quakeml:us.anss.org/event/2000d0h3",
+                    "review-status": "reviewed",
+                    "standard-error": "0.49",
+                    "vertical-error": "1.9"
+                },
+                "preferredWeight": 156,
+                "contents": {
+                    "contents.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1518330358000,
+                        "length": 195,
+                        "url": "https://earthquake.usgs.gov/realtime/product/origin/us2000d0h3/us/1518330355040/contents.xml"
+                    },
+                    "quakeml.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1518330355000,
+                        "length": 3721,
+                        "url": "https://earthquake.usgs.gov/realtime/product/origin/us2000d0h3/us/1518330355040/quakeml.xml"
+                    }
+                }
+            }],
+            "phase-data": [{
+                "indexid": "5252456",
+                "indexTime": 1518330359108,
+                "id": "urn:usgs-product:us:phase-data:us2000d0h3:1518330355040",
+                "type": "phase-data",
+                "code": "us2000d0h3",
+                "source": "us",
+                "updateTime": 1518330355040,
+                "status": "UPDATE",
+                "properties": {
+                    "azimuthal-gap": "128",
+                    "depth": "10",
+                    "depth-type": "operator assigned",
+                    "error-ellipse-azimuth": "87",
+                    "error-ellipse-intermediate": "13000",
+                    "error-ellipse-major": "20900",
+                    "error-ellipse-minor": "2800",
+                    "error-ellipse-plunge": "1",
+                    "error-ellipse-rotation": "91",
+                    "evaluation-status": "preliminary",
+                    "event-type": "earthquake",
+                    "eventParametersPublicID": "quakeml:us.anss.org/eventparameters/2000d0h3/1518330357",
+                    "eventsource": "us",
+                    "eventsourcecode": "2000d0h3",
+                    "eventtime": "2018-02-11T05:51:42.700Z",
+                    "eventtime-error": "0.98",
+                    "horizontal-error": "10.8",
+                    "latitude": "-5.8527",
+                    "latitude-error": "0.0764",
+                    "longitude": "153.3877",
+                    "longitude-error": "0.1239",
+                    "magnitude": "4.3",
+                    "magnitude-error": "0.111",
+                    "magnitude-num-stations-used": "23",
+                    "magnitude-source": "us",
+                    "magnitude-type": "mb",
+                    "minimum-distance": "2.052",
+                    "num-phases-used": "27",
+                    "origin-source": "us",
+                    "pdl-client-version": "Version 1.12.1 2017-05-24",
+                    "quakeml-magnitude-publicid": "quakeml:us.anss.org/magnitude/2000d0h3/mb",
+                    "quakeml-origin-publicid": "quakeml:us.anss.org/origin/2000d0h3",
+                    "quakeml-publicid": "quakeml:us.anss.org/event/2000d0h3",
+                    "review-status": "reviewed",
+                    "standard-error": "0.49",
+                    "vertical-error": "1.9"
+                },
+                "preferredWeight": 156,
+                "contents": {
+                    "contents.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1518330358000,
+                        "length": 195,
+                        "url": "https://earthquake.usgs.gov/realtime/product/phase-data/us2000d0h3/us/1518330355040/contents.xml"
+                    },
+                    "quakeml.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1518330355000,
+                        "length": 74469,
+                        "url": "https://earthquake.usgs.gov/realtime/product/phase-data/us2000d0h3/us/1518330355040/quakeml.xml"
+                    }
+                }
+            }]
+        }
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [153.3877, -5.8527, 10]
+    },
+    "id": "us2000d0h3"
+}
