@@ -6,7 +6,7 @@ const queryOptions = {
         'starttime': '1998-04-06 00:00:00'
     },
     feed: {
-        'mag': '1.0',
+        'mag': '2.5',
         'time': 'week'
     }
 };
