@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Linking, Text, View } from 'react-native';
+import MapView from 'react-native-maps';
+import { Marker } from 'react-native-maps';
 
 import LoadingSpinner from './LoadingSpinner';
 
@@ -65,9 +67,10 @@ class QuakeInfo extends Component {
                     Depth: {this.state.geometry.coordinates[2]} km
                 </Text>
                 <MapView
+                    style={{flex: 1}}
                     initialRegion={{
-                        latitude: 37.78825,
-                        longitude: -122.4324,
+                        latitude: this.state.geometry.coordinates[1],
+                        longitude: this.state.geometry.coordinates[0],
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421,
                     }}

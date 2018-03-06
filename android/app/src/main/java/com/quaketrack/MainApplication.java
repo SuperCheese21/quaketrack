@@ -2,6 +2,7 @@ package com.quaketrack;
 
 import android.app.Application;
 
+import com.airbnb.android.react.maps.MapsPackage;
 import com.facebook.react.ReactApplication;
 import com.transistorsoft.rnbackgroundfetch.RNBackgroundFetchPackage;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
@@ -26,7 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNBackgroundFetchPackage(),
-            new ReactNativePushNotificationPackage()
+            new ReactNativePushNotificationPackage(),
+            new MapsPackage()
       );
     }
 
