@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 
-import getColor from '../lib/getColor';
+import colorUtil from '../lib/colorUtil';
 import formatTime from '../lib/formatTime';
 import styles from './styles.js';
 
@@ -10,17 +10,19 @@ class QuakesListItem extends Component {
         super(props);
         this.state = {
             data: this.props.data.properties,
-            color: getColor(this.props.data.properties.mag, 1.0, 9.5)
-        }
+            color: colorUtil.getRGB(this.props.data.properties.mag, 1.0, 9.5)
+        };
     }
 
     render() {
         return(
             <TouchableOpacity
-                style={[styles.listItem, {backgroundColor: this.state.color}]}
+                style={[styles.listItem, {
+                    backgroundColor: colorUtil.formatRGB(this.state.color)
+                }]}
                 onPress={() => this.props.navigation.navigate('QuakeInfo', {
-                    'eventId': this.props.id,
-                    'color': this.state.color
+                    'color': this.state.color,
+                    'url': this.state.data.detail
                 })}
                 activeOpacity={0.6}
             >

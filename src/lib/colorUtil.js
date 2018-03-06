@@ -1,8 +1,19 @@
-function getColor(val, low, high) {
-    return 'rgb('
-        + calcRed(val, low, high) + ','
-        + calcGreen(val, low, high) + ','
-        + calcBlue(val, low, high) + ')';
+const colorUtil = {
+    formatRGBA: (rgb, opacity) => {
+        return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
+    },
+
+    formatRGB: (rgb) => {
+        return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+    },
+
+    getRGB: (val, low, high) => {
+        return [
+            calcRed(val, low, high),
+            calcGreen(val, low, high),
+            calcBlue(val, low, high)
+        ];
+    }
 }
 
 function calcRed(mag, low, high) {
@@ -20,7 +31,7 @@ function calcRed(mag, low, high) {
     if (mag > maxLow && mag < zeroLow) {
         return (zeroLow - mag) / (zeroLow - maxLow) * 255;
     }
-    return (mag - zeroHigh) / (maxHigh - zeroHigh) * 255;
+    return Math.round((mag - zeroHigh) / (maxHigh - zeroHigh) * 255);
 }
 
 function calcGreen(mag, low, high) {
@@ -38,7 +49,7 @@ function calcGreen(mag, low, high) {
     if (mag > maxHigh && mag < zeroHigh) {
         return (zeroHigh - mag) / (zeroHigh - maxHigh) * 255;
     }
-    return (mag - zeroLow) / (maxLow - zeroLow) * 255;
+    return Math.round((mag - zeroLow) / (maxLow - zeroLow) * 255);
 }
 
 function calcBlue(mag, low, high) {
@@ -56,7 +67,7 @@ function calcBlue(mag, low, high) {
     if (mag > maxLow && mag < zeroLow) {
         return (zeroLow - mag) / (zeroLow - maxLow) * 255;
     }
-    return (mag - zeroHigh) / (maxHigh - zeroHigh) * 255;
+    return Math.round((mag - zeroHigh) / (maxHigh - zeroHigh) * 255);
 }
 
-export default getColor;
+export default colorUtil;
