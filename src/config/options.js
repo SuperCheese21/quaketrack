@@ -2,11 +2,11 @@ const queryOptions = {
     database: {
         'format': 'geojson',
         'orderby': 'time',
-        'minmagnitude': '7',
+        'minmagnitude': '7.5',
         'starttime': '1998-04-06 00:00:00'
     },
     feed: {
-        'mag': '4.5',
+        'mag': '2.5',
         'time': 'week'
     }
 };

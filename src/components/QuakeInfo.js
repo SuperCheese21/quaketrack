@@ -86,8 +86,10 @@ class QuakeInfo extends Component {
                             latitude: this.state.geometry.coordinates[1],
                             longitude: this.state.geometry.coordinates[0]
                         }}
-                        title={'M' + this.state.data.mag}
-                        description={this.state.geometry.coordinates[2] + ' km'}
+                        title={
+                            this.state.geometry.coordinates[1] + ', ' +
+                            this.state.geometry.coordinates[0]
+                        }
                         pinColor={colorUtil.formatRGB(this.state.color)}
                     />
                 </MapView>
