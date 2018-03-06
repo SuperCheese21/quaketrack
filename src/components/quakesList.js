@@ -14,8 +14,8 @@ class QuakesList extends PureComponent {
         super(props);
         this.state = {
             isLoading: true,
-            type: 'feed',
-            options: queryOptions.feed,
+            type: 'database',
+            options: queryOptions.database,
         };
     }
 

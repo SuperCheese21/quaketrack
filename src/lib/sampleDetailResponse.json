@@ -1,181 +1,1161 @@
 {
     "type": "Feature",
     "properties": {
-        "mag": 4.3,
-        "place": "158km SSE of Taron, Papua New Guinea",
-        "time": 1518328302700,
-        "updated": 1518330355040,
+        "mag": 6.1,
+        "place": "111km SW of Porgera, Papua New Guinea",
+        "time": 1519785945460,
+        "updated": 1519853875161,
         "tz": 600,
-        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2000d0h3",
-        "felt": null,
-        "cdi": null,
-        "mmi": null,
-        "alert": null,
+        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us2000d90d",
+        "felt": 5,
+        "cdi": 6.5,
+        "mmi": 6.36,
+        "alert": "green",
         "status": "reviewed",
-        "tsunami": 0,
-        "sig": 284,
+        "tsunami": 1,
+        "sig": 576,
         "net": "us",
-        "code": "2000d0h3",
-        "ids": ",us2000d0h3,",
+        "code": "2000d90d",
+        "ids": ",us2000d90d,",
         "sources": ",us,",
-        "types": ",geoserve,origin,phase-data,",
+        "types": ",dyfi,geoserve,losspager,moment-tensor,origin,phase-data,shakemap,",
         "nst": null,
-        "dmin": 2.052,
-        "rms": 0.49,
-        "gap": 128,
-        "magType": "mb",
+        "dmin": 5.625,
+        "rms": 1.21,
+        "gap": 19,
+        "magType": "mww",
         "type": "earthquake",
-        "title": "M 4.3 - 158km SSE of Taron, Papua New Guinea",
+        "title": "M 6.1 - 111km SW of Porgera, Papua New Guinea",
         "products": {
-            "geoserve": [{
-                "indexid": "5252457",
-                "indexTime": 1518330361671,
-                "id": "urn:usgs-product:us:geoserve:us2000d0h3:1518330355040",
-                "type": "geoserve",
-                "code": "us2000d0h3",
+            "dyfi": [{
+                "indexid": "5316013",
+                "indexTime": 1519853649450,
+                "id": "urn:usgs-product:us:dyfi:us2000d90d:1519853645316",
+                "type": "dyfi",
+                "code": "us2000d90d",
                 "source": "us",
-                "updateTime": 1518330355040,
+                "updateTime": 1519853645316,
+                "status": "UPDATE",
+                "properties": {
+                    "depth": "16",
+                    "eventsource": "us",
+                    "eventsourcecode": "2000d90d",
+                    "eventtime": "2018-02-28T02:45:45.000Z",
+                    "latitude": "-6.1817",
+                    "longitude": "142.4918",
+                    "magnitude": "6.1",
+                    "maxmmi": "6.5",
+                    "num-responses": "5",
+                    "numResp": "5",
+                    "pdl-client-version": "Version 1.13.3 2018-02-06"
+                },
+                "preferredWeight": 156,
+                "contents": {
+                    "cdi_geo.txt": {
+                        "contentType": "text/plain",
+                        "lastModified": 1519853644000,
+                        "length": 436,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/cdi_geo.txt"
+                    },
+                    "cdi_geo.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853644000,
+                        "length": 1383,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/cdi_geo.xml"
+                    },
+                    "cdi_geo_1km.txt": {
+                        "contentType": "text/plain",
+                        "lastModified": 1519853644000,
+                        "length": 534,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/cdi_geo_1km.txt"
+                    },
+                    "cdi_zip.txt": {
+                        "contentType": "text/plain",
+                        "lastModified": 1519853644000,
+                        "length": 440,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/cdi_zip.txt"
+                    },
+                    "cdi_zip.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853644000,
+                        "length": 937,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/cdi_zip.xml"
+                    },
+                    "contents.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853644000,
+                        "length": 4224,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/contents.xml"
+                    },
+                    "dyfi.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853644000,
+                        "length": 1164,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/dyfi.kmz"
+                    },
+                    "dyfi_geo.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853644000,
+                        "length": 971,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/dyfi_geo.kmz"
+                    },
+                    "dyfi_geo_10km.geojson": {
+                        "contentType": "application/octet-stream",
+                        "lastModified": 1519853644000,
+                        "length": 1227,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/dyfi_geo_10km.geojson"
+                    },
+                    "dyfi_geo_1km.geojson": {
+                        "contentType": "application/octet-stream",
+                        "lastModified": 1519853644000,
+                        "length": 1327,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/dyfi_geo_1km.geojson"
+                    },
+                    "dyfi_plot_atten.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853644000,
+                        "length": 1531,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/dyfi_plot_atten.json"
+                    },
+                    "dyfi_plot_numresp.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853644000,
+                        "length": 486,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/dyfi_plot_numresp.json"
+                    },
+                    "dyfi_zip.geojson": {
+                        "contentType": "application/octet-stream",
+                        "lastModified": 1519853644000,
+                        "length": 689,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/dyfi_zip.geojson"
+                    },
+                    "dyfi_zip.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853644000,
+                        "length": 975,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/dyfi_zip.kmz"
+                    },
+                    "event_data.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853644000,
+                        "length": 3045,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/event_data.xml"
+                    },
+                    "us2000d90d_ciim.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853644000,
+                        "length": 104696,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_ciim.jpg"
+                    },
+                    "us2000d90d_ciim.pdf": {
+                        "contentType": "application/pdf",
+                        "lastModified": 1519853644000,
+                        "length": 361894,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_ciim.pdf"
+                    },
+                    "us2000d90d_ciim.ps": {
+                        "contentType": "application/postscript",
+                        "lastModified": 1519853644000,
+                        "length": 657007,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_ciim.ps"
+                    },
+                    "us2000d90d_ciim_geo.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853644000,
+                        "length": 102541,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_ciim_geo.jpg"
+                    },
+                    "us2000d90d_ciim_geo.pdf": {
+                        "contentType": "application/pdf",
+                        "lastModified": 1519853644000,
+                        "length": 361254,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_ciim_geo.pdf"
+                    },
+                    "us2000d90d_ciim_geo.ps": {
+                        "contentType": "application/postscript",
+                        "lastModified": 1519853644000,
+                        "length": 651350,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_ciim_geo.ps"
+                    },
+                    "us2000d90d_ciim_geo_imap.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853644000,
+                        "length": 1295,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_ciim_geo_imap.html"
+                    },
+                    "us2000d90d_ciim_imap.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853644000,
+                        "length": 724,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_ciim_imap.html"
+                    },
+                    "us2000d90d_plot_atten.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853644000,
+                        "length": 41711,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_plot_atten.jpg"
+                    },
+                    "us2000d90d_plot_atten.ps": {
+                        "contentType": "application/postscript",
+                        "lastModified": 1519853644000,
+                        "length": 49855,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_plot_atten.ps"
+                    },
+                    "us2000d90d_plot_atten.txt": {
+                        "contentType": "text/plain",
+                        "lastModified": 1519853644000,
+                        "length": 1110,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_plot_atten.txt"
+                    },
+                    "us2000d90d_plot_numresp.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853644000,
+                        "length": 30267,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_plot_numresp.jpg"
+                    },
+                    "us2000d90d_plot_numresp.ps": {
+                        "contentType": "application/postscript",
+                        "lastModified": 1519853644000,
+                        "length": 29814,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_plot_numresp.ps"
+                    },
+                    "us2000d90d_plot_numresp.txt": {
+                        "contentType": "text/plain",
+                        "lastModified": 1519853644000,
+                        "length": 255,
+                        "url": "https://earthquake.usgs.gov/realtime/product/dyfi/us2000d90d/us/1519853645316/us2000d90d_plot_numresp.txt"
+                    }
+                }
+            }],
+            "geoserve": [{
+                "indexid": "5316005",
+                "indexTime": 1519853613112,
+                "id": "urn:usgs-product:us:geoserve:us2000d90d:1519853598040",
+                "type": "geoserve",
+                "code": "us2000d90d",
+                "source": "us",
+                "updateTime": 1519853598040,
                 "status": "UPDATE",
                 "properties": {
                     "eventsource": "us",
-                    "eventsourcecode": "2000d0h3",
-                    "location": "158km SSE of Taron, Papua New Guinea",
-                    "tsunamiFlag": "false",
+                    "eventsourcecode": "2000d90d",
+                    "location": "111km SW of Porgera, Papua New Guinea",
+                    "tsunamiFlag": "true",
                     "utcOffset": "600"
                 },
                 "preferredWeight": 6,
                 "contents": {
                     "geoserve.json": {
                         "contentType": "application/json",
-                        "lastModified": 1518330361000,
-                        "length": 7305,
-                        "url": "https://earthquake.usgs.gov/realtime/product/geoserve/us2000d0h3/us/1518330355040/geoserve.json"
+                        "lastModified": 1519853612000,
+                        "length": 7289,
+                        "url": "https://earthquake.usgs.gov/realtime/product/geoserve/us2000d90d/us/1519853598040/geoserve.json"
+                    }
+                }
+            }],
+            "losspager": [{
+                "indexid": "5316035",
+                "indexTime": 1519853899429,
+                "id": "urn:usgs-product:us:losspager:us2000d90d:1519853875161",
+                "type": "losspager",
+                "code": "us2000d90d",
+                "source": "us",
+                "updateTime": 1519853875161,
+                "status": "UPDATE",
+                "properties": {
+                    "alertlevel": "green",
+                    "depth": "16.0",
+                    "eventsource": "us",
+                    "eventsourcecode": "2000d90d",
+                    "eventtime": "2018-02-28T09:45:45.000Z",
+                    "latitude": "-6.1817",
+                    "longitude": "142.4918",
+                    "magnitude": "6.1",
+                    "maxmmi": "5",
+                    "pdl-client-version": "Version 1.13.3 2018-02-06"
+                },
+                "preferredWeight": 156,
+                "contents": {
+                    "alertecon.pdf": {
+                        "contentType": "application/pdf",
+                        "lastModified": 1519853853000,
+                        "length": 11538,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/alertecon.pdf"
+                    },
+                    "alertecon.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853853000,
+                        "length": 13916,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/alertecon.png"
+                    },
+                    "alertecon_small.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853853000,
+                        "length": 6062,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/alertecon_small.png"
+                    },
+                    "alertecon_smaller.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853853000,
+                        "length": 3386,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/alertecon_smaller.png"
+                    },
+                    "alertfatal.pdf": {
+                        "contentType": "application/pdf",
+                        "lastModified": 1519853853000,
+                        "length": 10222,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/alertfatal.pdf"
+                    },
+                    "alertfatal.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853853000,
+                        "length": 13075,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/alertfatal.png"
+                    },
+                    "alertfatal_small.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853853000,
+                        "length": 5627,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/alertfatal_small.png"
+                    },
+                    "alertfatal_smaller.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853853000,
+                        "length": 3187,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/alertfatal_smaller.png"
+                    },
+                    "contents.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853874000,
+                        "length": 2951,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/contents.xml"
+                    },
+                    "event.log": {
+                        "contentType": "application/octet-stream",
+                        "lastModified": 1519853873000,
+                        "length": 1220,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/event.log"
+                    },
+                    "exposure.pdf": {
+                        "contentType": "application/pdf",
+                        "lastModified": 1519853867000,
+                        "length": 659156,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/exposure.pdf"
+                    },
+                    "exposure.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853868000,
+                        "length": 191269,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/exposure.png"
+                    },
+                    "grid.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853809000,
+                        "length": 21466678,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/grid.xml"
+                    },
+                    "json/alerts.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853873000,
+                        "length": 1445,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/json/alerts.json"
+                    },
+                    "json/cities.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853873000,
+                        "length": 10963,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/json/cities.json"
+                    },
+                    "json/comments.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853873000,
+                        "length": 837,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/json/comments.json"
+                    },
+                    "json/event.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853873000,
+                        "length": 717,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/json/event.json"
+                    },
+                    "json/exposures.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853873000,
+                        "length": 1222,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/json/exposures.json"
+                    },
+                    "json/historical_earthquakes.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853873000,
+                        "length": 1526,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/json/historical_earthquakes.json"
+                    },
+                    "json/losses.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853873000,
+                        "length": 2350,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/json/losses.json"
+                    },
+                    "onepager.aux": {
+                        "contentType": "application/octet-stream",
+                        "lastModified": 1519853874000,
+                        "length": 166,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/onepager.aux"
+                    },
+                    "onepager.log": {
+                        "contentType": "application/octet-stream",
+                        "lastModified": 1519853874000,
+                        "length": 27346,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/onepager.log"
+                    },
+                    "onepager.pdf": {
+                        "contentType": "application/pdf",
+                        "lastModified": 1519853874000,
+                        "length": 977566,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/onepager.pdf"
+                    },
+                    "onepager.tex": {
+                        "contentType": "application/x-tex",
+                        "lastModified": 1519853873000,
+                        "length": 17745,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/onepager.tex"
+                    },
+                    "pager.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853873000,
+                        "length": 10542,
+                        "url": "https://earthquake.usgs.gov/realtime/product/losspager/us2000d90d/us/1519853875161/pager.xml"
+                    }
+                }
+            }],
+            "moment-tensor": [{
+                "indexid": "5316008",
+                "indexTime": 1519853615826,
+                "id": "urn:usgs-product:us:moment-tensor:us_2000d90d_mww:1519853598040",
+                "type": "moment-tensor",
+                "code": "us_2000d90d_mww",
+                "source": "us",
+                "updateTime": 1519853598040,
+                "status": "UPDATE",
+                "properties": {
+                    "beachball-source": "us",
+                    "depth": "15.5",
+                    "derived-depth": "15.5",
+                    "derived-eventtime": "2018-02-28T02:45:44.500Z",
+                    "derived-latitude": "-6.1811",
+                    "derived-longitude": "142.5819",
+                    "derived-magnitude": "6.1",
+                    "derived-magnitude-type": "Mww",
+                    "evaluation-status": "preliminary",
+                    "eventParametersPublicID": "quakeml:us.anss.org/eventparameters/2000d90d/1519853606",
+                    "eventsource": "us",
+                    "eventsourcecode": "2000d90d",
+                    "eventtime": "2018-02-28T02:45:44.500Z",
+                    "latitude": "-6.1811",
+                    "longitude": "142.4813",
+                    "n-axis-azimuth": "316",
+                    "n-axis-length": "-1.37687E+17",
+                    "n-axis-plunge": "14",
+                    "nodal-plane-1-dip": "21.44",
+                    "nodal-plane-1-rake": "48.77",
+                    "nodal-plane-1-strike": "277.08",
+                    "nodal-plane-2-dip": "74.04",
+                    "nodal-plane-2-rake": "104.51",
+                    "nodal-plane-2-strike": "140.35",
+                    "p-axis-azimuth": "219",
+                    "p-axis-length": "-1.87271E+18",
+                    "p-axis-plunge": "28",
+                    "pdl-client-version": "Version 1.12.1 2017-05-24",
+                    "percent-double-couple": "0.8631",
+                    "quakeml-publicid": "quakeml:us.anss.org/focalmechanism/2000d90d/mww",
+                    "review-status": "reviewed",
+                    "scalar-moment": "1.94E+18",
+                    "sourcetime-decaytime": "2.53",
+                    "sourcetime-duration": "5.06",
+                    "sourcetime-risetime": "2.53",
+                    "sourcetime-type": "triangle",
+                    "t-axis-azimuth": "70",
+                    "t-axis-length": "2.0104E+18",
+                    "t-axis-plunge": "58",
+                    "tensor-mpp": "-1.536E+17",
+                    "tensor-mrp": "-1.3473E+18",
+                    "tensor-mrr": "1.0504E+18",
+                    "tensor-mrt": "8.801E+17",
+                    "tensor-mtp": "4.779E+17",
+                    "tensor-mtt": "-8.969E+17"
+                },
+                "preferredWeight": 216,
+                "contents": {
+                    "contents.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853610000,
+                        "length": 195,
+                        "url": "https://earthquake.usgs.gov/realtime/product/moment-tensor/us_2000d90d_mww/us/1519853598040/contents.xml"
+                    },
+                    "quakeml.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853598000,
+                        "length": 11426,
+                        "url": "https://earthquake.usgs.gov/realtime/product/moment-tensor/us_2000d90d_mww/us/1519853598040/quakeml.xml"
+                    }
+                }
+            }, {
+                "indexid": "5316009",
+                "indexTime": 1519853616238,
+                "id": "urn:usgs-product:us:moment-tensor:us_2000d90d_mwb:1519853598040",
+                "type": "moment-tensor",
+                "code": "us_2000d90d_mwb",
+                "source": "us",
+                "updateTime": 1519853598040,
+                "status": "UPDATE",
+                "properties": {
+                    "beachball-source": "us",
+                    "depth": "10",
+                    "derived-depth": "12",
+                    "derived-eventtime": "1970-01-01T00:00:00.000Z",
+                    "derived-latitude": "0.0000",
+                    "derived-longitude": "0.0000",
+                    "derived-magnitude": "6.0",
+                    "derived-magnitude-type": "Mwb",
+                    "evaluation-status": "preliminary",
+                    "eventParametersPublicID": "quakeml:us.anss.org/eventparameters/2000d90d/1519853606",
+                    "eventsource": "us",
+                    "eventsourcecode": "2000d90d",
+                    "eventtime": "2018-02-28T02:45:44.600Z",
+                    "latitude": "-6.1894",
+                    "longitude": "142.4830",
+                    "n-axis-azimuth": "317",
+                    "n-axis-length": "1.48146E+17",
+                    "n-axis-plunge": "23",
+                    "nodal-plane-1-dip": "26.12",
+                    "nodal-plane-1-rake": "26.13",
+                    "nodal-plane-1-strike": "256.04",
+                    "nodal-plane-2-dip": "78.82",
+                    "nodal-plane-2-rake": "113.76",
+                    "nodal-plane-2-strike": "142.27",
+                    "p-axis-azimuth": "213",
+                    "p-axis-length": "-1.42617E+18",
+                    "p-axis-plunge": "30",
+                    "pdl-client-version": "Version 1.12.1 2017-05-24",
+                    "percent-double-couple": "0.7923",
+                    "quakeml-publicid": "quakeml:us.anss.org/focalmechanism/2000d90d/mwb",
+                    "review-status": "reviewed",
+                    "scalar-moment": "1.36E+18",
+                    "t-axis-azimuth": "79",
+                    "t-axis-length": "1.27802E+18",
+                    "t-axis-plunge": "51",
+                    "tensor-mpp": "2.347E+17",
+                    "tensor-mrp": "-9.151E+17",
+                    "tensor-mrr": "4.315E+17",
+                    "tensor-mrt": "6.761E+17",
+                    "tensor-mtp": "4.555E+17",
+                    "tensor-mtt": "-6.663E+17"
+                },
+                "preferredWeight": 157,
+                "contents": {
+                    "contents.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853609000,
+                        "length": 195,
+                        "url": "https://earthquake.usgs.gov/realtime/product/moment-tensor/us_2000d90d_mwb/us/1519853598040/contents.xml"
+                    },
+                    "quakeml.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853598000,
+                        "length": 18173,
+                        "url": "https://earthquake.usgs.gov/realtime/product/moment-tensor/us_2000d90d_mwb/us/1519853598040/quakeml.xml"
                     }
                 }
             }],
             "origin": [{
-                "indexid": "5252455",
-                "indexTime": 1518330358670,
-                "id": "urn:usgs-product:us:origin:us2000d0h3:1518330355040",
+                "indexid": "5316004",
+                "indexTime": 1519853610180,
+                "id": "urn:usgs-product:us:origin:us2000d90d:1519853598040",
                 "type": "origin",
-                "code": "us2000d0h3",
+                "code": "us2000d90d",
                 "source": "us",
-                "updateTime": 1518330355040,
+                "updateTime": 1519853598040,
                 "status": "UPDATE",
                 "properties": {
-                    "azimuthal-gap": "128",
-                    "depth": "10",
-                    "depth-type": "operator assigned",
-                    "error-ellipse-azimuth": "87",
-                    "error-ellipse-intermediate": "13000",
-                    "error-ellipse-major": "20900",
-                    "error-ellipse-minor": "2800",
-                    "error-ellipse-plunge": "1",
+                    "azimuthal-gap": "19",
+                    "depth": "16",
+                    "depth-type": "from modeling of broad-band P waveforms",
+                    "error-ellipse-azimuth": "268",
+                    "error-ellipse-intermediate": "10200",
+                    "error-ellipse-major": "10700",
+                    "error-ellipse-minor": "2500",
+                    "error-ellipse-plunge": "0",
                     "error-ellipse-rotation": "91",
                     "evaluation-status": "preliminary",
                     "event-type": "earthquake",
-                    "eventParametersPublicID": "quakeml:us.anss.org/eventparameters/2000d0h3/1518330357",
+                    "eventParametersPublicID": "quakeml:us.anss.org/eventparameters/2000d90d/1519853606",
                     "eventsource": "us",
-                    "eventsourcecode": "2000d0h3",
-                    "eventtime": "2018-02-11T05:51:42.700Z",
-                    "eventtime-error": "0.98",
-                    "horizontal-error": "10.8",
-                    "latitude": "-5.8527",
-                    "latitude-error": "0.0764",
-                    "longitude": "153.3877",
-                    "longitude-error": "0.1239",
-                    "magnitude": "4.3",
-                    "magnitude-error": "0.111",
-                    "magnitude-num-stations-used": "23",
+                    "eventsourcecode": "2000d90d",
+                    "eventtime": "2018-02-28T02:45:45.460Z",
+                    "eventtime-error": "2.46",
+                    "horizontal-error": "6.9",
+                    "latitude": "-6.1817",
+                    "latitude-error": "0.0603",
+                    "longitude": "142.4918",
+                    "longitude-error": "0.0633",
+                    "magnitude": "6.1",
+                    "magnitude-error": "0.054",
+                    "magnitude-num-stations-used": "33",
                     "magnitude-source": "us",
-                    "magnitude-type": "mb",
-                    "minimum-distance": "2.052",
-                    "num-phases-used": "27",
+                    "magnitude-type": "mww",
+                    "minimum-distance": "5.625",
+                    "num-phases-used": "139",
                     "origin-source": "us",
                     "pdl-client-version": "Version 1.12.1 2017-05-24",
-                    "quakeml-magnitude-publicid": "quakeml:us.anss.org/magnitude/2000d0h3/mb",
-                    "quakeml-origin-publicid": "quakeml:us.anss.org/origin/2000d0h3",
-                    "quakeml-publicid": "quakeml:us.anss.org/event/2000d0h3",
+                    "quakeml-magnitude-publicid": "quakeml:us.anss.org/magnitude/2000d90d/mww",
+                    "quakeml-origin-publicid": "quakeml:us.anss.org/origin/2000d90d",
+                    "quakeml-publicid": "quakeml:us.anss.org/event/2000d90d",
                     "review-status": "reviewed",
-                    "standard-error": "0.49",
-                    "vertical-error": "1.9"
+                    "standard-error": "1.21",
+                    "vertical-error": "1.7"
                 },
                 "preferredWeight": 156,
                 "contents": {
                     "contents.xml": {
                         "contentType": "application/xml",
-                        "lastModified": 1518330358000,
+                        "lastModified": 1519853609000,
                         "length": 195,
-                        "url": "https://earthquake.usgs.gov/realtime/product/origin/us2000d0h3/us/1518330355040/contents.xml"
+                        "url": "https://earthquake.usgs.gov/realtime/product/origin/us2000d90d/us/1519853598040/contents.xml"
                     },
                     "quakeml.xml": {
                         "contentType": "application/xml",
-                        "lastModified": 1518330355000,
-                        "length": 3721,
-                        "url": "https://earthquake.usgs.gov/realtime/product/origin/us2000d0h3/us/1518330355040/quakeml.xml"
+                        "lastModified": 1519853598000,
+                        "length": 3693,
+                        "url": "https://earthquake.usgs.gov/realtime/product/origin/us2000d90d/us/1519853598040/quakeml.xml"
                     }
                 }
             }],
             "phase-data": [{
-                "indexid": "5252456",
-                "indexTime": 1518330359108,
-                "id": "urn:usgs-product:us:phase-data:us2000d0h3:1518330355040",
+                "indexid": "5316007",
+                "indexTime": 1519853615707,
+                "id": "urn:usgs-product:us:phase-data:us2000d90d:1519853598040",
                 "type": "phase-data",
-                "code": "us2000d0h3",
+                "code": "us2000d90d",
                 "source": "us",
-                "updateTime": 1518330355040,
+                "updateTime": 1519853598040,
                 "status": "UPDATE",
                 "properties": {
-                    "azimuthal-gap": "128",
-                    "depth": "10",
-                    "depth-type": "operator assigned",
-                    "error-ellipse-azimuth": "87",
-                    "error-ellipse-intermediate": "13000",
-                    "error-ellipse-major": "20900",
-                    "error-ellipse-minor": "2800",
-                    "error-ellipse-plunge": "1",
+                    "azimuthal-gap": "19",
+                    "depth": "16",
+                    "depth-type": "from modeling of broad-band P waveforms",
+                    "error-ellipse-azimuth": "268",
+                    "error-ellipse-intermediate": "10200",
+                    "error-ellipse-major": "10700",
+                    "error-ellipse-minor": "2500",
+                    "error-ellipse-plunge": "0",
                     "error-ellipse-rotation": "91",
                     "evaluation-status": "preliminary",
                     "event-type": "earthquake",
-                    "eventParametersPublicID": "quakeml:us.anss.org/eventparameters/2000d0h3/1518330357",
+                    "eventParametersPublicID": "quakeml:us.anss.org/eventparameters/2000d90d/1519853606",
                     "eventsource": "us",
-                    "eventsourcecode": "2000d0h3",
-                    "eventtime": "2018-02-11T05:51:42.700Z",
-                    "eventtime-error": "0.98",
-                    "horizontal-error": "10.8",
-                    "latitude": "-5.8527",
-                    "latitude-error": "0.0764",
-                    "longitude": "153.3877",
-                    "longitude-error": "0.1239",
-                    "magnitude": "4.3",
-                    "magnitude-error": "0.111",
-                    "magnitude-num-stations-used": "23",
+                    "eventsourcecode": "2000d90d",
+                    "eventtime": "2018-02-28T02:45:45.460Z",
+                    "eventtime-error": "2.46",
+                    "horizontal-error": "6.9",
+                    "latitude": "-6.1817",
+                    "latitude-error": "0.0603",
+                    "longitude": "142.4918",
+                    "longitude-error": "0.0633",
+                    "magnitude": "6.1",
+                    "magnitude-error": "0.054",
+                    "magnitude-num-stations-used": "33",
                     "magnitude-source": "us",
-                    "magnitude-type": "mb",
-                    "minimum-distance": "2.052",
-                    "num-phases-used": "27",
+                    "magnitude-type": "mww",
+                    "minimum-distance": "5.625",
+                    "num-phases-used": "139",
                     "origin-source": "us",
                     "pdl-client-version": "Version 1.12.1 2017-05-24",
-                    "quakeml-magnitude-publicid": "quakeml:us.anss.org/magnitude/2000d0h3/mb",
-                    "quakeml-origin-publicid": "quakeml:us.anss.org/origin/2000d0h3",
-                    "quakeml-publicid": "quakeml:us.anss.org/event/2000d0h3",
+                    "quakeml-magnitude-publicid": "quakeml:us.anss.org/magnitude/2000d90d/mww",
+                    "quakeml-origin-publicid": "quakeml:us.anss.org/origin/2000d90d",
+                    "quakeml-publicid": "quakeml:us.anss.org/event/2000d90d",
                     "review-status": "reviewed",
-                    "standard-error": "0.49",
-                    "vertical-error": "1.9"
+                    "standard-error": "1.21",
+                    "vertical-error": "1.7"
                 },
                 "preferredWeight": 156,
                 "contents": {
                     "contents.xml": {
                         "contentType": "application/xml",
-                        "lastModified": 1518330358000,
+                        "lastModified": 1519853609000,
                         "length": 195,
-                        "url": "https://earthquake.usgs.gov/realtime/product/phase-data/us2000d0h3/us/1518330355040/contents.xml"
+                        "url": "https://earthquake.usgs.gov/realtime/product/phase-data/us2000d90d/us/1519853598040/contents.xml"
                     },
                     "quakeml.xml": {
                         "contentType": "application/xml",
-                        "lastModified": 1518330355000,
-                        "length": 74469,
-                        "url": "https://earthquake.usgs.gov/realtime/product/phase-data/us2000d0h3/us/1518330355040/quakeml.xml"
+                        "lastModified": 1519853598000,
+                        "length": 2291323,
+                        "url": "https://earthquake.usgs.gov/realtime/product/phase-data/us2000d90d/us/1519853598040/quakeml.xml"
+                    }
+                }
+            }],
+            "shakemap": [{
+                "indexid": "5316033",
+                "indexTime": 1519853852779,
+                "id": "urn:usgs-product:us:shakemap:us2000d90d:1519853791536",
+                "type": "shakemap",
+                "code": "us2000d90d",
+                "source": "us",
+                "updateTime": 1519853791536,
+                "status": "UPDATE",
+                "properties": {
+                    "depth": "16",
+                    "event-description": "NEW GUINEA, PAPUA NEW GUINEA",
+                    "event-type": "ACTUAL",
+                    "eventsource": "us",
+                    "eventsourcecode": "2000d90d",
+                    "eventtime": "2018-02-28T02:45:45.000Z",
+                    "latitude": "-6.181700",
+                    "longitude": "142.491800",
+                    "magnitude": "6.1",
+                    "map-status": "RELEASED",
+                    "maximum-latitude": "-1.211700",
+                    "maximum-longitude": "147.491800",
+                    "maxmmi": "6.36",
+                    "maxmmi-grid": "6.36",
+                    "maxpga": "16.74",
+                    "maxpga-grid": "16.74",
+                    "maxpgv": "15",
+                    "maxpgv-grid": "15",
+                    "maxpsa03": "35.38",
+                    "maxpsa03-grid": "35.38",
+                    "maxpsa10": "14.21",
+                    "maxpsa10-grid": "14.21",
+                    "maxpsa30": "3.04",
+                    "maxpsa30-grid": "3.04",
+                    "minimum-latitude": "-11.151700",
+                    "minimum-longitude": "137.491800",
+                    "overlayHeight": "465",
+                    "overlayWidth": "468",
+                    "pdl-client-version": "Version 1.13.3 2018-02-06",
+                    "process-timestamp": "2018-02-28T21:34:25Z",
+                    "version": "3"
+                },
+                "preferredWeight": 231,
+                "contents": {
+                    "about_formats.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853789000,
+                        "length": 28820,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/about_formats.html"
+                    },
+                    "contents.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853790000,
+                        "length": 8972,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/contents.xml"
+                    },
+                    "download/2000d90d.kml": {
+                        "contentType": "application/vnd.google-earth.kml+xml",
+                        "lastModified": 1519853784000,
+                        "length": 1032,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/2000d90d.kml"
+                    },
+                    "download/cont_mi.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853784000,
+                        "length": 403378,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_mi.json"
+                    },
+                    "download/cont_mi.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853784000,
+                        "length": 85523,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_mi.kmz"
+                    },
+                    "download/cont_pga.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853784000,
+                        "length": 30408,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_pga.json"
+                    },
+                    "download/cont_pga.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853784000,
+                        "length": 6860,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_pga.kmz"
+                    },
+                    "download/cont_pgv.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853784000,
+                        "length": 43160,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_pgv.json"
+                    },
+                    "download/cont_pgv.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853784000,
+                        "length": 9413,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_pgv.kmz"
+                    },
+                    "download/cont_psa03.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853784000,
+                        "length": 35215,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_psa03.json"
+                    },
+                    "download/cont_psa03.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853784000,
+                        "length": 7734,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_psa03.kmz"
+                    },
+                    "download/cont_psa10.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853784000,
+                        "length": 53037,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_psa10.json"
+                    },
+                    "download/cont_psa10.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853784000,
+                        "length": 11366,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_psa10.kmz"
+                    },
+                    "download/cont_psa30.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853784000,
+                        "length": 46782,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_psa30.json"
+                    },
+                    "download/cont_psa30.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853784000,
+                        "length": 10185,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/cont_psa30.kmz"
+                    },
+                    "download/epicenter.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853783000,
+                        "length": 1285,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/epicenter.kmz"
+                    },
+                    "download/event.txt": {
+                        "contentType": "text/plain",
+                        "lastModified": 1519853777000,
+                        "length": 121,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/event.txt"
+                    },
+                    "download/grid.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853777000,
+                        "length": 21466678,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/grid.xml"
+                    },
+                    "download/grid.xml.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853782000,
+                        "length": 3501269,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/grid.xml.zip"
+                    },
+                    "download/grid.xyz.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853783000,
+                        "length": 2393601,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/grid.xyz.zip"
+                    },
+                    "download/hazus.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853784000,
+                        "length": 681671,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/hazus.zip"
+                    },
+                    "download/ii_overlay.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853784000,
+                        "length": 138876,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/ii_overlay.png"
+                    },
+                    "download/ii_thumbnail.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 3875,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/ii_thumbnail.jpg"
+                    },
+                    "download/info.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853777000,
+                        "length": 2248,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/info.json"
+                    },
+                    "download/intensity.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 118027,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/intensity.jpg"
+                    },
+                    "download/intensity.ps.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853778000,
+                        "length": 488333,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/intensity.ps.zip"
+                    },
+                    "download/metadata.txt": {
+                        "contentType": "text/plain",
+                        "lastModified": 1519853783000,
+                        "length": 33150,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/metadata.txt"
+                    },
+                    "download/mi_regr.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853777000,
+                        "length": 13052,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/mi_regr.png"
+                    },
+                    "download/overlay.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853784000,
+                        "length": 139200,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/overlay.kmz"
+                    },
+                    "download/pga.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 101427,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/pga.jpg"
+                    },
+                    "download/pga.ps.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853779000,
+                        "length": 2691032,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/pga.ps.zip"
+                    },
+                    "download/pga_regr.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853777000,
+                        "length": 13860,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/pga_regr.png"
+                    },
+                    "download/pgv.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 101862,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/pgv.jpg"
+                    },
+                    "download/pgv.ps.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853778000,
+                        "length": 2691496,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/pgv.ps.zip"
+                    },
+                    "download/pgv_regr.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853777000,
+                        "length": 13445,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/pgv_regr.png"
+                    },
+                    "download/polygons_mi.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853784000,
+                        "length": 212452,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/polygons_mi.kmz"
+                    },
+                    "download/psa03.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 100843,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/psa03.jpg"
+                    },
+                    "download/psa03.ps.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853778000,
+                        "length": 2691177,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/psa03.ps.zip"
+                    },
+                    "download/psa03_regr.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853777000,
+                        "length": 14016,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/psa03_regr.png"
+                    },
+                    "download/psa10.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 101270,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/psa10.jpg"
+                    },
+                    "download/psa10.ps.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853778000,
+                        "length": 2691867,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/psa10.ps.zip"
+                    },
+                    "download/psa10_regr.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853777000,
+                        "length": 13569,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/psa10_regr.png"
+                    },
+                    "download/psa30.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 101280,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/psa30.jpg"
+                    },
+                    "download/psa30.ps.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853778000,
+                        "length": 2691653,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/psa30.ps.zip"
+                    },
+                    "download/psa30_regr.png": {
+                        "contentType": "image/png",
+                        "lastModified": 1519853777000,
+                        "length": 13222,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/psa30_regr.png"
+                    },
+                    "download/raster.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853789000,
+                        "length": 19526698,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/raster.zip"
+                    },
+                    "download/rock_grid.xml.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853780000,
+                        "length": 1701753,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/rock_grid.xml.zip"
+                    },
+                    "download/sd.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 66046,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/sd.jpg"
+                    },
+                    "download/shape.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853784000,
+                        "length": 9095598,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/shape.zip"
+                    },
+                    "download/stationlist.json": {
+                        "contentType": "application/json",
+                        "lastModified": 1519853789000,
+                        "length": 42,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/stationlist.json"
+                    },
+                    "download/stationlist.txt": {
+                        "contentType": "text/plain",
+                        "lastModified": 1519853789000,
+                        "length": 512,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/stationlist.txt"
+                    },
+                    "download/stationlist.xml": {
+                        "contentType": "application/xml",
+                        "lastModified": 1519853777000,
+                        "length": 2125,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/stationlist.xml"
+                    },
+                    "download/tvguide.txt": {
+                        "contentType": "text/plain",
+                        "lastModified": 1519853777000,
+                        "length": 8777,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/tvguide.txt"
+                    },
+                    "download/tvmap.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 170610,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/tvmap.jpg"
+                    },
+                    "download/tvmap.ps.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853778000,
+                        "length": 1069846,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/tvmap.ps.zip"
+                    },
+                    "download/tvmap_bare.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 172390,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/tvmap_bare.jpg"
+                    },
+                    "download/tvmap_bare.ps.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853777000,
+                        "length": 1070009,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/tvmap_bare.ps.zip"
+                    },
+                    "download/uncertainty.xml.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853781000,
+                        "length": 2079639,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/uncertainty.xml.zip"
+                    },
+                    "download/urat_pga.jpg": {
+                        "contentType": "image/jpeg",
+                        "lastModified": 1519853777000,
+                        "length": 66046,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/urat_pga.jpg"
+                    },
+                    "download/urat_pga.ps.zip": {
+                        "contentType": "application/zip",
+                        "lastModified": 1519853777000,
+                        "length": 53703,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/urat_pga.ps.zip"
+                    },
+                    "download/us2000d90d.kml": {
+                        "contentType": "application/vnd.google-earth.kml+xml",
+                        "lastModified": 1519853783000,
+                        "length": 1032,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/us2000d90d.kml"
+                    },
+                    "download/us2000d90d.kmz": {
+                        "contentType": "application/vnd.google-earth.kmz",
+                        "lastModified": 1519853784000,
+                        "length": 499194,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/download/us2000d90d.kmz"
+                    },
+                    "intensity.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853789000,
+                        "length": 5480,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/intensity.html"
+                    },
+                    "pga.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853789000,
+                        "length": 5272,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/pga.html"
+                    },
+                    "pgv.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853789000,
+                        "length": 5272,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/pgv.html"
+                    },
+                    "products.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853789000,
+                        "length": 18584,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/products.html"
+                    },
+                    "psa03.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853789000,
+                        "length": 6439,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/psa03.html"
+                    },
+                    "psa10.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853789000,
+                        "length": 6438,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/psa10.html"
+                    },
+                    "psa30.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853789000,
+                        "length": 6438,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/psa30.html"
+                    },
+                    "stationlist.html": {
+                        "contentType": "text/html",
+                        "lastModified": 1519853789000,
+                        "length": 1688,
+                        "url": "https://earthquake.usgs.gov/realtime/product/shakemap/us2000d90d/us/1519853791536/stationlist.html"
                     }
                 }
             }]
@@ -183,7 +1163,7 @@
     },
     "geometry": {
         "type": "Point",
-        "coordinates": [153.3877, -5.8527, 10]
+        "coordinates": [142.4918, -6.1817, 16]
     },
-    "id": "us2000d0h3"
+    "id": "us2000d90d"
 }

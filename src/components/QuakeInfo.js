@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Linking, Text, View } from 'react-native';
 
 import LoadingSpinner from './LoadingSpinner';
 
@@ -45,23 +45,33 @@ class QuakeInfo extends Component {
     }
 
     render() {
-
         if (this.state.isLoading) {
-            return (
-                <LoadingSpinner />
-            );
+            return ( <LoadingSpinner /> );
         }
 
-        const { params } = this.props.navigation.state;
-
         return (
-            <View style={{
-                backgroundColor: colorUtil.formatRGBA(params.color, 0.5),
-                flex: 1,
-                borderRadius: 10,
-                margin: 5
-            }}>
-
+            <View style={[styles.infoView, {
+                backgroundColor: colorUtil.formatRGBA(this.state.color, 0.5)
+            }]}>
+                <Text style={styles.infoTitle}>
+                    M{this.state.data.mag}
+                </Text>
+                <Text style={styles.infoLink} onPress={
+                    () => Linking.openURL(this.state.data.url)
+                }>
+                    {this.state.data.place}
+                </Text>
+                <Text style={{color: 'black'}}>
+                    Depth: {this.state.geometry.coordinates[2]} km
+                </Text>
+                <MapView
+                    initialRegion={{
+                        latitude: 37.78825,
+                        longitude: -122.4324,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                />
             </View>
         )
     }

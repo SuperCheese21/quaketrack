@@ -11,17 +11,26 @@ const styles = StyleSheet.create({
         fontSize: 30,
         alignSelf: 'center'
     },
-    listView: {
-        backgroundColor: colors.background,
-        flex: 1
-    },
-    listTitle: {
-        fontSize: 15,
-        color: 'black',
-        fontWeight: 'bold',
+    infoLink: {
+        height: 40,
+        color: 'blue',
         textAlign: 'center',
-        textAlignVertical: 'bottom',
-        height: 30
+        textAlignVertical: 'center',
+        textDecorationLine: 'underline'
+    },
+    infoTitle: {
+        height: 50,
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: 'black',
+        textAlign: 'center',
+        textAlignVertical: 'center'
+    },
+    infoView: {
+        borderRadius: 10,
+        flex: 1,
+        margin: 5,
+        padding: 10
     },
     listInfo: {
         fontSize: 12,
@@ -38,6 +47,18 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         marginRight: 5,
         padding: 5
+    },
+    listTitle: {
+        fontSize: 15,
+        color: 'black',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        textAlignVertical: 'bottom',
+        height: 30
+    },
+    listView: {
+        backgroundColor: colors.background,
+        flex: 1
     },
     magnitudeText: {
         textAlignVertical: 'center',
