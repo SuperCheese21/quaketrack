@@ -71,10 +71,20 @@ class QuakeInfo extends Component {
                     initialRegion={{
                         latitude: this.state.geometry.coordinates[1],
                         longitude: this.state.geometry.coordinates[0],
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
+                        latitudeDelta: 8,
+                        longitudeDelta: 4
                     }}
-                />
+                >
+                    <Marker
+                        coordinate={{
+                            latitude: this.state.geometry.coordinates[1],
+                            longitude: this.state.geometry.coordinates[0]
+                        }}
+                        title={'M' + this.state.data.mag}
+                        description={this.state.geometry.coordinates[2] + ' km'}
+                        pinColor={colorUtil.formatRGB(this.state.color)}
+                    />
+                </MapView>
             </View>
         )
     }
