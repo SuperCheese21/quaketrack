@@ -6,6 +6,7 @@ import { Marker } from 'react-native-maps';
 import LoadingSpinner from './LoadingSpinner';
 
 import colorUtil from '../lib/colorUtil';
+import formatTime from '../lib/formatTime';
 import getInfo from '../lib/getInfo';
 import styles from './styles.js';
 
@@ -23,7 +24,6 @@ class QuakeInfo extends Component {
     }
 
     static navigationOptions = {
-        title: 'Info',
         headerStyle: styles.headerStyle,
         headerTitleStyle: styles.headerTitleStyle
     };
@@ -66,8 +66,14 @@ class QuakeInfo extends Component {
                 <Text style={{color: 'black'}}>
                     Depth: {this.state.geometry.coordinates[2]} km
                 </Text>
+                <Text style={{color: 'black'}}>
+                    Occurred {formatTime(this.state.data.time)}
+                </Text>
+                <Text style={{color: 'black'}}>
+                    Updated {formatTime(this.state.data.updated)}
+                </Text>
                 <MapView
-                    style={{flex: 1}}
+                    style={{marginTop: 10, flex: 1}}
                     initialRegion={{
                         latitude: this.state.geometry.coordinates[1],
                         longitude: this.state.geometry.coordinates[0],
