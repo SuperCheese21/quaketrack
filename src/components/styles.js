@@ -3,6 +3,11 @@ import { StyleSheet } from 'react-native';
 import colors from '../config/colors';
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: colors.background,
+        justifyContent: 'center'
+    },
     headerStyle: {
         backgroundColor: colors.header,
         height: 65
@@ -10,6 +15,11 @@ const styles = StyleSheet.create({
     headerTitleStyle: {
         fontSize: 30,
         alignSelf: 'center'
+    },
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10
     },
     infoLink: {
         height: 40,

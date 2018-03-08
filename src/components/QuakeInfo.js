@@ -10,7 +10,6 @@ import formatTime from '../lib/formatTime';
 import getInfo from '../lib/getInfo';
 import styles from './styles.js';
 
-
 class QuakeInfo extends Component {
 
     constructor(props) {
@@ -79,8 +78,8 @@ class QuakeInfo extends Component {
                         longitude: this.state.geometry.coordinates[0],
                         latitudeDelta: 8,
                         longitudeDelta: 4
-                    }}
-                >
+                    }}>
+
                     <Marker
                         coordinate={{
                             latitude: this.state.geometry.coordinates[1],
@@ -90,8 +89,8 @@ class QuakeInfo extends Component {
                             this.state.geometry.coordinates[1] + ', ' +
                             this.state.geometry.coordinates[0]
                         }
-                        pinColor={colorUtil.formatRGB(this.state.color)}
-                    />
+                        pinColor={colorUtil.formatRGB(this.state.color)} />
+                        
                 </MapView>
             </View>
         )

@@ -24,13 +24,14 @@ class QuakesListItem extends Component {
                     'color': this.state.color,
                     'url': this.state.data.detail
                 })}
-                activeOpacity={0.6}
-            >
+                activeOpacity={0.6}>
+
                 <View style={{width: 55, marginRight: 5}}>
                     <Text style={styles.magnitudeText}>
                         {this.state.data.mag}
                     </Text>
                 </View>
+                
                 <View style={{flex: 1}}>
                     <Text style={styles.locationText}>
                         {this.state.data.place}
@@ -39,6 +40,7 @@ class QuakesListItem extends Component {
                         {formatTime(this.state.data.time)}
                     </Text>
                 </View>
+
             </TouchableOpacity>
         )
     }

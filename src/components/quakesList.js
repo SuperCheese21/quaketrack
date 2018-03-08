@@ -77,8 +77,8 @@ class QuakesList extends PureComponent {
                             navigation={this.props.navigation}
                             data={item}
                         />
-                    }
-                />
+                    }/>
+                    
             </View>
         );
     }

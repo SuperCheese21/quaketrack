@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react';
-import {
-    ActivityIndicator,
-    AppRegistry,
-    StyleSheet,
-    View
-} from 'react-native';
+import { ActivityIndicator, AppRegistry, StyleSheet, View } from 'react-native';
+
+import styles from './styles';
 
 class LoadingSpinner extends PureComponent {
     render() {
@@ -15,18 +12,5 @@ class LoadingSpinner extends PureComponent {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#e0e0e0',
-        justifyContent: 'center'
-    },
-    horizontal: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        padding: 10
-    }
-})
 
 export default LoadingSpinner;
