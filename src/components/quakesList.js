@@ -22,6 +22,8 @@ class QuakesList extends PureComponent {
     }
 
     static navigationOptions = ({ navigation }) => {
+        const params = navigation.state.params || {};
+
         return {
             title: 'Earthquakes',
             headerStyle: styles.headerStyle,
@@ -37,7 +39,11 @@ class QuakesList extends PureComponent {
             headerRight: (
                 <Icon
                     name='settings'
-                    onPress={() => navigation.navigate('Settings')}
+                    onPress={() => navigation.navigate('Settings', {
+                        type: params.type,
+                        options: params.options,
+                        refreshData: (type, options) => params.refreshData(type, options)
+                    })}
                     size={25}
                     color='#000000'
                 />
@@ -51,7 +57,19 @@ class QuakesList extends PureComponent {
         this.getData();
     }
 
-    onRefresh() {
+    componentWillMount() {
+        this.props.navigation.setParams({
+            refreshData: (type, options) => {
+                this.setState({
+                    type: type,
+                    options: options
+                });
+                this.onRefresh();
+            }
+        });
+    }
+
+    onRefresh = () => {
         this.setState({
             isLoading: true
         }, function() {
@@ -59,16 +77,18 @@ class QuakesList extends PureComponent {
         });
     }
 
-    getData() {
-        getInfo.buildURL(this.state.type, this.state.options[this.state.type]).then((res) => {
+    getData = () => {
+        const options = this.state.options[this.state.type];
+
+        getInfo.buildURL(this.state.type, options).then((res) => {
             this.setState({
                 isLoading: false,
                 metadata: res.metadata,
                 data: res.features,
                 bbox: res.bbox
             });
-        }, (err) => {
-            console.error('Error: ' + err);
+        }, (e) => {
+            console.error('Error: ' + e);
         });
     }
 

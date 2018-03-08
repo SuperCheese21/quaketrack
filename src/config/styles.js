@@ -85,6 +85,21 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         flex: 1
     },
+    settingsRow: {
+        flexDirection: 'row',
+        height: 50
+    },
+    settingsText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'black',
+        textAlignVertical: 'center',
+        flex: 1
+    },
+    settingsView: {
+        backgroundColor: colors.background,
+        padding: 10
+    },
     timestampText: {
         textAlignVertical: 'center',
         color: 'black'
