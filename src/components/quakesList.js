@@ -7,7 +7,6 @@ import QuakesListItem from './QuakesListItem';
 import getInfo from '../lib/getInfo';
 import formatTime from '../lib/formatTime';
 
-import queryOptions from '../config/options.js';
 import styles from './styles.js';
 import colors from '../config/colors';
 
@@ -15,32 +14,32 @@ class QuakesList extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,
-            type: 'feed',
-            options: queryOptions.feed,
+            isLoading: true
         };
     }
 
-    static navigationOptions = {
-        title: 'Earthquakes',
-        headerStyle: styles.headerStyle,
-        headerTitleStyle: styles.headerTitleStyle,
-        headerLeft: (
-            <Icon
-                name='menu'
-                onPress={() => alert('Navigation Menu')}
-                size={25}
-                color='#000000'
-            />
-        ),
-        headerRight: (
-            <Icon
-                name='settings'
-                onPress={() => alert('Settings')}
-                size={25}
-                color='#000000'
-            />
-        )
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: 'Earthquakes',
+            headerStyle: styles.headerStyle,
+            headerTitleStyle: styles.headerTitleStyle,
+            headerLeft: (
+                <Icon
+                    name='menu'
+                    onPress={() => alert('Navigation Menu')}
+                    size={25}
+                    color='#000000'
+                />
+            ),
+            headerRight: (
+                <Icon
+                    name='settings'
+                    onPress={() => navigation.navigate('Settings')}
+                    size={25}
+                    color='#000000'
+                />
+            )
+        }
     };
 
     _keyExtractor = (item, index) => item.id;
@@ -58,7 +57,9 @@ class QuakesList extends PureComponent {
     }
 
     getData() {
-        getInfo.buildURL(this.state.type, this.state.options).then((res) => {
+        const { params } = this.props.navigation.state;
+
+        getInfo.buildURL(params.type, params.options[params.type]).then((res) => {
             this.setState({
                 isLoading: false,
                 metadata: res.metadata,

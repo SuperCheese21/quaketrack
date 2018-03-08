@@ -15,29 +15,32 @@ class QuakesListItem extends Component {
     }
 
     render() {
+        const color = this.state.color;
+        const data = this.state.data;
+
         return(
             <TouchableOpacity
                 style={[styles.listItem, {
-                    backgroundColor: colorUtil.formatRGB(this.state.color)
+                    backgroundColor: colorUtil.formatRGB(color)
                 }]}
                 onPress={() => this.props.navigation.navigate('QuakeInfo', {
-                    'color': this.state.color,
-                    'data': this.state.data
+                    'color': color,
+                    'data': data
                 })}
                 activeOpacity={0.6}>
 
                 <View style={{width: 55, marginRight: 5}}>
                     <Text style={styles.magnitudeText}>
-                        {this.state.data.properties.mag}
+                        {data.properties.mag}
                     </Text>
                 </View>
 
                 <View style={{flex: 1}}>
                     <Text style={styles.locationText}>
-                        {this.state.data.properties.place}
+                        {data.properties.place}
                     </Text>
                     <Text style={styles.timestampText}>
-                        {formatTime(this.state.data.properties.time)}
+                        {formatTime(data.properties.time)}
                     </Text>
                 </View>
 

@@ -11,66 +11,56 @@ import getInfo from '../lib/getInfo';
 import styles from './styles.js';
 
 class QuakeInfo extends Component {
-
-    constructor(props) {
-        super(props);
-        const { params } = this.props.navigation.state;
-        this.state = {
-            isLoading: true,
-            color: params.color,
-            type: params.data.type,
-            data: params.data.properties,
-            geometry: params.data.geometry,
-            id: params.data.id
-        };
-    }
-
     static navigationOptions = {
         headerStyle: styles.headerStyle,
         headerTitleStyle: styles.headerTitleStyle
     };
 
     render() {
+        const { params } = this.props.navigation.state;
+        const color = params.color;
+        const data = params.data;
+
         return (
             <View style={[styles.infoView, {
-                backgroundColor: colorUtil.formatRGBA(this.state.color, 0.5)
+                backgroundColor: colorUtil.formatRGBA(color, 0.5)
             }]}>
                 <Text style={styles.infoTitle}>
-                    M{this.state.data.mag}
+                    M{data.properties.mag}
                 </Text>
                 <Text style={styles.infoLink} onPress={
-                    () => Linking.openURL(this.state.data.url)
+                    () => Linking.openURL(data.properties.url)
                 }>
-                    {this.state.data.place}
+                    {data.properties.place}
                 </Text>
                 <Text style={{color: 'black'}}>
-                    Depth: {this.state.geometry.coordinates[2]} km
+                    Depth: {data.geometry.coordinates[2]} km
                 </Text>
                 <Text style={{color: 'black'}}>
-                    Occurred {formatTime(this.state.data.time)}
+                    Occurred {formatTime(data.properties.time)}
                 </Text>
                 <Text style={{color: 'black'}}>
-                    Updated {formatTime(this.state.data.updated)}
+                    Updated {formatTime(data.properties.updated)}
                 </Text>
                 <MapView
                     style={{marginTop: 10, flex: 1}}
                     initialRegion={{
-                        latitude: this.state.geometry.coordinates[1],
-                        longitude: this.state.geometry.coordinates[0],
+                        latitude: data.geometry.coordinates[1],
+                        longitude: data.geometry.coordinates[0],
                         latitudeDelta: 8,
                         longitudeDelta: 4
                     }}>
 
                     <Marker
                         coordinate={{
-                            latitude: this.state.geometry.coordinates[1],
-                            longitude: this.state.geometry.coordinates[0]
+                            latitude: data.geometry.coordinates[1],
+                            longitude: data.geometry.coordinates[0]
                         }}
                         title={
-                            this.state.geometry.coordinates[1] + ', ' +
-                            this.state.geometry.coordinates[0]
+                            data.geometry.coordinates[1] + ', ' +
+                            data.geometry.coordinates[0]
                         }
-                        pinColor={colorUtil.formatRGB(this.state.color)} />
+                        pinColor={colorUtil.formatRGB(color)} />
 
                 </MapView>
             </View>
