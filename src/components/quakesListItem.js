@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity } from 'react-native';
 
 import colorUtil from '../lib/colorUtil';
 import formatTime from '../lib/formatTime';
-import styles from './styles.js';
+import styles from '../config/styles';
 
 class QuakesListItem extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class QuakesListItem extends Component {
                     'color': color,
                     'data': data
                 })}
-                activeOpacity={0.6}>
+                activeOpacity={0.5}>
 
                 <View style={{width: 55, marginRight: 5}}>
                     <Text style={styles.magnitudeText}>

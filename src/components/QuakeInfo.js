@@ -8,7 +8,7 @@ import LoadingSpinner from './LoadingSpinner';
 import colorUtil from '../lib/colorUtil';
 import formatTime from '../lib/formatTime';
 import getInfo from '../lib/getInfo';
-import styles from './styles.js';
+import styles from '../config/styles';
 
 class QuakeInfo extends Component {
     static navigationOptions = {

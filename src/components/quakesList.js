@@ -7,14 +7,17 @@ import QuakesListItem from './QuakesListItem';
 import getInfo from '../lib/getInfo';
 import formatTime from '../lib/formatTime';
 
-import styles from './styles.js';
+import styles from '../config/styles';
 import colors from '../config/colors';
 
 class QuakesList extends PureComponent {
     constructor(props) {
         super(props);
+        const { params } = this.props.navigation.state;
         this.state = {
-            isLoading: true
+            isLoading: true,
+            type: params.type,
+            options: params.options
         };
     }
 
@@ -57,9 +60,7 @@ class QuakesList extends PureComponent {
     }
 
     getData() {
-        const { params } = this.props.navigation.state;
-
-        getInfo.buildURL(params.type, params.options[params.type]).then((res) => {
+        getInfo.buildURL(this.state.type, this.state.options[this.state.type]).then((res) => {
             this.setState({
                 isLoading: false,
                 metadata: res.metadata,
