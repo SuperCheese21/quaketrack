@@ -18,7 +18,10 @@ class QuakeInfo extends Component {
         this.state = {
             isLoading: true,
             color: params.color,
-            url: params.url
+            type: params.data.type,
+            data: params.data.properties,
+            geometry: params.data.geometry,
+            id: params.data.id
         };
     }
 
@@ -27,29 +30,7 @@ class QuakeInfo extends Component {
         headerTitleStyle: styles.headerTitleStyle
     };
 
-    componentDidMount() {
-        this.getData();
-    }
-
-    getData() {
-        getInfo.getJson(this.state.url).then((res) => {
-            this.setState({
-                isLoading: false,
-                type: res.type,
-                data: res.properties,
-                geometry: res.geometry,
-                id: res.id
-            });
-        }, (err) => {
-            console.error('Error: ' + err);
-        });
-    }
-
     render() {
-        if (this.state.isLoading) {
-            return ( <LoadingSpinner /> );
-        }
-
         return (
             <View style={[styles.infoView, {
                 backgroundColor: colorUtil.formatRGBA(this.state.color, 0.5)
@@ -90,7 +71,7 @@ class QuakeInfo extends Component {
                             this.state.geometry.coordinates[0]
                         }
                         pinColor={colorUtil.formatRGB(this.state.color)} />
-                        
+
                 </MapView>
             </View>
         )

@@ -9,7 +9,7 @@ class QuakesListItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.data.properties,
+            data: this.props.data,
             color: colorUtil.getRGB(this.props.data.properties.mag, 1.0, 9.5)
         };
     }
@@ -22,22 +22,22 @@ class QuakesListItem extends Component {
                 }]}
                 onPress={() => this.props.navigation.navigate('QuakeInfo', {
                     'color': this.state.color,
-                    'url': this.state.data.detail
+                    'data': this.state.data
                 })}
                 activeOpacity={0.6}>
 
                 <View style={{width: 55, marginRight: 5}}>
                     <Text style={styles.magnitudeText}>
-                        {this.state.data.mag}
+                        {this.state.data.properties.mag}
                     </Text>
                 </View>
-                
+
                 <View style={{flex: 1}}>
                     <Text style={styles.locationText}>
-                        {this.state.data.place}
+                        {this.state.data.properties.place}
                     </Text>
                     <Text style={styles.timestampText}>
-                        {formatTime(this.state.data.time)}
+                        {formatTime(this.state.data.properties.time)}
                     </Text>
                 </View>
 

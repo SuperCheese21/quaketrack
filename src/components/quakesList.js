@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { FlatList, Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import LoadingSpinner from './LoadingSpinner';
 import QuakesListItem from './QuakesListItem';
@@ -8,6 +9,7 @@ import formatTime from '../lib/formatTime';
 
 import queryOptions from '../config/options.js';
 import styles from './styles.js';
+import colors from '../config/colors';
 
 class QuakesList extends PureComponent {
     constructor(props) {
@@ -20,9 +22,25 @@ class QuakesList extends PureComponent {
     }
 
     static navigationOptions = {
-        title: 'Recent Earthquakes',
+        title: 'Earthquakes',
         headerStyle: styles.headerStyle,
-        headerTitleStyle: styles.headerTitleStyle
+        headerTitleStyle: styles.headerTitleStyle,
+        headerLeft: (
+            <Icon
+                name='menu'
+                onPress={() => alert('Navigation Menu')}
+                size={25}
+                color='#000000'
+            />
+        ),
+        headerRight: (
+            <Icon
+                name='settings'
+                onPress={() => alert('Settings')}
+                size={25}
+                color='#000000'
+            />
+        )
     };
 
     _keyExtractor = (item, index) => item.id;
@@ -78,7 +96,7 @@ class QuakesList extends PureComponent {
                             data={item}
                         />
                     }/>
-                    
+
             </View>
         );
     }
