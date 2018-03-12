@@ -41,8 +41,7 @@ class QuakesList extends PureComponent {
                     name='settings'
                     onPress={() => navigation.navigate('Settings', {
                         type: params.type,
-                        options: params.options,
-                        refreshData: (type, options) => params.refreshData(type, options)
+                        options: params.options
                     })}
                     size={25}
                     color='#000000'

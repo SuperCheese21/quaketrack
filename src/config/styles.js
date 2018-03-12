@@ -85,9 +85,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         flex: 1
     },
-    settingsRow: {
-        flexDirection: 'row',
-        height: 50
+    settingsItem: {
+        height: 100
     },
     settingsText: {
         fontSize: 16,
