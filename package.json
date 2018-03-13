@@ -12,6 +12,7 @@
     "react": "16.2.0",
     "react-native": "0.53.0",
     "react-native-background-fetch": "^2.3.0",
+    "react-native-datepicker": "^1.6.0",
     "react-native-maps": "^0.20.1",
     "react-native-push-notification": "^3.0.2",
     "react-native-vector-icons": "^4.5.0",

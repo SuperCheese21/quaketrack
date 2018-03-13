@@ -86,14 +86,21 @@ const styles = StyleSheet.create({
         flex: 1
     },
     settingsItem: {
-        height: 100
+        height: 65,
+        flexDirection: 'row'
     },
-    settingsText: {
+    settingsItemLabel: {
         fontSize: 16,
-        fontWeight: 'bold',
         color: 'black',
         textAlignVertical: 'center',
         flex: 1
+    },
+    settingsSliderValue: {
+        fontSize: 16,
+        color: 'black',
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        flex: 0.2
     },
     settingsView: {
         backgroundColor: colors.background,
