@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Picker, Text, View } from 'react-native';
-import moment from 'moment';
 
 import SettingsDatePicker from './SettingsDatePicker';
 import SettingsSwitch from './SettingsSwitch';
@@ -10,22 +9,6 @@ import colors from '../config/colors';
 import styles from '../config/styles';
 
 class Settings extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            'type': 'database',
-            'minmagnitude': 2.5,
-            'latitude': null,
-            'longitude': null,
-            'maxradiuskm': 20001.6,
-            'limit': 100,
-            'starttime': moment().subtract(30, 'days').format('YYYY-MM-DD'),
-            'endtime': moment().format('YYYY-MM-DD'),
-            'dateEnabled': false,
-            'locationEnabled': false
-        }
-    }
-
     static navigationOptions = {
         headerStyle: styles.headerStyle,
         headerTitleStyle: styles.headerTitleStyle
@@ -41,7 +24,6 @@ class Settings extends Component {
                     maximumValue={9}
                     step={0.5}
                     onValueChange={(value) => {
-                        this.setState({ 'minmagnitude': value });
                     }} />
 
                 <View style={styles.settingsItem}>
@@ -51,9 +33,8 @@ class Settings extends Component {
 
                     <Picker
                         style={{ flex: 1, alignSelf: 'center' }}
-                        selectedValue={this.state.limit}
+                        selectedValue={100}
                         onValueChange={(value) => {
-                            this.setState({ 'limit': value });
                         }}>
 
                         <Picker.Item label='All' value={null} />
@@ -67,40 +48,36 @@ class Settings extends Component {
 
                 <SettingsSwitch
                     label="Set Date Range"
-                    value={this.state.dateEnabled}
+                    value={false}
                     onValueChange={(value) => {
-                        this.setState({ 'dateEnabled': value });
                     }} />
 
                 <SettingsDatePicker
                     label="Start Time"
-                    date={this.state.starttime}
+                    date={'2018-01-01'}
                     subItem={true}
-                    enabled={this.state.dateEnabled}
+                    enabled={false}
                     onValueChange={(value) => {
-                        this.setState({ 'starttime': value });
                     }} />
 
                 <SettingsDatePicker
                     label="End Time"
-                    date={this.state.endtime}
+                    date={'2018-03-17'}
                     subItem={true}
-                    enabled={this.state.dateEnabled}
+                    enabled={false}
                     onValueChange={(value) => {
-                        this.setState({ 'endtime': value });
                     }} />
 
                 <SettingsSwitch
                     label="Set Area"
-                    value={this.state.locationEnabled}
+                    value={false}
                     onValueChange={(value) => {
-                        this.setState({ 'locationEnabled': value });
                     }} />
 
 
                 <View style={[styles.settingsItem, {
                     paddingLeft: 20,
-                    opacity: this.state.locationEnabled ? 1 : 0.5
+                    opacity: 0.5
                 }]}>
 
                     <Text style={styles.settingsItemLabel}>
@@ -108,10 +85,9 @@ class Settings extends Component {
                     </Text>
 
                     <Picker
-                        selectedValue={this.state.maxradiuskm}
-                        enabled={this.state.locationEnabled}
+                        selectedValue={5}
+                        enabled={false}
                         onValueChange={(value) => {
-                            this.setState({ 'maxradiuskm': value });
                         }}
                         style={{flex: 1, alignSelf: 'center' }}>
 
@@ -132,7 +108,6 @@ class Settings extends Component {
                             title="Reset"
                             color="red"
                             onPress={() => {
-                                this.setState({ type: 'feed' });
                             }} />
                     </View>
 

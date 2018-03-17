@@ -17,13 +17,15 @@
     "react-native-push-notification": "^3.0.2",
     "react-native-vector-icons": "^4.5.0",
     "react-navigation": "^1.0.3",
+    "react-redux": "^5.0.7",
     "redux": "^3.7.2"
   },
   "devDependencies": {
     "babel-jest": "22.2.2",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.2.2",
-    "react-test-renderer": "16.2.0"
+    "react-test-renderer": "16.2.0",
+    "redux-devtools": "^3.4.1"
   },
   "jest": {
     "preset": "react-native"

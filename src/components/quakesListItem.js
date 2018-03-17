@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import colorUtil from '../lib/colorUtil';
-import formatTime from '../lib/formatTime';
+import { formatTime, formatMagnitude } from '../lib/formatData';
 import styles from '../config/styles';
 
 class QuakesListItem extends Component {
@@ -29,19 +30,32 @@ class QuakesListItem extends Component {
                 })}
                 activeOpacity={0.5}>
 
-                <View style={{width: 55, marginRight: 5}}>
+                <View style={{width: 60}}>
                     <Text style={styles.magnitudeText}>
-                        {data.properties.mag}
+                        {formatMagnitude(data.properties.mag)}
                     </Text>
                 </View>
 
                 <View style={{flex: 1}}>
-                    <Text style={styles.locationText}>
-                        {data.properties.place}
-                    </Text>
-                    <Text style={styles.timestampText}>
-                        {formatTime(data.properties.time)}
-                    </Text>
+
+                    <View style={{flexDirection: 'row', flex: 1.5}}>
+                        <Icon name="location-on" size={20} color="black" style={{textAlignVertical: "center"}} />
+                        <Text style={styles.locationText}>
+                            {data.properties.place}
+                        </Text>
+                    </View>
+
+                    <View style={{flexDirection: 'row', flex: 1}}>
+                        <Icon name="access-time" size={20} color="black" style={{textAlignVertical: "center"}} />
+                        <Text style={styles.timestampText}>
+                            {formatTime(data.properties.time)}
+                        </Text>
+                    </View>
+
+                </View>
+
+                <View style={{width: 25, justifyContent: 'center'}}>
+                    <Icon name="chevron-right" size={30} color="white" />
                 </View>
 
             </TouchableOpacity>

@@ -6,7 +6,7 @@ import { Marker } from 'react-native-maps';
 import LoadingSpinner from './LoadingSpinner';
 
 import colorUtil from '../lib/colorUtil';
-import formatTime from '../lib/formatTime';
+import { formatTime, checkZeros } from '../lib/formatData';
 import getInfo from '../lib/getInfo';
 import styles from '../config/styles';
 
@@ -26,7 +26,7 @@ class QuakeInfo extends Component {
                 backgroundColor: colorUtil.formatRGBA(color, 0.5)
             }]}>
                 <Text style={styles.infoTitle}>
-                    M{data.properties.mag}
+                    {'M ' + checkZeros(data.properties.mag)}
                 </Text>
                 <Text style={styles.infoLink} onPress={
                     () => Linking.openURL(data.properties.url)

@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import LoadingSpinner from './LoadingSpinner';
 import QuakesListItem from './QuakesListItem';
 import getInfo from '../lib/getInfo';
-import formatTime from '../lib/formatTime';
+import { formatTime } from '../lib/formatData';
 
 import styles from '../config/styles';
 import colors from '../config/colors';
