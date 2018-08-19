@@ -10,7 +10,7 @@ import { formatTime, checkZeros } from '../lib/formatData';
 import getInfo from '../lib/getInfo';
 import styles from '../config/styles';
 
-class QuakeInfo extends Component {
+export default class QuakeInfo extends Component {
     static navigationOptions = {
         headerStyle: styles.headerStyle,
         headerTitleStyle: styles.headerTitleStyle
@@ -67,5 +67,3 @@ class QuakeInfo extends Component {
         )
     }
 }
-
-export default QuakeInfo;

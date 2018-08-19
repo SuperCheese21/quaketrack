@@ -1,31 +1,28 @@
 {
   "name": "quaketrack",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
   "dependencies": {
-    "moment": "^2.20.1",
-    "qs": "^6.5.1",
-    "react": "16.2.0",
-    "react-native": "0.53.0",
-    "react-native-background-fetch": "^2.3.0",
-    "react-native-datepicker": "^1.6.0",
-    "react-native-maps": "^0.20.1",
-    "react-native-push-notification": "^3.0.2",
-    "react-native-vector-icons": "^4.5.0",
-    "react-navigation": "^1.0.3",
-    "react-redux": "^5.0.7",
-    "redux": "^3.7.2"
+    "moment": "^2.22.2",
+    "qs": "^6.5.2",
+    "react": "16.3.1",
+    "react-native": "0.55.4",
+    "react-native-datepicker": "^1.7.2",
+    "react-native-maps": "^0.21.0",
+    "react-native-vector-icons": "^5.0.0",
+    "react-navigation": "^2.11.2"
   },
   "devDependencies": {
-    "babel-jest": "22.2.2",
+    "babel-jest": "23.4.2",
     "babel-preset-react-native": "4.0.0",
-    "jest": "22.2.2",
-    "react-test-renderer": "16.2.0",
-    "redux-devtools": "^3.4.1"
+    "jest": "23.5.0",
+    "react-test-renderer": "16.3.1"
   },
   "jest": {
     "preset": "react-native"

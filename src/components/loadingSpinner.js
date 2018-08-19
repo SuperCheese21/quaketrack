@@ -3,7 +3,7 @@ import { ActivityIndicator, AppRegistry, StyleSheet, View } from 'react-native';
 
 import styles from '../config/styles';
 
-class LoadingSpinner extends PureComponent {
+export default class LoadingSpinner extends PureComponent {
     render() {
         return (
             <View style={[styles.container, styles.horizontal]}>
@@ -12,5 +12,3 @@ class LoadingSpinner extends PureComponent {
         )
     }
 }
-
-export default LoadingSpinner;
