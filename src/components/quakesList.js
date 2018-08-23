@@ -4,33 +4,25 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import LoadingSpinner from './LoadingSpinner';
 import QuakesListItem from './QuakesListItem';
-import getInfo from '../lib/getInfo';
 import { formatTime } from '../lib/formatData';
 
 import styles from '../config/styles';
 import colors from '../config/colors';
 
-class QuakesList extends PureComponent {
-    constructor(props) {
-        super(props);
-        const { params } = this.props.navigation.state;
-        this.state = {
-            isLoading: true,
-            type: params.type,
-            options: params.options
-        };
-    }
-
+export default class QuakesList extends PureComponent {
     static navigationOptions = ({ navigation }) => {
-        const params = navigation.state.params || {};
-
         return {
             title: 'Earthquakes',
+            headerTitleStyle: {
+                textAlign: 'center',
+                flex: 1,
+                fontSize: 30
+            },
             headerStyle: styles.headerStyle,
-            headerTitleStyle: styles.headerTitleStyle,
             headerLeft: (
                 <Icon
                     name='menu'
+                    style={{ marginLeft: 10 }}
                     onPress={() => alert('Navigation Menu')}
                     size={25}
                     color='#000000'
@@ -39,10 +31,8 @@ class QuakesList extends PureComponent {
             headerRight: (
                 <Icon
                     name='settings'
-                    onPress={() => navigation.navigate('Settings', {
-                        type: params.type,
-                        options: params.options
-                    })}
+                    style={{ marginRight: 10 }}
+                    onPress={() => navigation.navigate('Settings')}
                     size={25}
                     color='#000000'
                 />
@@ -52,64 +42,24 @@ class QuakesList extends PureComponent {
 
     _keyExtractor = (item, index) => item.id;
 
-    componentDidMount() {
-        this.getData();
-    }
-
-    componentWillMount() {
-        this.props.navigation.setParams({
-            refreshData: (type, options) => {
-                this.setState({
-                    type: type,
-                    options: options
-                });
-                this.onRefresh();
-            }
-        });
-    }
-
-    onRefresh = () => {
-        this.setState({
-            isLoading: true
-        }, function() {
-            this.getData();
-        });
-    }
-
-    getData = () => {
-        const options = this.state.options[this.state.type];
-
-        getInfo.buildURL(this.state.type, options).then((res) => {
-            this.setState({
-                isLoading: false,
-                metadata: res.metadata,
-                data: res.features,
-                bbox: res.bbox
-            });
-        }, (e) => {
-            console.error('Error: ' + e);
-        });
-    }
-
     render() {
-        if (this.state.isLoading) {
+        if (this.props.screenProps.isLoading) {
             return ( <LoadingSpinner /> );
         }
 
-        const title = this.state.metadata.title;
-        const count = this.state.metadata.count;
-        const time = formatTime(this.state.metadata.generated);
+        const metadata = this.props.screenProps.data.metadata;
+        const time = formatTime(metadata.generated);
 
         return (
             <View style={styles.listView}>
-                <Text style={styles.listTitle}>{title}</Text>
+                <Text style={styles.listTitle}>{metadata.title}</Text>
                 <Text style={styles.listInfo}>
-                    {count} Earthquakes | Updated {time}
+                    {metadata.count} Earthquakes | Updated {time}
                 </Text>
                 <FlatList
-                    onRefresh={() => this.onRefresh()}
-                    refreshing={this.state.isLoading}
-                    data={this.state.data}
+                    onRefresh={this.props.screenProps.onRefresh}
+                    refreshing={this.props.screenProps.isLoading}
+                    data={this.props.screenProps.data.features}
                     keyExtractor={this._keyExtractor}
                     renderItem={({item}) =>
                         <QuakesListItem
@@ -122,5 +72,3 @@ class QuakesList extends PureComponent {
         );
     }
 }
-
-export default QuakesList;

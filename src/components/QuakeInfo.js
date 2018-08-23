@@ -7,7 +7,6 @@ import LoadingSpinner from './LoadingSpinner';
 
 import colorUtil from '../lib/colorUtil';
 import { formatTime, checkZeros } from '../lib/formatData';
-import getInfo from '../lib/getInfo';
 import styles from '../config/styles';
 
 export default class QuakeInfo extends Component {

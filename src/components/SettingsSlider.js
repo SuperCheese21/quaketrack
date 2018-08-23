@@ -4,13 +4,6 @@ import { Slider, Text, View } from 'react-native';
 import styles from '../config/styles';
 
 class SettingsSlider extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            'value': 2.5
-        };
-    }
-
     render() {
         return (
             <View style={{ height: 65 }}>
@@ -20,7 +13,7 @@ class SettingsSlider extends Component {
                     </Text>
 
                     <Text style={styles.settingsSliderValue}>
-                        {this.state.value}
+                        {this.props.value}
                     </Text>
                 </View>
 
@@ -29,7 +22,7 @@ class SettingsSlider extends Component {
                         minimumValue={this.props.minimumValue}
                         maximumValue={this.props.maximumValue}
                         step={this.props.step}
-                        value={this.state.value}
+                        value={Number(this.props.value)}
                         onValueChange={this.props.onValueChange} />
                 </View>
             </View>
