@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { YellowBox } from 'react-native';
+import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 
+import Filters from './Filters';
 import QuakesList from './QuakesList';
+import QuakesMap from './QuakesMap';
 import QuakeInfo from './QuakeInfo';
 import Settings from './Settings';
+
 import defaultOptions from '../config/options';
 import fetchData from '../lib/fetchData';
 
@@ -57,7 +61,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <Navigator
+            <DrawerNavigator
                 screenProps={{
                     data: this.state.data,
                     isLoading: this.state.isLoading,
@@ -70,13 +74,30 @@ export default class App extends Component {
     }
 }
 
-const Navigator = createStackNavigator({
+const ListStackNavigator = createStackNavigator({
     QuakesList: QuakesList,
     QuakeInfo: QuakeInfo,
+    Filters: Filters
+}, {
+    initialRouteName: 'QuakesList'
+});
+
+const MapStackNavigator = createStackNavigator({
+    QuakesMap: QuakesMap,
+    QuakeInfo: QuakeInfo,
+    Filters: Filters
+}, {
+    initialRouteName: 'QuakesMap'
+});
+
+const DrawerNavigator = createDrawerNavigator({
+    List: ListStackNavigator,
+    Map: MapStackNavigator,
     Settings: Settings
 }, {
-    initialRouteName: 'QuakesList',
-    initialRouteParams: {
-        options: defaultOptions
-    }
+    drawerWidth: 200,
+    initialRouteName: 'List',
+    backBehavior: 'none'
 });
+
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);

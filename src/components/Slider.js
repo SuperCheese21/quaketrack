@@ -3,7 +3,7 @@ import { Slider, Text, View } from 'react-native';
 
 import styles from '../config/styles';
 
-class SettingsSlider extends Component {
+export default class SettingsSlider extends Component {
     render() {
         return (
             <View style={{ height: 65 }}>
@@ -29,5 +29,3 @@ class SettingsSlider extends Component {
         )
     }
 }
-
-export default SettingsSlider;

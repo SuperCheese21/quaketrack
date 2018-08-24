@@ -13,12 +13,8 @@ export default class QuakesList extends PureComponent {
     static navigationOptions = ({ navigation }) => {
         return {
             title: 'Earthquakes',
-            headerTitleStyle: {
-                textAlign: 'center',
-                flex: 1,
-                fontSize: 30
-            },
             headerStyle: styles.headerStyle,
+            headerTitleStyle: styles.headerTitleStyle,
             headerLeft: (
                 <Icon
                     name='menu'
@@ -32,7 +28,7 @@ export default class QuakesList extends PureComponent {
                 <Icon
                     name='settings'
                     style={{ marginRight: 10 }}
-                    onPress={() => navigation.navigate('Settings')}
+                    onPress={() => navigation.navigate('Filters')}
                     size={25}
                     color='#000000'
                 />

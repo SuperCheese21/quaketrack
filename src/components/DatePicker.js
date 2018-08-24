@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import styles from '../config/styles';
 
-class SettingsDatePicker extends Component {
+export default class SettingsDatePicker extends Component {
     render() {
         return(
             <View style={[styles.settingsItem, {
@@ -47,5 +47,3 @@ class SettingsDatePicker extends Component {
         )
     }
 }
-
-export default SettingsDatePicker;

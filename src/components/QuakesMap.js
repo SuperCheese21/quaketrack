@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-export default class Settings extends PureComponent {
+export default class QuakesMap extends PureComponent {
     render() {
         return null;
     }

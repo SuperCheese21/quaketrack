@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
         backgroundColor: colors.header,
         height: 65
     },
+    headerTitleStyle: {
+        textAlign: 'center',
+        flex: 1,
+        fontSize: 30
+    },
     horizontal: {
         flexDirection: 'row',
         justifyContent: 'space-around',

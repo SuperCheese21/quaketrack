@@ -3,7 +3,7 @@ import { Switch, Text, View } from 'react-native';
 
 import styles from '../config/styles';
 
-class SettingsSwitch extends Component {
+export default class SettingsSwitch extends Component {
     render() {
         return (
             <View style={styles.settingsItem}>
@@ -18,5 +18,3 @@ class SettingsSwitch extends Component {
         )
     }
 }
-
-export default SettingsSwitch;
