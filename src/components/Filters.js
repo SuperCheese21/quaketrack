@@ -8,10 +8,7 @@ import Slider from './Slider';
 import styles from '../config/styles';
 
 export default class Filters extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = this.props.screenProps.getSettings();
-    }
+    state = this.props.screenProps.getFilters()
 
     static navigationOptions = {
         title: 'Filters',
@@ -19,16 +16,12 @@ export default class Filters extends PureComponent {
         headerTitleStyle: styles.headerTitleStyle
     }
 
-    saveSettings = () => {
-        this.props.screenProps.setSettings(this.state);
-    }
-
     render() {
-        return(
+        return (
             <View style={styles.settingsView}>
 
                 <Slider
-                    label="Minimum Magnitude"
+                    label='Minimum Magnitude'
                     minimumValue={1}
                     maximumValue={9}
                     step={0.5}
@@ -59,14 +52,14 @@ export default class Filters extends PureComponent {
                 </View>
 
                 <Switch
-                    label="Set Date Range"
+                    label='Set Date Range'
                     value={this.state.dateEnabled}
                     onValueChange={value => {
                         this.setState({ dateEnabled: value });
                     }} />
 
                 <DatePicker
-                    label="Start Time"
+                    label='Start Time'
                     date={this.state.starttime}
                     subItem={true}
                     enabled={this.state.dateEnabled}
@@ -75,7 +68,7 @@ export default class Filters extends PureComponent {
                     }} />
 
                 <DatePicker
-                    label="End Time"
+                    label='End Time'
                     date={this.state.endtime}
                     subItem={true}
                     enabled={this.state.dateEnabled}
@@ -106,15 +99,23 @@ export default class Filters extends PureComponent {
                 <View style={styles.settingsItem}>
                     <View style={{flex: 1}}>
                         <Button
-                            title="Save and Close"
+                            title='Cancel'
+                            color='red'
+                            onPress={() => this.props.navigation.goBack()}
+                        />
+                    </View>
+                    <View style={{flex: 1}}>
+                        <Button
+                            title='Save and Close'
                             onPress={() => {
-                                this.saveSettings();
+                                this.props.screenProps.setFilters(this.state);
                                 this.props.navigation.goBack();
                                 this.props.screenProps.onRefresh();
-                            }} />
+                            }}
+                        />
                     </View>
                 </View>
             </View>
-        )
+        );
     }
 }

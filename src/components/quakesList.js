@@ -25,7 +25,7 @@ export default class QuakesList extends PureComponent {
             ),
             headerRight: (
                 <Icon
-                    name='settings'
+                    name='filter_list'
                     style={{ marginRight: 10 }}
                     onPress={() => navigation.navigate('Filters')}
                     size={25}
@@ -43,13 +43,12 @@ export default class QuakesList extends PureComponent {
         }
 
         const metadata = this.props.screenProps.data.metadata;
-        const time = formatTime(metadata.generated);
 
         return (
             <View style={styles.listView}>
                 <Text style={styles.listTitle}>{metadata.title}</Text>
                 <Text style={styles.listInfo}>
-                    {metadata.count} Earthquakes | Updated {time}
+                    {metadata.count} Earthquakes | Updated {formatTime(metadata.generated)}
                 </Text>
                 <FlatList
                     onRefresh={this.props.screenProps.onRefresh}

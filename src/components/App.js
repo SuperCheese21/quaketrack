@@ -4,31 +4,26 @@ import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 
 import DrawerNavigator from './Navigators';
 
-import defaultOptions from '../config/options';
+import defaultFilters from '../config/options';
 import fetchData from '../lib/fetchData';
 
 export default class App extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            settings: defaultOptions,
-            data: {},
-            isLoading: true
-        };
+    state = {
+        filters: defaultFilters,
+        data: {},
+        isLoading: true
     }
 
     componentDidMount() {
         this.onRefresh();
     }
 
-    getSettings = () => {
-        return this.state.settings;
+    getFilters = () => {
+        return this.state.filters;
     }
 
-    setSettings = newSettings => {
-        this.setState({
-            settings: newSettings
-        });
+    setFilters = newFilters => {
+        this.setState({ filters: newFilters });
     }
 
     onRefresh = () => {
@@ -40,18 +35,15 @@ export default class App extends PureComponent {
     }
 
     updateData = () => {
-        fetchData(this.state.settings)
+        fetchData(this.state.filters)
             .then(res => {
                 this.setState({
                     isLoading: false,
-                    data: {
-                        features: res.features,
-                        metadata: res.metadata
-                    }
+                    data: res
                 });
             })
-            .catch(e => {
-                console.error(e);
+            .catch(err => {
+                console.error(err);
             });
     }
 
@@ -61,9 +53,9 @@ export default class App extends PureComponent {
                 screenProps={{
                     data: this.state.data,
                     isLoading: this.state.isLoading,
-                    getSettings: this.getSettings,
-                    setSettings: this.setSettings,
                     onRefresh: this.onRefresh
+                    getFilters: this.getFilters,
+                    setFilters: this.setFilters
                 }}
             />
         );

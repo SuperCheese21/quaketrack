@@ -7,26 +7,18 @@ import { formatTime, formatMagnitude } from '../lib/formatData';
 import styles from '../config/styles';
 
 export default class QuakesListItem extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: this.props.data,
-            color: getRGB(this.props.data.properties.mag, 1.0, 9.5)
-        };
-    }
-
     render() {
-        const color = this.state.color;
-        const data = this.state.data;
+        const data = this.props.data;
+        const color = getRGB(data.properties.mag, 1.0, 9.5);
 
-        return(
+        return (
             <TouchableOpacity
                 style={[styles.listItem, {
                     backgroundColor: formatRGB(color)
                 }]}
                 onPress={() => this.props.navigation.navigate('QuakeInfo', {
-                    'color': color,
-                    'data': data
+                    color: color,
+                    data: data
                 })}
                 activeOpacity={0.5}>
 
@@ -59,6 +51,6 @@ export default class QuakesListItem extends PureComponent {
                 </View>
 
             </TouchableOpacity>
-        )
+        );
     }
 }
