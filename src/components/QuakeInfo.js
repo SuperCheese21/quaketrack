@@ -5,12 +5,13 @@ import { Marker } from 'react-native-maps';
 
 import LoadingSpinner from './LoadingSpinner';
 
-import colorUtil from '../lib/colorUtil';
+import { formatRGBA, formatRGB } from '../lib/colorUtil';
 import { formatTime, checkZeros } from '../lib/formatData';
 import styles from '../config/styles';
 
 export default class QuakeInfo extends Component {
     static navigationOptions = {
+        title: 'Earthquake',
         headerStyle: styles.headerStyle,
         headerTitleStyle: styles.headerTitleStyle
     };
@@ -22,7 +23,7 @@ export default class QuakeInfo extends Component {
 
         return (
             <View style={[styles.infoView, {
-                backgroundColor: colorUtil.formatRGBA(color, 0.5)
+                backgroundColor: formatRGBA(color, 0.5)
             }]}>
                 <Text style={styles.infoTitle}>
                     {'M ' + checkZeros(data.properties.mag)}
@@ -59,7 +60,7 @@ export default class QuakeInfo extends Component {
                             data.geometry.coordinates[1] + ', ' +
                             data.geometry.coordinates[0]
                         }
-                        pinColor={colorUtil.formatRGB(color)} />
+                        pinColor={formatRGB(color)} />
 
                 </MapView>
             </View>

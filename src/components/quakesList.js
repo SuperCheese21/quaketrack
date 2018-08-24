@@ -12,14 +12,14 @@ import colors from '../config/colors';
 export default class QuakesList extends PureComponent {
     static navigationOptions = ({ navigation }) => {
         return {
-            title: 'Earthquakes',
+            title: 'List',
             headerStyle: styles.headerStyle,
             headerTitleStyle: styles.headerTitleStyle,
             headerLeft: (
                 <Icon
                     name='menu'
                     style={{ marginLeft: 10 }}
-                    onPress={() => alert('Navigation Menu')}
+                    onPress={() => navigation.toggleDrawer()}
                     size={25}
                     color='#000000'
                 />

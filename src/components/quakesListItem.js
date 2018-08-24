@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import colorUtil from '../lib/colorUtil';
+import { formatRGB, getRGB } from '../lib/colorUtil';
 import { formatTime, formatMagnitude } from '../lib/formatData';
 import styles from '../config/styles';
 
@@ -11,7 +11,7 @@ class QuakesListItem extends Component {
         super(props);
         this.state = {
             data: this.props.data,
-            color: colorUtil.getRGB(this.props.data.properties.mag, 1.0, 9.5)
+            color: getRGB(this.props.data.properties.mag, 1.0, 9.5)
         };
     }
 
@@ -22,7 +22,7 @@ class QuakesListItem extends Component {
         return(
             <TouchableOpacity
                 style={[styles.listItem, {
-                    backgroundColor: colorUtil.formatRGB(color)
+                    backgroundColor: formatRGB(color)
                 }]}
                 onPress={() => this.props.navigation.navigate('QuakeInfo', {
                     'color': color,

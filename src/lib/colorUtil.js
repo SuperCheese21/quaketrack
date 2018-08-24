@@ -1,22 +1,20 @@
-const colorUtil = {
-    formatRGBA: (rgb, opacity) => {
-        return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
-    },
-
-    formatRGB: (rgb) => {
-        return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
-    },
-
-    getRGB: (val, low, high) => {
-        return [
-            calcRed(val, low, high),
-            calcGreen(val, low, high),
-            calcBlue(val, low, high)
-        ];
-    }
+export function formatRGBA(rgb, opacity) {
+    return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
 }
 
-function calcRed(mag, low, high) {
+export function formatRGB(rgb) {
+    return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+}
+
+export function getRGB(val, low, high) {
+    return [
+        _calcRed(val, low, high),
+        _calcGreen(val, low, high),
+        _calcBlue(val, low, high)
+    ];
+}
+
+function _calcRed(mag, low, high) {
     let zeroLow = low + 2 * (high - low) / 12;
     let zeroHigh = low + 6 * (high - low) / 12;
     let maxLow = low;
@@ -34,7 +32,7 @@ function calcRed(mag, low, high) {
     return Math.round((mag - zeroHigh) / (maxHigh - zeroHigh) * 255);
 }
 
-function calcGreen(mag, low, high) {
+function _calcGreen(mag, low, high) {
     let zeroLow = low + 2 * (high - low) / 12;
     let zeroHigh = low + 10 * (high - low) / 12;
     let maxLow = low + 4 * (high - low) / 12;
@@ -52,7 +50,7 @@ function calcGreen(mag, low, high) {
     return Math.round((mag - zeroLow) / (maxLow - zeroLow) * 255);
 }
 
-function calcBlue(mag, low, high) {
+function _calcBlue(mag, low, high) {
     let zeroLow = low + 6 * (high - low) / 12;
     let zeroHigh = low + 10 * (high - low) / 12;
     let maxLow = low + 4 * (high - low) / 12;
@@ -69,5 +67,3 @@ function calcBlue(mag, low, high) {
     }
     return Math.round((mag - zeroHigh) / (maxHigh - zeroHigh) * 255);
 }
-
-export default colorUtil;
