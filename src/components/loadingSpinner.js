@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { ActivityIndicator, AppRegistry, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 import styles from '../config/styles';
 

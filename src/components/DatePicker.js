@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { Picker, Text, View } from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View } from 'react-native';
 
 import DatePicker from 'react-native-datepicker';
 import moment from 'moment';
 
 import styles from '../config/styles';
 
-export default class SettingsDatePicker extends Component {
+export default class SettingsDatePicker extends PureComponent {
     render() {
         return(
             <View style={[styles.settingsItem, {

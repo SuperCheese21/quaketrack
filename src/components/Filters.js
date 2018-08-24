@@ -5,7 +5,6 @@ import DatePicker from './DatePicker';
 import Switch from './Switch';
 import Slider from './Slider';
 
-import colors from '../config/colors';
 import styles from '../config/styles';
 
 export default class Filters extends PureComponent {

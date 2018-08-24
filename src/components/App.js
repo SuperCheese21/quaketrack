@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { YellowBox } from 'react-native';
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 
-import Filters from './Filters';
-import QuakesList from './QuakesList';
-import QuakesMap from './QuakesMap';
-import QuakeInfo from './QuakeInfo';
-import Settings from './Settings';
+import DrawerNavigator from './Navigators';
 
 import defaultOptions from '../config/options';
 import fetchData from '../lib/fetchData';
 
-export default class App extends Component {
+export default class App extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,11 +35,11 @@ export default class App extends Component {
         this.setState({
             isLoading: true
         }, () => {
-            this.getData();
+            this.updateData();
         });
     }
 
-    getData = () => {
+    updateData = () => {
         fetchData(this.state.settings)
             .then(res => {
                 this.setState({
@@ -74,30 +70,5 @@ export default class App extends Component {
     }
 }
 
-const ListStackNavigator = createStackNavigator({
-    QuakesList: QuakesList,
-    QuakeInfo: QuakeInfo,
-    Filters: Filters
-}, {
-    initialRouteName: 'QuakesList'
-});
-
-const MapStackNavigator = createStackNavigator({
-    QuakesMap: QuakesMap,
-    QuakeInfo: QuakeInfo,
-    Filters: Filters
-}, {
-    initialRouteName: 'QuakesMap'
-});
-
-const DrawerNavigator = createDrawerNavigator({
-    List: ListStackNavigator,
-    Map: MapStackNavigator,
-    Settings: Settings
-}, {
-    drawerWidth: 200,
-    initialRouteName: 'List',
-    backBehavior: 'none'
-});
-
+// React bug - ignore warning on deprecated lifecycle method
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);

@@ -7,7 +7,6 @@ import QuakesListItem from './QuakesListItem';
 import { formatTime } from '../lib/formatData';
 
 import styles from '../config/styles';
-import colors from '../config/colors';
 
 export default class QuakesList extends PureComponent {
     static navigationOptions = ({ navigation }) => {

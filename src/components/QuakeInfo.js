@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Linking, Text, View } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
-
-import LoadingSpinner from './LoadingSpinner';
 
 import { formatRGBA, formatRGB } from '../lib/colorUtil';
 import { formatTime, checkZeros } from '../lib/formatData';
 import styles from '../config/styles';
 
-export default class QuakeInfo extends Component {
+export default class QuakeInfo extends PureComponent {
     static navigationOptions = {
         title: 'Earthquake',
         headerStyle: styles.headerStyle,
