@@ -25,7 +25,7 @@ const MapStackNavigator = createStackNavigator({
 });
 
 // Create top-level drawer navigator
-export default const DrawerNavigator = createDrawerNavigator({
+const DrawerNavigator = createDrawerNavigator({
     List: ListStackNavigator,
     Map: MapStackNavigator,
     Settings: Settings
@@ -33,3 +33,5 @@ export default const DrawerNavigator = createDrawerNavigator({
     drawerWidth: 250,
     initialRouteName: 'List'
 });
+
+export default DrawerNavigator;

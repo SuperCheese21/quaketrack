@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 
@@ -23,7 +23,7 @@ export default class QuakesMap extends PureComponent {
             ),
             headerRight: (
                 <Icon
-                    name='settings'
+                    name='filter-outline'
                     style={{ marginRight: 10 }}
                     onPress={() => navigation.navigate('Filters')}
                     size={25}
@@ -43,7 +43,9 @@ export default class QuakesMap extends PureComponent {
                     longitude: 180,
                     latitudeDelta: 150,
                     longitudeDelta: 75
-                }}>
+                }}
+                rotateEnabled={false}
+                moveOnMarkerPress={false}>
 
                 {quakes.map(data => {
                     const color = getRGB(data.properties.mag, 1.0, 9.5);

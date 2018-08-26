@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { FlatList, Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import LoadingSpinner from './LoadingSpinner';
 import QuakesListItem from './QuakesListItem';
@@ -25,7 +25,7 @@ export default class QuakesList extends PureComponent {
             ),
             headerRight: (
                 <Icon
-                    name='filter_list'
+                    name='filter-outline'
                     style={{ marginRight: 10 }}
                     onPress={() => navigation.navigate('Filters')}
                     size={25}

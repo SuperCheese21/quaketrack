@@ -53,7 +53,7 @@ export default class App extends PureComponent {
                 screenProps={{
                     data: this.state.data,
                     isLoading: this.state.isLoading,
-                    onRefresh: this.onRefresh
+                    onRefresh: this.onRefresh,
                     getFilters: this.getFilters,
                     setFilters: this.setFilters
                 }}
