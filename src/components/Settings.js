@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
 import styles from '../config/styles';
 

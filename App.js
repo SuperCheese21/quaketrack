@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import { YellowBox } from 'react-native';
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 
-import DrawerNavigator from './Navigators';
+import DrawerNavigator from './src/components/Navigators';
 
-import defaultFilters from '../config/options';
-import fetchData from '../lib/fetchData';
+import defaultFilters from './src/config/options';
+import fetchData from './src/lib/fetchData';
 
 export default class App extends PureComponent {
     state = {

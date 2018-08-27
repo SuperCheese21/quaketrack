@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import MapView from 'react-native-maps';
+import Icon from '@expo/vector-icons/MaterialCommunityIcons';
+import { MapView } from 'expo';
 import { Marker } from 'react-native-maps';
 
 import { formatRGB, getRGB } from '../lib/colorUtil';
