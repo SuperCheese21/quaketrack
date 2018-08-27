@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Button, Picker, Text, View } from 'react-native';
+import { Picker, Text, View } from 'react-native';
+import Button from './Button';
 
 import DatePicker from './DatePicker';
 import Switch from './Switch';
@@ -24,7 +25,7 @@ export default class Filters extends PureComponent {
                     label='Minimum Magnitude'
                     minimumValue={1}
                     maximumValue={9}
-                    step={0.5}
+                    step={0.1}
                     value={this.state.minmagnitude}
                     onValueChange={value => {
                         this.setState({ minmagnitude: value });
@@ -97,23 +98,20 @@ export default class Filters extends PureComponent {
                 </View>
 
                 <View style={styles.settingsItem}>
-                    <View style={{flex: 1}}>
-                        <Button
-                            title='Cancel'
-                            color='red'
-                            onPress={() => this.props.navigation.goBack()}
-                        />
-                    </View>
-                    <View style={{flex: 1}}>
-                        <Button
-                            title='Save and Close'
-                            onPress={() => {
-                                this.props.screenProps.setFilters(this.state);
-                                this.props.navigation.goBack();
-                                this.props.screenProps.onRefresh();
-                            }}
-                        />
-                    </View>
+                    <Button
+                        text='Cancel'
+                        color='#ff0000'
+                        onPress={() => this.props.navigation.goBack()}
+                    />
+                    <Button
+                        text='Save and Close'
+                        color='#0000ff'
+                        onPress={() => {
+                            this.props.screenProps.setFilters(this.state);
+                            this.props.navigation.goBack();
+                            this.props.screenProps.onRefresh();
+                        }}
+                    />
                 </View>
             </View>
         );

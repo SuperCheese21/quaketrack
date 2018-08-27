@@ -26,6 +26,6 @@ export default class SettingsSlider extends Component {
                         onValueChange={this.props.onValueChange} />
                 </View>
             </View>
-        )
+        );
     }
 }
