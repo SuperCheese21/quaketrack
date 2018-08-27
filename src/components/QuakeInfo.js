@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Linking, Text, View } from 'react-native';
 import MapView, { Marker, Polygon } from 'react-native-maps';
-
-import LoadingSpinner from './LoadingSpinner';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import { formatRGBA, formatRGB } from '../lib/colorUtil';
 import { formatTime, formatMagnitude } from '../lib/formatData';
@@ -37,9 +36,7 @@ export default class QuakeInfo extends PureComponent {
 
     render() {
         if (this.state.isLoading) {
-            return (
-                <LoadingSpinner />
-            );
+            return <Spinner visible={true} />;
         }
 
         const { params } = this.props.navigation.state;
