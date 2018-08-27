@@ -1,11 +1,29 @@
-export function formatRGBA(rgb, opacity) {
-    return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
-}
-
+/**
+ * [formatRGB description]
+ * @param  {[type]} rgb [description]
+ * @return {[type]}     [description]
+ */
 export function formatRGB(rgb) {
     return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
 }
 
+/**
+ * [formatRGBA description]
+ * @param  {[type]} rgb     [description]
+ * @param  {[type]} opacity [description]
+ * @return {[type]}         [description]
+ */
+export function formatRGBA(rgb, opacity) {
+    return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
+}
+
+/**
+ * [getRGB description]
+ * @param  {[type]} val  [description]
+ * @param  {[type]} low  [description]
+ * @param  {[type]} high [description]
+ * @return {[type]}      [description]
+ */
 export function getRGB(val, low, high) {
     return [
         _calcRed(val, low, high),
@@ -14,56 +32,74 @@ export function getRGB(val, low, high) {
     ];
 }
 
-function _calcRed(mag, low, high) {
-    let zeroLow = low + 2 * (high - low) / 12;
-    let zeroHigh = low + 6 * (high - low) / 12;
+/**
+ * [_calcRed description]
+ * @param       {[type]} val  [description]
+ * @param       {[type]} low  [description]
+ * @param       {[type]} high [description]
+ * @return      {[type]}      [description]
+ */
+function _calcRed(val, low, high) {
+    let zeroLow = low + 1 * (high - low) / 6;
+    let zeroHigh = low + (high - low) / 2;
     let maxLow = low;
-    let maxHigh = low + 8 * (high - low) / 12;
+    let maxHigh = low + 2 * (high - low) / 3;
 
-    if (mag >= zeroLow && mag <= zeroHigh) {
+    if (val >= zeroLow && val <= zeroHigh) {
         return 0;
-    }
-    if (mag <= maxLow || mag >= maxHigh) {
+    } else if (val <= maxLow || val >= maxHigh) {
         return 255;
+    } else if (val > maxLow && val < zeroLow) {
+        return (zeroLow - val) / (zeroLow - maxLow) * 255;
     }
-    if (mag > maxLow && mag < zeroLow) {
-        return (zeroLow - mag) / (zeroLow - maxLow) * 255;
-    }
-    return Math.round((mag - zeroHigh) / (maxHigh - zeroHigh) * 255);
+
+    return Math.round((val - zeroHigh) / (maxHigh - zeroHigh) * 255);
 }
 
-function _calcGreen(mag, low, high) {
-    let zeroLow = low + 2 * (high - low) / 12;
-    let zeroHigh = low + 10 * (high - low) / 12;
-    let maxLow = low + 4 * (high - low) / 12;
-    let maxHigh = low + 8 * (high - low) / 12;
+/**
+ * [_calcGreen description]
+ * @param       {[type]} val  [description]
+ * @param       {[type]} low  [description]
+ * @param       {[type]} high [description]
+ * @return      {[type]}      [description]
+ */
+function _calcGreen(val, low, high) {
+    let zeroLow = low + 1 * (high - low) / 6;
+    let zeroHigh = low + 5 * (high - low) / 6;
+    let maxLow = low + 1 * (high - low) / 3;
+    let maxHigh = low + 2 * (high - low) / 3;
 
-    if (mag <= zeroLow || mag >= zeroHigh) {
+    if (val <= zeroLow || val >= zeroHigh) {
         return 0;
-    }
-    if (mag >= maxLow && mag <= maxHigh) {
+    } else if (val >= maxLow && val <= maxHigh) {
         return 255;
+    } else if (val > maxHigh && val < zeroHigh) {
+        return (zeroHigh - val) / (zeroHigh - maxHigh) * 255;
     }
-    if (mag > maxHigh && mag < zeroHigh) {
-        return (zeroHigh - mag) / (zeroHigh - maxHigh) * 255;
-    }
-    return Math.round((mag - zeroLow) / (maxLow - zeroLow) * 255);
+
+    return Math.round((val - zeroLow) / (maxLow - zeroLow) * 255);
 }
 
-function _calcBlue(mag, low, high) {
-    let zeroLow = low + 6 * (high - low) / 12;
-    let zeroHigh = low + 10 * (high - low) / 12;
-    let maxLow = low + 4 * (high - low) / 12;
-    let maxHigh = low + 12 * (high - low) / 12;
+/**
+ * [_calcBlue description]
+ * @param       {[type]} val  [description]
+ * @param       {[type]} low  [description]
+ * @param       {[type]} high [description]
+ * @return      {[type]}      [description]
+ */
+function _calcBlue(val, low, high) {
+    let zeroLow = low + (high - low) / 2;
+    let zeroHigh = low + 5 * (high - low) / 6;
+    let maxLow = low + (high - low) / 3;
+    let maxHigh = high;
 
-    if (mag >= zeroLow && mag <= zeroHigh) {
+    if (val >= zeroLow && val <= zeroHigh) {
         return 0;
-    }
-    if (mag <= maxLow || mag >= maxHigh) {
+    } else if (val <= maxLow || val >= maxHigh) {
         return 255;
+    } else if (val > maxLow && val < zeroLow) {
+        return (zeroLow - val) / (zeroLow - maxLow) * 255;
     }
-    if (mag > maxLow && mag < zeroLow) {
-        return (zeroLow - mag) / (zeroLow - maxLow) * 255;
-    }
-    return Math.round((mag - zeroHigh) / (maxHigh - zeroHigh) * 255);
+
+    return Math.round((val - zeroHigh) / (maxHigh - zeroHigh) * 255);
 }

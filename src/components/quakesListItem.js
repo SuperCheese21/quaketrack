@@ -24,7 +24,7 @@ export default class QuakesListItem extends PureComponent {
 
                 <View style={{width: 60}}>
                     <Text style={styles.magnitudeText}>
-                        {formatMagnitude(data.properties.mag)}
+                        {formatMagnitude(data.properties.mag, 1)}
                     </Text>
                 </View>
 

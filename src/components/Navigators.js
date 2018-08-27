@@ -12,7 +12,10 @@ const ListStackNavigator = createStackNavigator({
     QuakeInfo: QuakeInfo,
     Filters: Filters
 }, {
-    initialRouteName: 'QuakesList'
+    initialRouteName: 'QuakesList',
+    transitionConfig: {
+        
+    }
 });
 
 // Create stack navigator for map page

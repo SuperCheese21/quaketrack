@@ -4,7 +4,7 @@ import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 
 import { formatRGBA, formatRGB } from '../lib/colorUtil';
-import { formatTime, checkZeros } from '../lib/formatData';
+import { formatTime, formatMagnitude } from '../lib/formatData';
 import styles from '../config/styles';
 
 export default class QuakeInfo extends PureComponent {
@@ -24,7 +24,7 @@ export default class QuakeInfo extends PureComponent {
                 backgroundColor: formatRGBA(color, 0.5)
             }]}>
                 <Text style={styles.infoTitle}>
-                    {'M ' + checkZeros(data.properties.mag)}
+                    {'M ' + formatMagnitude(data.properties.mag, 2)}
                 </Text>
                 <Text style={styles.infoLink} onPress={
                     () => Linking.openURL(data.properties.url)
