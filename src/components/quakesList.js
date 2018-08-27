@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
+import Spinner from 'react-native-loading-spinner-overlay';
 
-import LoadingSpinner from './LoadingSpinner';
 import QuakesListItem from './QuakesListItem';
 import { formatTime } from '../lib/formatData';
 
@@ -39,7 +39,7 @@ export default class QuakesList extends PureComponent {
 
     render() {
         if (this.props.screenProps.isLoading) {
-            return ( <LoadingSpinner /> );
+            return ( <Spinner visible={true} /> );
         }
 
         const metadata = this.props.screenProps.data.metadata;

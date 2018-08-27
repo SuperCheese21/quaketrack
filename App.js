@@ -5,7 +5,7 @@ import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 import DrawerNavigator from './src/components/Navigators';
 
 import defaultFilters from './src/config/options';
-import fetchData from './src/lib/fetchData';
+import { fetchData } from './src/lib/fetchData';
 
 export default class App extends PureComponent {
     state = {

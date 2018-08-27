@@ -7,7 +7,7 @@ import settings from '../config/settings';
  * @param  {[type]} options [description]
  * @return {[type]}         [description]
  */
-export default function fetchData(options) {
+export function fetchData(options) {
     const params = qs.stringify({
         minmagnitude: options.minmagnitude,
         limit: options.limit,
@@ -19,15 +19,15 @@ export default function fetchData(options) {
 
     const url = settings.DATABASE_API_URL + '?' + params;
 
-    return _getJson(url);
+    return getJson(url);
 }
 
 /**
- * [_getJson description]
+ * [getJson description]
  * @param       {[type]} url [description]
  * @return      {[type]}     [description]
  */
-async function _getJson(url) {
+export async function getJson(url) {
     try {
         let res = await fetch(url);
         let json = await res.json();
