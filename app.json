@@ -1,5 +1,22 @@
 {
-  "expo": {
-    "sdkVersion": "27.0.0"
-  }
+    "expo": {
+        "name": "QuakeTrack",
+        "description": "Earthquake map and alerts app for Android and iOS built on React Native",
+        "version": "0.2.1",
+        "sdkVersion": "27.0.0",
+        "ios": {
+            "bundleIdentifier": "com.stratospherelabs.quaketrack",
+            "config": {
+                "googleMapsApiKey": "AIzaSyDjValuattV7Ox-ldmeg_eUaM9jNmJxnDY"
+            }
+        },
+        "android": {
+            "package": "com.stratospherelabs.quaketrack",
+            "config": {
+                "googleMaps": {
+                    "apiKey": "AIzaSyDjValuattV7Ox-ldmeg_eUaM9jNmJxnDY"
+                }
+            }
+        }
+    }
 }

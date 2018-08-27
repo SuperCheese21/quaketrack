@@ -1,4 +1,5 @@
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
+import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 
 import Filters from './Filters';
 import QuakesList from './QuakesList';
@@ -12,7 +13,8 @@ const ListStackNavigator = createStackNavigator({
     QuakeInfo: QuakeInfo,
     Filters: Filters
 }, {
-    initialRouteName: 'QuakesList'
+    initialRouteName: 'QuakesList',
+    transitionConfig: getSlideFromRightTransition
 });
 
 // Create stack navigator for map page

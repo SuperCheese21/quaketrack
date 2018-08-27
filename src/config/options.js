@@ -1,5 +1,5 @@
 export default {
-    'minmagnitude': 2.5,
+    'minmagnitude': 4,
     'limit': 1000,
     'dateEnabled': false,
     'starttime': '',
