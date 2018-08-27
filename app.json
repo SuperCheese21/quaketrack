@@ -17,6 +17,7 @@
                     "apiKey": "AIzaSyDjValuattV7Ox-ldmeg_eUaM9jNmJxnDY"
                 }
             }
-        }
+        },
+        "icon": "./src/assets/icons/ic_launcher-web.png"
     }
 }

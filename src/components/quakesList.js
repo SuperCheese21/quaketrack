@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 import Spinner from 'react-native-loading-spinner-overlay';
 
+import { FilterIcon, MenuIcon } from './HeaderIcons';
 import QuakesListItem from './QuakesListItem';
 import { formatTime } from '../lib/formatData';
 
@@ -14,25 +15,9 @@ export default class QuakesList extends PureComponent {
             title: 'List',
             headerStyle: styles.headerStyle,
             headerTitleStyle: styles.headerTitleStyle,
-            headerLeft: (
-                <Icon
-                    name='menu'
-                    style={{ marginLeft: 10 }}
-                    onPress={() => navigation.toggleDrawer()}
-                    size={25}
-                    color='#000000'
-                />
-            ),
-            headerRight: (
-                <Icon
-                    name='filter-outline'
-                    style={{ marginRight: 10 }}
-                    onPress={() => navigation.navigate('Filters')}
-                    size={25}
-                    color='#000000'
-                />
-            )
-        }
+            headerLeft: <MenuIcon navigation={navigation} />,
+            headerRight: <FilterIcon navigation={navigation} />
+        };
     };
 
     _keyExtractor = (item, index) => item.id;

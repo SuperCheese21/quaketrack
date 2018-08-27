@@ -7,6 +7,8 @@ import QuakesMap from './QuakesMap';
 import QuakeInfo from './QuakeInfo';
 import Settings from './Settings';
 
+import colors from '../config/colors';
+
 // Create stack navigator for list page
 const ListStackNavigator = createStackNavigator({
     QuakesList: QuakesList,
@@ -33,7 +35,8 @@ const DrawerNavigator = createDrawerNavigator({
     Settings: Settings
 }, {
     drawerWidth: 250,
-    initialRouteName: 'List'
+    initialRouteName: 'List',
+    drawerBackgroundColor: colors.background
 });
 
 export default DrawerNavigator;
