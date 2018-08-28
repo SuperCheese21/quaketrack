@@ -6,6 +6,7 @@ import QuakesList from './QuakesList';
 import QuakesMap from './QuakesMap';
 import QuakeInfo from './QuakeInfo';
 import Settings from './Settings';
+import ShakeMap from './ShakeMap';
 
 import colors from '../config/colors';
 
@@ -13,6 +14,7 @@ import colors from '../config/colors';
 const ListStackNavigator = createStackNavigator({
     QuakesList: QuakesList,
     QuakeInfo: QuakeInfo,
+    ShakeMap: ShakeMap,
     Filters: Filters
 }, {
     initialRouteName: 'QuakesList',
@@ -23,6 +25,7 @@ const ListStackNavigator = createStackNavigator({
 const MapStackNavigator = createStackNavigator({
     QuakesMap: QuakesMap,
     QuakeInfo: QuakeInfo,
+    ShakeMap: ShakeMap,
     Filters: Filters
 }, {
     initialRouteName: 'QuakesMap'

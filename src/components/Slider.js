@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { Slider, Text, View } from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View } from 'react-native';
+import Slider from 'react-native-slider';
 
 import styles from '../config/styles';
 
-export default class SettingsSlider extends Component {
+export default class SettingsSlider extends PureComponent {
     render() {
         return (
             <View style={{ height: 65 }}>
@@ -22,7 +23,10 @@ export default class SettingsSlider extends Component {
                         minimumValue={this.props.minimumValue}
                         maximumValue={this.props.maximumValue}
                         step={this.props.step}
-                        value={Number(this.props.value)}
+                        value={this.props.value}
+                        thumbTintColor='#0000ff'
+                        minimumTrackTintColor='#c3c3c3'
+                        maximumTrackTintColor='#d8d8d8'
                         onValueChange={this.props.onValueChange} />
                 </View>
             </View>

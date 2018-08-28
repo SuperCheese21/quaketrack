@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
-import Icon from '@expo/vector-icons/MaterialCommunityIcons';
+import { FlatList, Text, View } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import { FilterIcon, MenuIcon } from './HeaderIcons';

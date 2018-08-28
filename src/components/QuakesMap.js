@@ -5,6 +5,8 @@ import MapView, { Marker } from 'react-native-maps';
 
 import { FilterIcon, MenuIcon } from './HeaderIcons';
 import { formatRGB, getRGB } from '../lib/colorUtil';
+import { formatTime } from '../lib/formatData';
+import mapStyle from '../config/mapStyle';
 import styles from '../config/styles';
 
 export default class QuakesMap extends PureComponent {
@@ -18,15 +20,13 @@ export default class QuakesMap extends PureComponent {
         });
     }
 
-    static navigationOptions = ({ navigation }) => {
-        return {
-            title: 'Map',
-            headerStyle: styles.headerStyle,
-            headerTitleStyle: styles.headerTitleStyle,
-            headerLeft: <MenuIcon navigation={navigation} />,
-            headerRight: <FilterIcon navigation={navigation} />
-        };
-    }
+    static navigationOptions = ({ navigation }) => ({
+        title: 'Map',
+        headerStyle: styles.headerStyle,
+        headerTitleStyle: styles.headerTitleStyle,
+        headerLeft: <MenuIcon navigation={navigation} />,
+        headerRight: <FilterIcon navigation={navigation} />
+    })
 
     render() {
         const quakes = this.props.screenProps.data.features;
@@ -37,12 +37,12 @@ export default class QuakesMap extends PureComponent {
                     style={{flex: 1}}
                     initialRegion={{
                         latitude: 0,
-                        longitude: 180,
+                        longitude: 0,
                         latitudeDelta: 150,
                         longitudeDelta: 75
                     }}
                     rotateEnabled={false}
-                    moveOnMarkerPress={false}>
+                    customMapStyle={mapStyle}>
 
                     {quakes.map(data => {
                         const color = getRGB(data.properties.mag, 1.0, 9.5);
@@ -53,7 +53,9 @@ export default class QuakesMap extends PureComponent {
                                     latitude: data.geometry.coordinates[1],
                                     longitude: data.geometry.coordinates[0]
                                 }}
-                                onPress={() => this.props.navigation.navigate('QuakeInfo', {
+                                title={'M' + data.properties.mag}
+                                description={formatTime(data.properties.time)}
+                                onCalloutPress={() => this.props.navigation.navigate('QuakeInfo', {
                                     color: color,
                                     url: data.properties.detail
                                 })}

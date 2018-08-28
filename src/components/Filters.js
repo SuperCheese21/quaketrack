@@ -27,9 +27,12 @@ export default class Filters extends PureComponent {
                     maximumValue={9}
                     step={0.1}
                     value={this.state.minmagnitude}
-                    onValueChange={value => {
-                        this.setState({ minmagnitude: value });
-                    }} />
+                    onValueChange={
+                        value => this.setState({
+                            minmagnitude: Math.round(10 * value) / 10
+                        })
+                    }
+                />
 
                 <View style={styles.settingsItem}>
                     <Text style={[styles.settingsItemLabel, { fontWeight: 'bold' }]}>
@@ -101,11 +104,13 @@ export default class Filters extends PureComponent {
                     <Button
                         text='Cancel'
                         color='#ff0000'
+                        textColor='#ffffff'
                         onPress={() => this.props.navigation.goBack()}
                     />
                     <Button
                         text='Save and Close'
                         color='#0000ff'
+                        textColor='#ffffff'
                         onPress={() => {
                             this.props.screenProps.setFilters(this.state);
                             this.props.navigation.goBack();

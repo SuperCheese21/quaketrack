@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
 import { Linking, Text, View } from 'react-native';
-import MapView, { Marker, Polygon } from 'react-native-maps';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import { formatRGBA, formatRGB } from '../lib/colorUtil';
+import Button from './Button';
+
+import { formatRGBA } from '../lib/colorUtil';
 import { formatTime, formatMagnitude } from '../lib/formatData';
 import { getJson } from '../lib/fetchData';
+import colors from '../config/colors';
 import styles from '../config/styles';
 
 export default class QuakeInfo extends PureComponent {
@@ -39,9 +41,11 @@ export default class QuakeInfo extends PureComponent {
             return <Spinner visible={true} />;
         }
 
-        const { params } = this.props.navigation.state;
-        const color = params.color;
+        const color = this.props.navigation.state.params.color;
         const data = this.state.data;
+        const url = data.properties.products.shakemap ?
+                    data.properties.products.shakemap[0].contents['download/cont_mi.json'].url :
+                    '';
 
         return (
             <View style={[styles.infoView, {
@@ -64,27 +68,23 @@ export default class QuakeInfo extends PureComponent {
                 <Text style={{color: 'black'}}>
                     Updated {formatTime(data.properties.updated)}
                 </Text>
-                <MapView
-                    style={{marginTop: 10, flex: 1}}
-                    initialRegion={{
-                        latitude: data.geometry.coordinates[1],
-                        longitude: data.geometry.coordinates[0],
-                        latitudeDelta: 8,
-                        longitudeDelta: 4
-                    }}>
-
-                    <Marker
-                        coordinate={{
-                            latitude: data.geometry.coordinates[1],
-                            longitude: data.geometry.coordinates[0]
-                        }}
-                        title={
-                            data.geometry.coordinates[1] + ', ' +
-                            data.geometry.coordinates[0]
-                        }
-                        pinColor={formatRGB(color)} />
-
-                </MapView>
+                <Text style={{color: 'black'}}>
+                    Felt: {data.properties.felt || 'N/A'}
+                </Text>
+                <Text style={{color: 'black'}}>
+                    Significance: {data.properties.sig}
+                </Text>
+                <Button
+                    text='ShakeMap'
+                    color={colors.header}
+                    textColor='black'
+                    height={50}
+                    onPress={() => this.props.navigation.navigate('ShakeMap', {
+                        color: color,
+                        data: data,
+                        url: url
+                    })}
+                />
             </View>
         )
     }

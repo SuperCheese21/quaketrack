@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Switch, Text, View } from 'react-native';
 
 import styles from '../config/styles';
 
-export default class SettingsSwitch extends Component {
+export default class SettingsSwitch extends PureComponent {
     render() {
         return (
             <View style={styles.settingsItem}>
