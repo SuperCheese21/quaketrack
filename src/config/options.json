@@ -1,0 +1,8 @@
+{
+    "minmagnitude": 4,
+    "limit": 1000,
+    "dateEnabled": false,
+    "starttime": null,
+    "endtime": null,
+    "orderby": "time"
+}

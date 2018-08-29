@@ -8,7 +8,7 @@ import QuakeInfo from './QuakeInfo';
 import Settings from './Settings';
 import ShakeMap from './ShakeMap';
 
-import colors from '../config/colors';
+import colors from '../config/colors.json';
 
 // Create stack navigator for list page
 const ListStackNavigator = createStackNavigator({

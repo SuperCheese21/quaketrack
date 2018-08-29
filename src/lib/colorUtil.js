@@ -40,10 +40,10 @@ export function getRGB(val, low, high) {
  * @return      {[type]}      [description]
  */
 function _calcRed(val, low, high) {
-    let zeroLow = low + 1 * (high - low) / 6;
-    let zeroHigh = low + (high - low) / 2;
-    let maxLow = low;
-    let maxHigh = low + 2 * (high - low) / 3;
+    const zeroLow = low + 1 * (high - low) / 6;
+    const zeroHigh = low + (high - low) / 2;
+    const maxLow = low;
+    const maxHigh = low + 2 * (high - low) / 3;
 
     if (val >= zeroLow && val <= zeroHigh) {
         return 0;
@@ -64,10 +64,10 @@ function _calcRed(val, low, high) {
  * @return      {[type]}      [description]
  */
 function _calcGreen(val, low, high) {
-    let zeroLow = low + 1 * (high - low) / 6;
-    let zeroHigh = low + 5 * (high - low) / 6;
-    let maxLow = low + 1 * (high - low) / 3;
-    let maxHigh = low + 2 * (high - low) / 3;
+    const zeroLow = low + 1 * (high - low) / 6;
+    const zeroHigh = low + 5 * (high - low) / 6;
+    const maxLow = low + 1 * (high - low) / 3;
+    const maxHigh = low + 2 * (high - low) / 3;
 
     if (val <= zeroLow || val >= zeroHigh) {
         return 0;
@@ -88,10 +88,10 @@ function _calcGreen(val, low, high) {
  * @return      {[type]}      [description]
  */
 function _calcBlue(val, low, high) {
-    let zeroLow = low + (high - low) / 2;
-    let zeroHigh = low + 5 * (high - low) / 6;
-    let maxLow = low + (high - low) / 3;
-    let maxHigh = high;
+    const zeroLow = low + (high - low) / 2;
+    const zeroHigh = low + 5 * (high - low) / 6;
+    const maxLow = low + (high - low) / 3;
+    const maxHigh = high;
 
     if (val >= zeroLow && val <= zeroHigh) {
         return 0;

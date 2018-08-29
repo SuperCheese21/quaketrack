@@ -4,7 +4,7 @@ import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 
 import DrawerNavigator from './src/components/Navigators';
 
-import defaultFilters from './src/config/options';
+import defaultFilters from './src/config/options.json';
 import { fetchData } from './src/lib/fetchData';
 
 export default class App extends PureComponent {
@@ -39,7 +39,7 @@ export default class App extends PureComponent {
             .then(res => {
                 this.setState({
                     isLoading: false,
-                    data: res
+                    data: res[0]
                 });
             })
             .catch(err => {

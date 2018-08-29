@@ -8,8 +8,8 @@ const ShakeMapOverlay = props => {
                 <Polyline
                     key={i + '_' + j}
                     coordinates={line.map(coords => ({
-                        latitude: coords[1],
-                        longitude: coords[0]
+                        latitude: parseFloat(coords[1]),
+                        longitude: parseFloat(coords[0])
                     }))}
                     strokeWidth={feature.properties.weight / 2}
                     strokeColor={feature.properties.color}

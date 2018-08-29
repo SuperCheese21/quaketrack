@@ -22,7 +22,7 @@ export default class QuakesList extends PureComponent {
     _keyExtractor = (item, index) => item.id;
 
     render() {
-        if (this.props.screenProps.isLoading) {
+        if (!Object.keys(this.props.screenProps.data).length) {
             return ( <Spinner visible={true} /> );
         }
 

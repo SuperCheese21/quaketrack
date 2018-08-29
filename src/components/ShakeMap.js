@@ -7,7 +7,7 @@ import ShakeMapOverlay from './ShakeMapOverlay';
 import { getJson } from '../lib/fetchData';
 import { formatRGB } from '../lib/colorUtil';
 import { formatTime } from '../lib/formatData';
-import mapStyle from '../config/mapStyle';
+import mapStyle from '../config/map_style_shakemap.json';
 import styles from '../config/styles';
 
 export default class ShakeMap extends PureComponent {
@@ -25,10 +25,10 @@ export default class ShakeMap extends PureComponent {
     componentDidMount() {
         const url = this.props.navigation.state.params.url;
         if (url) {
-            getJson(url)
+            getJson([url])
                 .then(res => {
                     this.setState({
-                        data: res.features,
+                        data: res[0].features,
                         isLoading: false
                     });
                 })

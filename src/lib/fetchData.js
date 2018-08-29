@@ -1,6 +1,6 @@
 import qs from 'qs';
 
-import settings from '../config/settings';
+import constants from '../config/constants.json';
 
 /**
  * [fetchData description]
@@ -8,18 +8,18 @@ import settings from '../config/settings';
  * @return {[type]}         [description]
  */
 export function fetchData(options) {
-    const params = qs.stringify({
+    const query = {
         minmagnitude: options.minmagnitude,
         limit: options.limit,
-        starttime: options.dateEnabled ? options.starttime : '',
-        endtime: options.dateEnabled ? options.endtime : '',
+        starttime: options.dateEnabled ? options.starttime : null,
+        endtime: options.dateEnabled ? options.endtime : null,
         orderby: options.orderby,
         format: 'geojson'
-    });
+    };
 
-    const url = settings.DATABASE_API_URL + '?' + params;
+    const url = constants.urls.usgs.DATABASE + _queryStringify(query);
 
-    return getJson(url);
+    return getJson([url]);
 }
 
 /**
@@ -27,12 +27,24 @@ export function fetchData(options) {
  * @param       {[type]} url [description]
  * @return      {[type]}     [description]
  */
-export async function getJson(url) {
+export async function getJson(urls) {
     try {
-        let res = await fetch(url);
-        let json = await res.json();
-        return json;
+        return await Promise.all(urls.map(url => (
+            fetch(url).then(res => res.json())
+        )));
     } catch (err) {
         console.error(err);
     }
+}
+
+/**
+ * [queryStringify description]
+ * @param  {[type]} query [description]
+ * @return {[type]}       [description]
+ */
+function _queryStringify(query) {
+    return qs.stringify(query, {
+        addQueryPrefix: true,
+        skipNulls: true
+    });
 }

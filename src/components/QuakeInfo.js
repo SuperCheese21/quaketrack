@@ -7,22 +7,20 @@ import Button from './Button';
 import { formatRGBA } from '../lib/colorUtil';
 import { formatTime, formatMagnitude } from '../lib/formatData';
 import { getJson } from '../lib/fetchData';
-import colors from '../config/colors';
+import colors from '../config/colors.json';
 import styles from '../config/styles';
 
 export default class QuakeInfo extends PureComponent {
     state = {
-        isLoading: true,
         data: {}
     }
 
     componentDidMount() {
         const url = this.props.navigation.state.params.url;
-        getJson(url)
+        getJson([url])
             .then(res => {
                 this.setState({
-                    data: res,
-                    isLoading: false
+                    data: res[0]
                 });
             })
             .catch(err => {
@@ -37,7 +35,7 @@ export default class QuakeInfo extends PureComponent {
     };
 
     render() {
-        if (this.state.isLoading) {
+        if (!Object.keys(this.state.data).length) {
             return <Spinner visible={true} />;
         }
 
