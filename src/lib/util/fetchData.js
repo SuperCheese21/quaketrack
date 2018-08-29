@@ -1,3 +1,4 @@
+import Promise from 'bluebird';
 import qs from 'qs';
 
 import constants from '../../config/constants.json';
