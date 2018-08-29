@@ -4,7 +4,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 
 import { FilterIcon, MenuIcon } from './HeaderIcons';
 import QuakesListItem from './QuakesListItem';
-import { formatTime } from '../lib/formatData';
+import { formatTime } from '../lib/util/formatData';
 
 import styles from '../config/styles';
 

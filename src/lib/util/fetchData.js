@@ -1,6 +1,6 @@
 import qs from 'qs';
 
-import constants from '../config/constants.json';
+import constants from '../../config/constants.json';
 
 /**
  * [fetchData description]
