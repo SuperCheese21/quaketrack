@@ -4,9 +4,12 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import MapView, { Marker, Polygon } from 'react-native-maps';
 
 import { FilterIcon, MenuIcon } from './HeaderIcons';
+import QuakesMapOverlay from './QuakesMapOverlay';
+
 import { formatRGB, getRGB } from '../lib/util/colorUtil';
 import { formatTime } from '../lib/util/formatData';
 import mapStyle from '../config/map_styles/map_style.json';
+import plates from '../lib/data/tectonic_plates.json';
 import regions from '../lib/data/tectonic_regions.json';
 import styles from '../config/styles';
 
@@ -43,21 +46,20 @@ export default class QuakesMap extends PureComponent {
                         longitudeDelta: 75
                     }}
                     rotateEnabled={false}
-                    customMapStyle={mapStyle}>
+                    customMapStyle={mapStyle}
+                >
 
-                    {regions.tectonic.features.map((feature, i) => (
-                        feature.geometry.coordinates.map((polygon, j) => (
-                            <Polygon
-                                key={i + '_' + j}
-                                coordinates={polygon.map(coords => ({
-                                    latitude: parseFloat(coords[1]),
-                                    longitude: parseFloat(coords[0])
-                                }))}
-                                strokeColor='#ff0000'
-                                strokeWidth={2}
-                            />
-                        ))
-                    ))}
+                    <QuakesMapOverlay
+                        data={plates.features}
+                        rgb={[0, 0, 0]}
+                        fillOpacity={0}
+                    />
+
+                    <QuakesMapOverlay
+                        data={regions.tectonic.features}
+                        rgb={[255, 0, 0]}
+                        fillOpacity={0.1}
+                    />
 
                     {quakes.map(data => {
                         const color = getRGB(data.properties.mag, 1.0, 9.5);
