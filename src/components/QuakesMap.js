@@ -4,10 +4,10 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import MapView, { Marker, Polygon } from 'react-native-maps';
 
 import { FilterIcon, MenuIcon } from './HeaderIcons';
-import { formatRGB, getRGB } from '../lib/colorUtil';
-import { formatTime } from '../lib/formatData';
-import mapStyle from '../config/map_style.json';
-import regions from '../config/tectonic_regions.json';
+import { formatRGB, getRGB } from '../lib/util/colorUtil';
+import { formatTime } from '../lib/util/formatData';
+import mapStyle from '../config/map_styles/map_style.json';
+import regions from '../lib/data/tectonic_regions.json';
 import styles from '../config/styles';
 
 export default class QuakesMap extends PureComponent {

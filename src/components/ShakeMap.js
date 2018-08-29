@@ -4,10 +4,10 @@ import Spinner from 'react-native-loading-spinner-overlay';
 
 import ShakeMapOverlay from './ShakeMapOverlay';
 
-import { getJson } from '../lib/fetchData';
-import { formatRGB } from '../lib/colorUtil';
-import { formatTime } from '../lib/formatData';
-import mapStyle from '../config/map_style_shakemap.json';
+import { getJson } from '../lib/util/fetchData';
+import { formatRGB } from '../lib/util/colorUtil';
+import { formatTime } from '../lib/util/formatData';
+import mapStyle from '../config/map_styles/map_style_shakemap.json';
 import styles from '../config/styles';
 
 export default class ShakeMap extends PureComponent {

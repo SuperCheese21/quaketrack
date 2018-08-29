@@ -4,9 +4,9 @@ import Spinner from 'react-native-loading-spinner-overlay';
 
 import Button from './Button';
 
-import { formatRGBA } from '../lib/colorUtil';
-import { formatTime, formatMagnitude } from '../lib/formatData';
-import { getJson } from '../lib/fetchData';
+import { formatRGBA } from '../lib/util/colorUtil';
+import { formatTime, formatMagnitude } from '../lib/util/formatData';
+import { getJson } from '../lib/util/fetchData';
 import colors from '../config/colors.json';
 import styles from '../config/styles';
 

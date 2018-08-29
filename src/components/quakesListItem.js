@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import Icon from '@expo/vector-icons/MaterialIcons';
 
-import { formatRGB, getRGB } from '../lib/colorUtil';
-import { formatTime, formatMagnitude } from '../lib/formatData';
+import { formatRGB, getRGB } from '../lib/util/colorUtil';
+import { formatTime, formatMagnitude } from '../lib/util/formatData';
 import styles from '../config/styles';
 
 export default class QuakesListItem extends PureComponent {
