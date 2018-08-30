@@ -27,7 +27,7 @@ export default async function registerForPushNotificationsAsync(uid) {
     const token = await Notifications.getExpoPushTokenAsync();
     firebase.database().ref('users').child(uid).update({
         expoPushToken: token,
-        minMagnitude: 5,
+        minMagnitude: 4.5,
         notifications: true,
         updated: Number(moment().format('x'))
     });

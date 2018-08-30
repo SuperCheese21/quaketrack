@@ -69,4 +69,4 @@ export default class App extends PureComponent {
 }
 
 // React bug - ignore warning on deprecated lifecycle method
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader', 'Setting a timer']);
