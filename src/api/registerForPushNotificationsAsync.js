@@ -1,5 +1,6 @@
 import { Notifications, Permissions } from 'expo';
 import * as firebase from 'firebase';
+import moment from 'moment';
 
 /**
  * [registerForPushNotificationsAsync description]
@@ -26,6 +27,8 @@ export default async function registerForPushNotificationsAsync(uid) {
     const token = await Notifications.getExpoPushTokenAsync();
     firebase.database().ref('users').child(uid).update({
         expoPushToken: token,
-        notifications: true
+        minMagnitude: 5,
+        notifications: true,
+        updated: Number(moment().format('x'))
     });
 }

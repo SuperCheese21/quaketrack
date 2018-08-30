@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
 import registerForPushNotificationsAsync from '../../api/registerForPushNotificationsAsync';
-import { firebaseConfig } from '../../config/constants.json';
+import firebaseConfig from '../../config/firebaseConfig.json';
 
 /**
  * [firebaseInit description]
