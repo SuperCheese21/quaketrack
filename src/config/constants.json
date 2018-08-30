@@ -7,5 +7,9 @@
         "emsc": {
             "DATABASE": "http://www.seismicportal.eu/fdsnws/event/1/query"
         }
+    },
+    "firebaseConfig": {
+        "apiKey": "AIzaSyBpKACI9fMeMieWvajI6anyeP0gGUFD570",
+        "databaseURL": "https://quaketrack-1520330553492.firebaseio.com/"
     }
 }

@@ -6,12 +6,18 @@ import DrawerNavigator from './src/components/Navigators';
 
 import defaultFilters from './src/config/options.json';
 import { fetchData } from './src/api/fetchData';
+import firebaseInit from './src/lib/util/firebaseInit';
+import registerForPushNotificationsAsync from './src/api/registerForPushNotificationsAsync';
 
 export default class App extends PureComponent {
-    state = {
-        filters: defaultFilters,
-        data: {},
-        isLoading: true
+    constructor(props) {
+        super(props);
+        this.state = {
+            filters: defaultFilters,
+            data: {},
+            isLoading: true
+        };
+        firebaseInit();
     }
 
     componentDidMount() {
