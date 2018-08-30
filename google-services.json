@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "472975927325",
+    "firebase_url": "https://quaketrack-1520330553492.firebaseio.com",
+    "project_id": "quaketrack-1520330553492",
+    "storage_bucket": "quaketrack-1520330553492.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472975927325:android:0016000da46b4f77",
+        "android_client_info": {
+          "package_name": "com.stratospherelabs.quaketrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472975927325-hnn0k6efg55stb0k4t1om12nu8hu14b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqSY5sewBFKpCbjGEz5NPTqQso87WI0h0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

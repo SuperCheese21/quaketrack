@@ -4,7 +4,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 
 import ShakeMapOverlay from './ShakeMapOverlay';
 
-import { getJson } from '../lib/util/fetchData';
+import { getJson } from '../api/fetchData';
 import { formatRGB } from '../lib/util/colorUtil';
 import { formatTime } from '../lib/util/formatData';
 import mapStyle from '../config/map_styles/map_style_shakemap.json';

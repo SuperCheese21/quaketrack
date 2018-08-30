@@ -16,7 +16,8 @@
                 "googleMaps": {
                     "apiKey": "AIzaSyDjValuattV7Ox-ldmeg_eUaM9jNmJxnDY"
                 }
-            }
+            },
+            "googleServicesFile": "./google-services.json"
         },
         "icon": "./src/assets/icons/ic_launcher-web.png"
     }
