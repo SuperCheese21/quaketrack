@@ -11,8 +11,8 @@ sock.onopen = () => {
     console.log('Connected to ' + WS_URL);
 };
 
-sock.onmessage = message => {
-    const message = JSON.parse(message);
+sock.onmessage = e => {
+    const message = JSON.parse(e);
     if (message.action === 'create') {
         const data = message.data;
         console.log('M' + data.properties.mag + ' - ' + data.properties.flynn_region);
