@@ -1,0 +1,18 @@
+{
+  "name": "quaketrack-server",
+  "version": "1.0.0",
+  "description": "Push notification server for QuakeTrack notifications",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ethan Shields",
+  "license": "ISC",
+  "dependencies": {
+    "expo-server-sdk": "^3.0.1",
+    "firebase": "^5.4.2",
+    "moment": "^2.22.2",
+    "sockjs-client": "^1.1.5"
+  }
+}
