@@ -1,6 +1,6 @@
 {
   "name": "quaketrack",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "devDependencies": {
     "jest-expo": "~27.0.0",
@@ -10,7 +10,6 @@
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "start": "exp start",
-    "server": "node ./server/server.js",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
