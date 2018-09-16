@@ -3,31 +3,30 @@
   "version": "0.2.3",
   "private": true,
   "devDependencies": {
-    "jest-expo": "~27.0.0",
-    "react-native-scripts": "1.14.0",
+    "jest-expo": "30.0.0",
     "react-test-renderer": "16.3.1"
   },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "main": "./node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "exp start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
+    "start": "expo start",
+    "eject": "expo eject",
+    "android": "expo build:android",
+    "ios": "expo build:ios",
     "test": "jest"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
-    "bluebird": "^3.5.1",
-    "expo": "^27.0.1",
-    "firebase": "^5.4.1",
+    "bluebird": "^3.5.2",
+    "expo": "^30.0.1",
+    "firebase": "^5.5.0",
     "react": "16.3.1",
-    "react-native": "~0.55.2",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-native-datepicker": "^1.7.2",
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-slider": "^0.11.0",
-    "react-navigation": "^2.12.1",
+    "react-navigation": "^2.14.2",
     "react-navigation-slide-from-right-transition": "^1.0.4"
   }
 }
