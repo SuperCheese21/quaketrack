@@ -4,16 +4,9 @@
         "description": "Earthquake map and alerts app for Android and iOS built on React Native",
         "slug": "quaketrack",
         "sdkVersion": "30.0.0",
-        "platforms": ["ios", "android"],
         "version": "0.2.3",
         "orientation": "portrait",
         "icon": "./assets/ic_launcher-web.png",
-        "updates": {
-            "fallbackToCacheTimeout": 0
-        },
-        "assetBundlePatterns": [
-            "**/*"
-        ],
         "ios": {
             "bundleIdentifier": "com.stratospherelabs.quaketrack",
             "supportsTablet": true,
@@ -29,6 +22,9 @@
                 }
             },
             "googleServicesFile": "./google-services.json"
+        },
+        "notification": {
+            "icon": "./assets/ic_notification.png"
         }
     }
 }

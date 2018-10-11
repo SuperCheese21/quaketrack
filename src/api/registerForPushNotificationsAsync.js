@@ -9,27 +9,26 @@ import Promise from 'bluebird';
  * @param  {[type]} uid [description]
  */
 export default async function registerForPushNotificationsAsync(uid) {
-    Promise.all([
-        getPushToken(),
-        getLocation()
-    ]).then(res => {
-        firebase.database().ref('users').child(uid).update({
-            expoPushToken: res[0],
-            minMagnitude: 5,
-            notifications: true,
-            location: {
-                coords: {
-                    latitude: res[1].coords.latitude,
-                    longitude: res[1].coords.longitude
+    Promise.all([getPushToken(), getLocation()])
+        .then(res => {
+            firebase.database().ref('users').child(uid).update({
+                expoPushToken: res[0],
+                minMagnitude: 5,
+                notifications: true,
+                location: {
+                    coords: {
+                        latitude: res[1].coords.latitude,
+                        longitude: res[1].coords.longitude
+                    },
+                    accuracy: res[1].coords.accuracy,
+                    mocked: res[1].mocked
                 },
-                accuracy: res[1].coords.accuracy,
-                mocked: res[1].mocked
-            },
-            updated: res[1].timestamp
+                updated: res[1].timestamp
+            });
+        })
+        .catch(err => {
+            console.error(err);
         });
-    }).catch(err => {
-        console.error(err);
-    });
 }
 
 /**
