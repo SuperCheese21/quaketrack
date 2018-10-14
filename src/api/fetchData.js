@@ -1,4 +1,3 @@
-import Promise from 'bluebird';
 import qs from 'qs';
 
 import constants from '../config/constants.json';
@@ -20,7 +19,7 @@ export function fetchData(options) {
 
     const url = constants.urls.usgs.DATABASE + _queryStringify(query);
 
-    return getJson([url]);
+    return getJson(url);
 }
 
 /**
@@ -28,11 +27,11 @@ export function fetchData(options) {
  * @param       {[type]} url [description]
  * @return      {[type]}     [description]
  */
-export async function getJson(urls) {
+export async function getJson(url) {
     try {
-        return await Promise.all(urls.map(url => (
-            fetch(url).then(res => res.json())
-        )));
+        let res = await fetch(url);
+        let json = await res.json();
+        return json;
     } catch (err) {
         console.error(err);
     }

@@ -39,7 +39,8 @@ const DrawerNavigator = createDrawerNavigator({
 }, {
     drawerWidth: 250,
     initialRouteName: 'List',
-    drawerBackgroundColor: colors.background
+    drawerBackgroundColor: colors.background,
+    backBehavior: 'List'
 });
 
 export default DrawerNavigator;

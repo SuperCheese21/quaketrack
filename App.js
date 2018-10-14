@@ -44,7 +44,7 @@ export default class App extends PureComponent {
             .then(res => {
                 this.setState({
                     isLoading: false,
-                    data: res[0]
+                    data: res
                 });
             })
             .catch(err => {
