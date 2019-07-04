@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { YellowBox } from 'react-native';
-import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 
 import DrawerNavigator from './src/components/Navigators';
 
@@ -9,63 +8,70 @@ import { fetchData } from './src/api/fetchData';
 import firebaseInit from './src/lib/util/firebaseInit';
 
 export default class App extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            filters: defaultFilters,
-            data: {},
-            isLoading: true
-        };
-        firebaseInit();
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      filters: defaultFilters,
+      data: {},
+      isLoading: true
+    };
+    firebaseInit();
+  }
 
-    componentDidMount() {
-        this.onRefresh();
-    }
+  componentDidMount() {
+    this.onRefresh();
+  }
 
-    getFilters = () => {
-        return this.state.filters;
-    }
+  getFilters = () => {
+    return this.state.filters;
+  };
 
-    setFilters = newFilters => {
-        this.setState({ filters: newFilters });
-    }
+  setFilters = newFilters => {
+    this.setState({ filters: newFilters });
+  };
 
-    onRefresh = () => {
+  onRefresh = () => {
+    this.setState(
+      {
+        isLoading: true
+      },
+      () => {
+        this.updateData();
+      }
+    );
+  };
+
+  updateData = () => {
+    fetchData(this.state.filters)
+      .then(res => {
         this.setState({
-            isLoading: true
-        }, () => {
-            this.updateData();
+          isLoading: false,
+          data: res
         });
-    }
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
 
-    updateData = () => {
-        fetchData(this.state.filters)
-            .then(res => {
-                this.setState({
-                    isLoading: false,
-                    data: res
-                });
-            })
-            .catch(err => {
-                console.error(err);
-            });
-    }
-
-    render() {
-        return (
-            <DrawerNavigator
-                screenProps={{
-                    data: this.state.data,
-                    isLoading: this.state.isLoading,
-                    onRefresh: this.onRefresh,
-                    getFilters: this.getFilters,
-                    setFilters: this.setFilters
-                }}
-            />
-        );
-    }
+  render() {
+    return (
+      <DrawerNavigator
+        screenProps={{
+          data: this.state.data,
+          isLoading: this.state.isLoading,
+          onRefresh: this.onRefresh,
+          getFilters: this.getFilters,
+          setFilters: this.setFilters
+        }}
+      />
+    );
+  }
 }
 
 // React bug - ignore warning on deprecated lifecycle method
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader', 'Setting a timer']);
+YellowBox.ignoreWarnings([
+  'Warning: isMounted(...) is deprecated',
+  'Module RCTImageLoader',
+  'Setting a timer'
+]);

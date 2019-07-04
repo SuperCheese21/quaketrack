@@ -4,7 +4,7 @@
  * @return {[type]}     [description]
  */
 export function formatRGB(rgb) {
-    return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+  return 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
 }
 
 /**
@@ -14,7 +14,7 @@ export function formatRGB(rgb) {
  * @return {[type]}         [description]
  */
 export function formatRGBA(rgb, opacity) {
-    return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
+  return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
 }
 
 /**
@@ -25,11 +25,11 @@ export function formatRGBA(rgb, opacity) {
  * @return {[type]}      [description]
  */
 export function getRGB(val, low, high) {
-    return [
-        _calcRed(val, low, high),
-        _calcGreen(val, low, high),
-        _calcBlue(val, low, high)
-    ];
+  return [
+    _calcRed(val, low, high),
+    _calcGreen(val, low, high),
+    _calcBlue(val, low, high)
+  ];
 }
 
 /**
@@ -40,20 +40,20 @@ export function getRGB(val, low, high) {
  * @return      {[type]}      [description]
  */
 function _calcRed(val, low, high) {
-    const zeroLow = low + 1 * (high - low) / 6;
-    const zeroHigh = low + (high - low) / 2;
-    const maxLow = low;
-    const maxHigh = low + 2 * (high - low) / 3;
+  const zeroLow = low + (1 * (high - low)) / 6;
+  const zeroHigh = low + (high - low) / 2;
+  const maxLow = low;
+  const maxHigh = low + (2 * (high - low)) / 3;
 
-    if (val >= zeroLow && val <= zeroHigh) {
-        return 0;
-    } else if (val <= maxLow || val >= maxHigh) {
-        return 255;
-    } else if (val > maxLow && val < zeroLow) {
-        return (zeroLow - val) / (zeroLow - maxLow) * 255;
-    }
+  if (val >= zeroLow && val <= zeroHigh) {
+    return 0;
+  } else if (val <= maxLow || val >= maxHigh) {
+    return 255;
+  } else if (val > maxLow && val < zeroLow) {
+    return ((zeroLow - val) / (zeroLow - maxLow)) * 255;
+  }
 
-    return Math.round((val - zeroHigh) / (maxHigh - zeroHigh) * 255);
+  return Math.round(((val - zeroHigh) / (maxHigh - zeroHigh)) * 255);
 }
 
 /**
@@ -64,20 +64,20 @@ function _calcRed(val, low, high) {
  * @return      {[type]}      [description]
  */
 function _calcGreen(val, low, high) {
-    const zeroLow = low + 1 * (high - low) / 6;
-    const zeroHigh = low + 5 * (high - low) / 6;
-    const maxLow = low + 1 * (high - low) / 3;
-    const maxHigh = low + 2 * (high - low) / 3;
+  const zeroLow = low + (1 * (high - low)) / 6;
+  const zeroHigh = low + (5 * (high - low)) / 6;
+  const maxLow = low + (1 * (high - low)) / 3;
+  const maxHigh = low + (2 * (high - low)) / 3;
 
-    if (val <= zeroLow || val >= zeroHigh) {
-        return 0;
-    } else if (val >= maxLow && val <= maxHigh) {
-        return 255;
-    } else if (val > maxHigh && val < zeroHigh) {
-        return (zeroHigh - val) / (zeroHigh - maxHigh) * 255;
-    }
+  if (val <= zeroLow || val >= zeroHigh) {
+    return 0;
+  } else if (val >= maxLow && val <= maxHigh) {
+    return 255;
+  } else if (val > maxHigh && val < zeroHigh) {
+    return ((zeroHigh - val) / (zeroHigh - maxHigh)) * 255;
+  }
 
-    return Math.round((val - zeroLow) / (maxLow - zeroLow) * 255);
+  return Math.round(((val - zeroLow) / (maxLow - zeroLow)) * 255);
 }
 
 /**
@@ -88,18 +88,18 @@ function _calcGreen(val, low, high) {
  * @return      {[type]}      [description]
  */
 function _calcBlue(val, low, high) {
-    const zeroLow = low + (high - low) / 2;
-    const zeroHigh = low + 5 * (high - low) / 6;
-    const maxLow = low + (high - low) / 3;
-    const maxHigh = high;
+  const zeroLow = low + (high - low) / 2;
+  const zeroHigh = low + (5 * (high - low)) / 6;
+  const maxLow = low + (high - low) / 3;
+  const maxHigh = high;
 
-    if (val >= zeroLow && val <= zeroHigh) {
-        return 0;
-    } else if (val <= maxLow || val >= maxHigh) {
-        return 255;
-    } else if (val > maxLow && val < zeroLow) {
-        return (zeroLow - val) / (zeroLow - maxLow) * 255;
-    }
+  if (val >= zeroLow && val <= zeroHigh) {
+    return 0;
+  } else if (val <= maxLow || val >= maxHigh) {
+    return 255;
+  } else if (val > maxLow && val < zeroLow) {
+    return ((zeroLow - val) / (zeroLow - maxLow)) * 255;
+  }
 
-    return Math.round((val - zeroHigh) / (maxHigh - zeroHigh) * 255);
+  return Math.round(((val - zeroHigh) / (maxHigh - zeroHigh)) * 255);
 }
