@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import Spinner from 'react-native-loading-spinner-overlay';
 
 import ShakeMapOverlay from './ShakeMapOverlay';
 
@@ -42,7 +41,7 @@ export default class ShakeMap extends PureComponent {
 
   render() {
     if (this.state.isLoading) {
-      return <Spinner visible={true} />;
+      return null;
     }
 
     const params = this.props.navigation.state.params;

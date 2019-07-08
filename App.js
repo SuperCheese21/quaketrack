@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { YellowBox } from 'react-native';
 
-import DrawerNavigator from './src/components/Navigators';
+import StackNavigatorContainer from './src/navigation/StackNavigator';
 
 import defaultFilters from './src/config/options.json';
 import { fetchData } from './src/api/fetchData';
@@ -56,7 +56,7 @@ export default class App extends PureComponent {
 
   render() {
     return (
-      <DrawerNavigator
+      <StackNavigatorContainer
         screenProps={{
           data: this.state.data,
           isLoading: this.state.isLoading,

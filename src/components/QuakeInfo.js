@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Linking, Text, View } from 'react-native';
-import Spinner from 'react-native-loading-spinner-overlay';
 
 import Button from './Button';
 
@@ -36,7 +35,7 @@ export default class QuakeInfo extends PureComponent {
 
   render() {
     if (!Object.keys(this.state.data).length) {
-      return <Spinner visible={true} />;
+      return null;
     }
 
     const color = this.props.navigation.state.params.color;

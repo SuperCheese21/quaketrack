@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
-import Spinner from 'react-native-loading-spinner-overlay';
+import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 import MapView, { Marker, Polygon } from 'react-native-maps';
 
-import { FilterIcon, MenuIcon } from './HeaderIcons';
 import QuakesMapOverlay from './QuakesMapOverlay';
 
 import { formatRGB, getRGB } from '../lib/util/colorUtil';
@@ -26,17 +25,15 @@ export default class QuakesMap extends PureComponent {
 
   static navigationOptions = ({ navigation }) => ({
     title: 'Map',
-    headerStyle: styles.headerStyle,
-    headerTitleStyle: styles.headerTitleStyle,
-    headerLeft: <MenuIcon navigation={navigation} />,
-    headerRight: <FilterIcon navigation={navigation} />
+    tabBarIcon: ({ tintColor }) => {
+      return <Icon name={'map-marker'} size={20} color={tintColor} />;
+    }
   });
 
   render() {
     const quakes = this.props.screenProps.data.features;
     return (
       <View style={{ flex: 1 }}>
-        <Spinner visible={this.state.isLoading} />
         <MapView
           style={{ flex: 1 }}
           initialRegion={{
@@ -73,7 +70,7 @@ export default class QuakesMap extends PureComponent {
                 description={formatTime(data.properties.time)}
                 onCalloutPress={() =>
                   this.props.navigation.navigate('QuakeInfo', {
-                    color: color,
+                    color,
                     url: data.properties.detail
                   })
                 }

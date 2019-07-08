@@ -1,29 +1,25 @@
 import React, { PureComponent } from 'react';
 import { FlatList, Text, View } from 'react-native';
-import Spinner from 'react-native-loading-spinner-overlay';
+import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
-import { FilterIcon, MenuIcon } from './HeaderIcons';
 import QuakesListItem from './QuakesListItem';
 import { formatTime } from '../lib/util/formatData';
 
 import styles from '../config/styles';
 
 export default class QuakesList extends PureComponent {
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'List',
-      headerStyle: styles.headerStyle,
-      headerTitleStyle: styles.headerTitleStyle,
-      headerLeft: <MenuIcon navigation={navigation} />,
-      headerRight: <FilterIcon navigation={navigation} />
-    };
-  };
+  static navigationOptions = ({ navigation }) => ({
+    title: 'List',
+    tabBarIcon: ({ tintColor }) => {
+      return <Icon name={'format-list-bulleted'} size={20} color={tintColor} />;
+    }
+  });
 
   _keyExtractor = (item, index) => item.id;
 
   render() {
     if (!Object.keys(this.props.screenProps.data).length) {
-      return <Spinner visible={true} />;
+      return null;
     }
 
     const metadata = this.props.screenProps.data.metadata;

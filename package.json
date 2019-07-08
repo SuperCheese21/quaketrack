@@ -4,6 +4,8 @@
   "private": true,
   "devDependencies": {
     "babel-preset-expo": "^5.2.0",
+    "eslint": "^6.0.1",
+    "eslint-config-universe": "^1.0.7",
     "jest-expo": "^33.0.2",
     "prettier": "^1.18.2",
     "react-test-renderer": "16.8.3"
@@ -21,14 +23,21 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo/vector-icons": "^10.0.3",
     "expo": "^33.0.7",
     "firebase": "^6.2.4",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-datepicker": "^1.7.2",
-    "react-native-loading-spinner-overlay": "^1.0.1",
+    "react-native-paper": "^2.16.0",
     "react-native-slider": "^0.11.0",
     "react-navigation": "^3.11.0",
+    "react-navigation-material-bottom-tabs": "^1.0.0",
     "react-navigation-slide-from-right-transition": "^1.0.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "universe/native"
+    ]
   }
 }
