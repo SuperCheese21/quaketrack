@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Picker, Text, View } from 'react-native';
-import Button from './Button';
+import Button from '../components/Button';
 
-import DatePicker from './DatePicker';
-import Switch from './Switch';
-import Slider from './Slider';
+import DatePicker from '../components/DatePicker';
+import Switch from '../components/Switch';
+import Slider from '../components/Slider';
 
 import styles from '../config/styles';
 

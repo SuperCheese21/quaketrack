@@ -1,16 +1,15 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
-import MapView, { Marker, Polygon } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
-import QuakesMapOverlay from './QuakesMapOverlay';
+import QuakesMapOverlay from '../components/QuakesMapOverlay';
 
 import { formatRGB, getRGB } from '../lib/util/colorUtil';
 import { formatTime } from '../lib/util/formatData';
 import mapStyle from '../config/map_styles/map_style.json';
 import plates from '../lib/data/tectonic_plates.json';
 import regions from '../lib/data/tectonic_regions.json';
-import styles from '../config/styles';
 
 export default class QuakesMap extends PureComponent {
   state = {

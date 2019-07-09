@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
-import QuakesListItem from './QuakesListItem';
+import QuakesListItem from '../components/QuakesListItem';
 import { formatTime } from '../lib/util/formatData';
 
 import styles from '../config/styles';
@@ -37,7 +37,10 @@ export default class QuakesList extends PureComponent {
           data={this.props.screenProps.data.features}
           keyExtractor={this._keyExtractor}
           renderItem={({ item }) => (
-            <QuakesListItem navigation={this.props.navigation} data={item} />
+            <QuakesListItem
+              stackNavigation={this.props.screenProps.stackNavigation}
+              data={item}
+            />
           )}
         />
       </View>

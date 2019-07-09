@@ -3,9 +3,8 @@ import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 import { FilterIcon, NotificationIcon } from '../components/HeaderIcons';
-import QuakesList from '../components/QuakesList';
-import QuakesMap from '../components/QuakesMap';
-import Notifications from '../components/Notifications';
+import QuakesList from '../screens/QuakesList';
+import QuakesMap from '../screens/QuakesMap';
 import colors from '../config/colors.json';
 
 export default class TabNavigatorContainer extends PureComponent {
@@ -15,7 +14,14 @@ export default class TabNavigatorContainer extends PureComponent {
   });
 
   render() {
-    return <TabNavigator screenProps={{ ...this.props.screenProps }} />;
+    return (
+      <TabNavigator
+        screenProps={{
+          stackNavigation: this.props.navigation,
+          ...this.props.screenProps
+        }}
+      />
+    );
   }
 }
 
@@ -23,8 +29,7 @@ const TabNavigator = createAppContainer(
   createMaterialBottomTabNavigator(
     {
       QuakesList,
-      QuakesMap,
-      Notifications
+      QuakesMap
     },
     {
       shifting: true,

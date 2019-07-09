@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Linking, Text, View } from 'react-native';
 
-import Button from './Button';
+import Button from '../components/Button';
 
 import { formatRGBA } from '../lib/util/colorUtil';
 import { formatTime, formatMagnitude } from '../lib/util/formatData';
