@@ -26,8 +26,8 @@ export default class App extends PureComponent {
     return this.state.filters;
   };
 
-  setFilters = newFilters => {
-    this.setState({ filters: newFilters });
+  setFilters = filters => {
+    this.setState({ filters });
   };
 
   onRefresh = () => {

@@ -1,7 +1,6 @@
 import { Platform } from 'react-native';
 import { Constants, Location, Notifications, Permissions } from 'expo';
 import * as firebase from 'firebase';
-import moment from 'moment';
 
 /**
  * [registerForPushNotificationsAsync description]

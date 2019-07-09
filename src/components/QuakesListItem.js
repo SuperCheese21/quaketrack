@@ -21,7 +21,7 @@ export default class QuakesListItem extends PureComponent {
         ]}
         onPress={() =>
           this.props.navigation.navigate('QuakeInfo', {
-            color: color,
+            color,
             url: data.properties.detail
           })
         }
