@@ -25,17 +25,17 @@ export default class QuakesList extends PureComponent {
       stackNavigation
     } = this.props.screenProps;
 
-    if (!Object.keys(data).length) {
-      return null;
-    }
-
     return (
       <View style={styles.listView}>
-        <Text style={styles.listTitle}>{data.metadata.title}</Text>
-        <Text style={styles.listInfo}>
-          {data.metadata.count} Earthquakes | Updated{' '}
-          {formatTime(data.metadata.generated)}
-        </Text>
+        {data.metadata && (
+          <>
+            <Text style={styles.listTitle}>{data.metadata.title}</Text>
+            <Text style={styles.listInfo}>
+              {data.metadata.count} Earthquakes | Updated{' '}
+              {formatTime(data.metadata.generated)}
+            </Text>
+          </>
+        )}
         <FlatList
           onRefresh={onRefresh}
           refreshing={isLoading}
