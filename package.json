@@ -17,6 +17,7 @@
     "android": "expo build:android",
     "ios": "expo build:ios",
     "format": "node_modules/.bin/prettier --config ./.prettierrc --write ./App.js ./src/**/*.js",
+    "eslint": "node_modules/.bin/eslint App.js src/**/*.js",
     "test": "jest"
   },
   "jest": {

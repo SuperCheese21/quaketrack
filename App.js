@@ -4,7 +4,7 @@ import { YellowBox } from 'react-native';
 import StackNavigatorContainer from './src/navigation/StackNavigator';
 
 import defaultFilters from './src/config/options.json';
-import { fetchData } from './src/api/fetchData';
+import { getUrl } from './src/api/fetchData';
 import firebaseInit from './src/lib/util/firebaseInit';
 
 export default class App extends PureComponent {
@@ -41,17 +41,15 @@ export default class App extends PureComponent {
     );
   };
 
-  updateData = () => {
-    fetchData(this.state.filters)
-      .then(res => {
-        this.setState({
-          isLoading: false,
-          data: res
-        });
-      })
-      .catch(err => {
-        console.error(err);
-      });
+  updateData = async () => {
+    const url = getUrl(this.state.filters);
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      this.setState({ isLoading: false, data });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   render() {

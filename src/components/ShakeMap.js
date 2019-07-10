@@ -3,7 +3,6 @@ import MapView, { Marker } from 'react-native-maps';
 
 import ShakeMapOverlay from './ShakeMapOverlay';
 
-import { getJson } from '../api/fetchData';
 import { formatRGB } from '../lib/util/colorUtil';
 import { formatTime } from '../lib/util/formatData';
 import mapStyle from '../config/map_styles/map_style_shakemap.json';
@@ -21,19 +20,16 @@ export default class ShakeMap extends PureComponent {
     headerTitleStyle: styles.headerTitleStyle
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { url } = this.props.navigation.state.params;
     if (url) {
-      getJson([url])
-        .then(res => {
-          this.setState({
-            data: res[0].features,
-            isLoading: false
-          });
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        this.setState({ data: data.features, isLoading: false });
+      } catch (err) {
+        console.error(err);
+      }
     } else {
       this.setState({ isLoading: false });
     }

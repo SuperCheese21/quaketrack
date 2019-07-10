@@ -5,7 +5,6 @@ import Button from '../components/Button';
 
 import { formatRGBA } from '../lib/util/colorUtil';
 import { formatTime, formatMagnitude } from '../lib/util/formatData';
-import { getJson } from '../api/fetchData';
 import colors from '../config/colors.json';
 import styles from '../config/styles';
 
@@ -14,17 +13,14 @@ export default class QuakeInfo extends PureComponent {
     data: {}
   };
 
-  componentDidMount() {
-    const url = this.props.navigation.state.params.url;
-    getJson([url])
-      .then(res => {
-        this.setState({
-          data: res[0]
-        });
-      })
-      .catch(err => {
-        console.error(err);
-      });
+  async componentDidMount() {
+    try {
+      const res = await fetch(this.props.navigation.state.params.url);
+      const data = await res.json();
+      this.setState({ data });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   static navigationOptions = {
