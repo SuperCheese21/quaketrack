@@ -64,7 +64,7 @@ export default class Filters extends PureComponent {
         <DatePicker
           label="Start Time"
           date={this.state.starttime}
-          subItem={true}
+          subItem
           enabled={this.state.dateEnabled}
           onValueChange={value => {
             this.setState({ starttime: value });
@@ -74,7 +74,7 @@ export default class Filters extends PureComponent {
         <DatePicker
           label="End Time"
           date={this.state.endtime}
-          subItem={true}
+          subItem
           enabled={this.state.dateEnabled}
           onValueChange={value => {
             this.setState({ endtime: value });

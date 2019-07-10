@@ -22,7 +22,7 @@ export default class ShakeMap extends PureComponent {
   };
 
   componentDidMount() {
-    const url = this.props.navigation.state.params.url;
+    const { url } = this.props.navigation.state.params;
     if (url) {
       getJson([url])
         .then(res => {
@@ -44,8 +44,9 @@ export default class ShakeMap extends PureComponent {
       return null;
     }
 
-    const params = this.props.navigation.state.params;
-    const data = params.data;
+    const {
+      params: { color, data }
+    } = this.props.navigation.state;
 
     return (
       <MapView
@@ -68,7 +69,7 @@ export default class ShakeMap extends PureComponent {
           }}
           title={'M' + data.properties.mag}
           description={formatTime(data.properties.time)}
-          pinColor={formatRGB(params.color)}
+          pinColor={formatRGB(color)}
         />
       </MapView>
     );

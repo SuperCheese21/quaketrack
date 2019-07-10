@@ -8,9 +8,9 @@ import QuakesMap from '../screens/QuakesMap';
 import colors from '../config/colors.json';
 
 export default class TabNavigatorContainer extends PureComponent {
-  static navigationOptions = ({ navigation }) => ({
-    headerLeft: <NotificationIcon navigation={navigation} />,
-    headerRight: <FilterIcon navigation={navigation} />
+  static navigationOptions = ({ navigation: stackNavigation }) => ({
+    headerLeft: <NotificationIcon stackNavigation={stackNavigation} />,
+    headerRight: <FilterIcon stackNavigation={stackNavigation} />
   });
 
   render() {

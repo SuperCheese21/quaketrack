@@ -18,29 +18,31 @@ export default class QuakesList extends PureComponent {
   _keyExtractor = (item, index) => item.id;
 
   render() {
-    if (!Object.keys(this.props.screenProps.data).length) {
+    const {
+      onRefresh,
+      isLoading,
+      data,
+      stackNavigation
+    } = this.props.screenProps;
+
+    if (!Object.keys(data).length) {
       return null;
     }
 
-    const metadata = this.props.screenProps.data.metadata;
-
     return (
       <View style={styles.listView}>
-        <Text style={styles.listTitle}>{metadata.title}</Text>
+        <Text style={styles.listTitle}>{data.metadata.title}</Text>
         <Text style={styles.listInfo}>
-          {metadata.count} Earthquakes | Updated{' '}
-          {formatTime(metadata.generated)}
+          {data.metadata.count} Earthquakes | Updated{' '}
+          {formatTime(data.metadata.generated)}
         </Text>
         <FlatList
-          onRefresh={this.props.screenProps.onRefresh}
-          refreshing={this.props.screenProps.isLoading}
-          data={this.props.screenProps.data.features}
+          onRefresh={onRefresh}
+          refreshing={isLoading}
+          data={data.features}
           keyExtractor={this._keyExtractor}
           renderItem={({ item }) => (
-            <QuakesListItem
-              stackNavigation={this.props.screenProps.stackNavigation}
-              data={item}
-            />
+            <QuakesListItem stackNavigation={stackNavigation} data={item} />
           )}
         />
       </View>

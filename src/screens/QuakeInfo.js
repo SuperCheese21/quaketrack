@@ -85,9 +85,9 @@ export default class QuakeInfo extends PureComponent {
           height={50}
           onPress={() =>
             this.props.navigation.navigate('ShakeMap', {
-              color: color,
-              data: data,
-              url: url
+              color,
+              data,
+              url
             })
           }
         />
