@@ -5,8 +5,7 @@ import ShakeMapOverlay from './ShakeMapOverlay';
 
 import { formatRGB } from '../lib/util/colorUtil';
 import { formatTime } from '../lib/util/formatData';
-import mapStyle from '../config/map_styles/map_style_shakemap.json';
-import styles from '../config/styles';
+import mapStyle from '../config/map_styles/map_style.json';
 
 export default class ShakeMap extends PureComponent {
   state = {
@@ -15,9 +14,7 @@ export default class ShakeMap extends PureComponent {
   };
 
   static navigationOptions = {
-    title: 'ShakeMap',
-    headerStyle: styles.headerStyle,
-    headerTitleStyle: styles.headerTitleStyle
+    title: 'ShakeMap'
   };
 
   async componentDidMount() {

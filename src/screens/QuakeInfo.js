@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Linking, Text, View } from 'react-native';
+import { BackHandler, Linking, Text, View } from 'react-native';
 
 import Button from '../components/Button';
 
@@ -14,6 +14,7 @@ export default class QuakeInfo extends PureComponent {
   };
 
   async componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     try {
       const res = await fetch(this.props.navigation.state.params.url);
       const data = await res.json();
@@ -23,10 +24,17 @@ export default class QuakeInfo extends PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
   static navigationOptions = {
-    title: 'Earthquake',
-    headerStyle: styles.headerStyle,
-    headerTitleStyle: styles.headerTitleStyle
+    title: 'Earthquake'
+  };
+
+  handleBackPress = () => {
+    this.props.navigation.goBack();
+    return true;
   };
 
   render() {

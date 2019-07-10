@@ -12,9 +12,7 @@ export default class Filters extends PureComponent {
   state = this.props.screenProps.getFilters();
 
   static navigationOptions = {
-    title: 'Filters',
-    headerStyle: styles.headerStyle,
-    headerTitleStyle: styles.headerTitleStyle
+    title: 'Filters'
   };
 
   render() {
