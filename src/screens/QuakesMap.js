@@ -68,7 +68,7 @@ export default class QuakesMap extends PureComponent {
                 title={'M' + data.properties.mag}
                 description={formatTime(data.properties.time)}
                 onCalloutPress={() =>
-                  this.props.navigation.navigate('QuakeInfo', {
+                  this.props.screenProps.stackNavigation.navigate('QuakeInfo', {
                     color,
                     url: data.properties.detail
                   })
