@@ -1,38 +1,36 @@
 {
-    "expo": {
-        "name": "QuakeTrack",
-        "description": "Earthquake map and alerts app for Android and iOS built on React Native",
-        "version": "0.3.0",
-        "sdkVersion": "33.0.0",
-        "scheme": "quaketrack",
-        "githubUrl": "https://github.com/SuperCheese21/quaketrack",
-        "updates": {
-            "fallbackToCacheTimeout": 0
-        },
-        "assetBundlePatterns": [
-            "**/*"
-        ],
-        "slug": "quaketrack",
-        "orientation": "portrait",
-        "ios": {
-            "bundleIdentifier": "com.stratospherelabs.quaketrack",
-            "supportsTablet": true,
-            "config": {
-                "googleMapsApiKey": "AIzaSyDjValuattV7Ox-ldmeg_eUaM9jNmJxnDY"
-            }
-        },
-        "android": {
-            "package": "com.stratospherelabs.quaketrack",
-            "config": {
-                "googleMaps": {
-                    "apiKey": "AIzaSyDjValuattV7Ox-ldmeg_eUaM9jNmJxnDY"
-                }
-            },
-            "googleServicesFile": "./google-services.json"
-        },
-        "icon": "./assets/ic_launcher-web.png",
-        "notification": {
-            "icon": "./assets/ic_notification.png"
+  "expo": {
+    "name": "QuakeTrack",
+    "description": "Earthquake map and alerts app for Android and iOS built on React Native",
+    "version": "0.3.0",
+    "sdkVersion": "33.0.0",
+    "scheme": "quaketrack",
+    "githubUrl": "https://github.com/SuperCheese21/quaketrack",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "slug": "quaketrack",
+    "orientation": "portrait",
+    "ios": {
+      "bundleIdentifier": "com.stratospherelabs.quaketrack",
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyDjValuattV7Ox-ldmeg_eUaM9jNmJxnDY"
+      }
+    },
+    "android": {
+      "package": "com.stratospherelabs.quaketrack",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDjValuattV7Ox-ldmeg_eUaM9jNmJxnDY"
         }
+      },
+      "googleServicesFile": "./google-services.json"
+    },
+    "icon": "./assets/ic_launcher-web.png",
+    "notification": {
+      "icon": "./assets/ic_notification.png"
     }
+  }
 }
