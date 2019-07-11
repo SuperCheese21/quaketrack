@@ -51,7 +51,7 @@ export default class QuakesMap extends PureComponent {
           />
 
           <QuakesMapOverlay
-            data={regions.tectonic.features}
+            data={regions.features}
             rgb={[255, 0, 0]}
             fillOpacity={0.1}
           />
