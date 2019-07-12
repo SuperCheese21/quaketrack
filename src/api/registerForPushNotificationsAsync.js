@@ -1,5 +1,8 @@
 import { Platform } from 'react-native';
-import { Constants, Location, Notifications, Permissions } from 'expo';
+import { Notifications } from 'expo';
+import Constants from 'expo-constants';
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
 import * as firebase from 'firebase';
 
 /**
