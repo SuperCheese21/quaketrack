@@ -2,10 +2,12 @@ import React, { PureComponent } from 'react';
 import { YellowBox } from 'react-native';
 
 import StackNavigatorContainer from './src/navigation/StackNavigator';
-
 import defaultFilters from './src/config/options.json';
 import { getUrl } from './src/api/fetchData';
-import firebaseInit from './src/lib/util/firebaseInit';
+import {
+  getFirebaseUsername,
+  getNotificationSettings
+} from './src/api/firebase';
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -13,13 +15,17 @@ export default class App extends PureComponent {
     this.state = {
       filters: defaultFilters,
       data: {},
+      notificationSettings: {},
       isLoading: true
     };
-    firebaseInit();
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.onRefresh();
+    const uid = await getFirebaseUsername();
+    const notificationSettings = await getNotificationSettings(uid);
+    console.log(notificationSettings);
+    this.setState({ notificationSettings });
   }
 
   getFilters = () => {
