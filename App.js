@@ -24,7 +24,6 @@ export default class App extends PureComponent {
     this.onRefresh();
     const uid = await getFirebaseUsername();
     const notificationSettings = await getNotificationSettings(uid);
-    console.log(notificationSettings);
     this.setState({ notificationSettings });
   }
 
