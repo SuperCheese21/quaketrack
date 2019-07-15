@@ -36,6 +36,15 @@ export function getFirebaseUsername() {
  * @return {[type]}          [description]
  */
 export async function getNotificationSettings(uid) {
+  // Create new notification channel on Android device
+  if (Platform.OS === 'android') {
+    await Notifications.createChannelAndroidAsync('quake-alerts', {
+      name: 'Alerts',
+      sound: true,
+      priority: 'max',
+      vibrate: true
+    });
+  }
   try {
     // Get user's notification settings from firebase
     const ref = firebase.database().ref('users');
