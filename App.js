@@ -1,13 +1,10 @@
 import React, { PureComponent } from 'react';
 import { YellowBox } from 'react-native';
 
-import StackNavigatorContainer from './src/navigation/StackNavigator';
 import defaultFilters from './src/config/options.json';
 import { getUrl } from './src/api/fetchData';
-import {
-  getFirebaseUsername,
-  getNotificationSettings
-} from './src/api/firebase';
+import { initNotifications } from './src/api/firebase';
+import StackNavigatorContainer from './src/navigation/StackNavigator';
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -22,8 +19,7 @@ export default class App extends PureComponent {
 
   async componentDidMount() {
     this.onRefresh();
-    const uid = await getFirebaseUsername();
-    const notificationSettings = await getNotificationSettings(uid);
+    const notificationSettings = await initNotifications();
     this.setState({ notificationSettings });
   }
 

@@ -8,10 +8,85 @@ import * as firebase from 'firebase';
 import firebaseConfig from '../config/firebaseConfig.json';
 
 /**
+ * [initNotifications description]
+ * @return {[type]} [description]
+ */
+export async function initNotifications() {
+  // Create new notification channel on Android device
+  if (Platform.OS === 'android') {
+    await Notifications.createChannelAndroidAsync('quake-alerts', {
+      name: 'Alerts',
+      sound: true,
+      priority: 'max',
+      vibrate: true
+    });
+  }
+  // Get anonymous firebase username
+  const uid = await getFirebaseUsername();
+
+  // Return notification settings from database
+  return await getNotificationSettings(uid);
+}
+
+/**
+ * [getNotificationSettings description]
+ * @param  {[type]} username [description]
+ * @return {[type]}          [description]
+ */
+export async function getNotificationSettings(uid) {
+  // Update user location and expo push token
+  const token = await getPushToken();
+  const location = await getLocation();
+
+  // Get user's notification settings from firebase
+  const ref = firebase.database().ref('users');
+  const snapshot = await ref.once('value');
+  const data = snapshot.child(uid);
+
+  const notificationSettings = {
+    minMagnitude: data.minMagnitude || 5,
+    notifications: data.notifications || true,
+    updates: data.updates || false
+  };
+
+  console.log(notificationSettings);
+
+  // Update users settings in database
+  await updateNotificationSettings(uid, {
+    ...notificationSettings,
+    expoPushToken: token,
+    location: {
+      coords: {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude
+      },
+      accuracy: location.coords.accuracy,
+      mocked: location.mocked
+    },
+    updated: location.timestamp
+  });
+
+  // Return notification settings
+  return notificationSettings;
+}
+
+/**
+ * [registerForPushNotificationsAsync description]
+ * @param  {[type]} uid [description]
+ */
+export async function updateNotificationSettings(uid, settings) {
+  await firebase
+    .database()
+    .ref('users')
+    .child(uid)
+    .update(settings);
+}
+
+/**
  * [getFirebaseUsername description]
  * @return {[type]} [description]
  */
-export function getFirebaseUsername() {
+function getFirebaseUsername() {
   return new Promise((resolve, reject) => {
     // Initialize firebase app
     firebase.initializeApp(firebaseConfig);
@@ -28,74 +103,6 @@ export function getFirebaseUsername() {
       }
     });
   });
-}
-
-/**
- * [getNotificationSettings description]
- * @param  {[type]} username [description]
- * @return {[type]}          [description]
- */
-export async function getNotificationSettings(uid) {
-  // Create new notification channel on Android device
-  if (Platform.OS === 'android') {
-    await Notifications.createChannelAndroidAsync('quake-alerts', {
-      name: 'Alerts',
-      sound: true,
-      priority: 'max',
-      vibrate: true
-    });
-  }
-  try {
-    // Get user's notification settings from firebase
-    const ref = firebase.database().ref('users');
-    const snapshot = await ref.once('value');
-    let notificationSettings = snapshot.child(uid);
-
-    // If user is not in database, add user to database with default settings
-    if (!notificationSettings) {
-      notificationSettings = await updateNotificationSettings(uid, {
-        minMagnitude: 5,
-        notifications: true
-      });
-    }
-
-    // return notification settings
-    return notificationSettings;
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-/**
- * [registerForPushNotificationsAsync description]
- * @param  {[type]} uid [description]
- */
-export async function updateNotificationSettings(uid, notificationSettings) {
-  const token = await getPushToken();
-  const location = await getLocation();
-
-  const newSettings = {
-    expoPushToken: token,
-    minMagnitude: notificationSettings.minMagnitude,
-    notifications: notificationSettings.notifications,
-    location: {
-      coords: {
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude
-      },
-      accuracy: location.coords.accuracy,
-      mocked: location.mocked
-    },
-    updated: location.timestamp
-  };
-
-  await firebase
-    .database()
-    .ref('users')
-    .child(uid)
-    .update(newSettings);
-
-  return newSettings;
 }
 
 /**
@@ -140,6 +147,9 @@ async function getLocation() {
       return;
     }
 
-    return await Location.getCurrentPositionAsync({});
+    return await Location.getCurrentPositionAsync({
+      accuracy: 1,
+      maximumAge: 3600000
+    });
   }
 }
