@@ -42,14 +42,11 @@ export async function getNotificationSettings(uid) {
   const ref = firebase.database().ref('users');
   const snapshot = await ref.once('value');
   const data = snapshot.child(uid);
-
   const notificationSettings = {
     minMagnitude: data.minMagnitude || 5,
     notifications: data.notifications || true,
     updates: data.updates || false
   };
-
-  console.log(notificationSettings);
 
   // Update users settings in database
   await updateNotificationSettings(uid, {
