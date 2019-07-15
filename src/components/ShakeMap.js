@@ -25,7 +25,7 @@ export default class ShakeMap extends PureComponent {
         const data = await res.json();
         this.setState({ data: data.features, isLoading: false });
       } catch (err) {
-        console.error(err);
+        console.error(err.message);
       }
     } else {
       this.setState({ isLoading: false });

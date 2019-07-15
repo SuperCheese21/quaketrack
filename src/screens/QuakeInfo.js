@@ -20,7 +20,7 @@ export default class QuakeInfo extends PureComponent {
       const data = await res.json();
       this.setState({ data });
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
     }
   }
 

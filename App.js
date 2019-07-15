@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { YellowBox } from 'react-native';
+import { AppLoading } from 'expo';
 
 import defaultFilters from './src/config/options.json';
 import { getUrl } from './src/api/fetchData';
@@ -7,20 +8,23 @@ import { initNotifications } from './src/api/firebase';
 import StackNavigatorContainer from './src/navigation/StackNavigator';
 
 export default class App extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filters: defaultFilters,
-      data: {},
-      notificationSettings: {},
-      isLoading: true
-    };
-  }
+  state = {
+    filters: defaultFilters,
+    data: {},
+    notificationSettings: {},
+    isLoading: true
+  };
 
   async componentDidMount() {
-    this.onRefresh();
     const notificationSettings = await initNotifications();
-    this.setState({ notificationSettings });
+    this.setState(
+      {
+        notificationSettings
+      },
+      () => {
+        this.updateData();
+      }
+    );
   }
 
   getFilters = () => {
@@ -49,11 +53,14 @@ export default class App extends PureComponent {
       const data = await res.json();
       this.setState({ isLoading: false, data });
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
     }
   };
 
   render() {
+    if (!Object.keys(this.state.notificationSettings).length) {
+      return <AppLoading />;
+    }
     return (
       <StackNavigatorContainer
         screenProps={{
