@@ -21,36 +21,20 @@ export async function initNotifications() {
       vibrate: true
     });
   }
-  // Get anonymous firebase username
+
+  // Get user's notification settings from database
   const uid = await getFirebaseUsername();
+  const data = await getNotificationSettings(uid);
 
-  // Return notification settings from database
-  return await getNotificationSettings(uid);
-}
-
-/**
- * [getNotificationSettings description]
- * @param  {[type]} username [description]
- * @return {[type]}          [description]
- */
-export async function getNotificationSettings(uid) {
-  // Update user location and expo push token
+  // Get user's location and expo push token
   const token = await getPushToken();
   const location = await getLocation();
 
-  // Get user's notification settings from firebase
-  const ref = firebase.database().ref('users');
-  const snapshot = await ref.once('value');
-  const data = snapshot.child(uid);
+  // Update notification settings in database
   const notificationSettings = {
     minMagnitude: data.minMagnitude || 5,
     notifications: data.notifications || true,
-    updates: data.updates || false
-  };
-
-  // Update users settings in database
-  await updateNotificationSettings(uid, {
-    ...notificationSettings,
+    updates: data.updates || false,
     expoPushToken: token,
     location: {
       coords: {
@@ -61,10 +45,23 @@ export async function getNotificationSettings(uid) {
       mocked: location.mocked
     },
     updated: location.timestamp
-  });
+  };
+  await updateNotificationSettings(uid, notificationSettings);
 
-  // Return notification settings
+  // Return notification settings from database
   return notificationSettings;
+}
+
+/**
+ * [getNotificationSettings description]
+ * @param  {[type]} username [description]
+ * @return {[type]}          [description]
+ */
+export async function getNotificationSettings(uid) {
+  // Get user's notification settings from firebase
+  const ref = firebase.database().ref('users');
+  const snapshot = await ref.once('value');
+  return snapshot.child(uid);
 }
 
 /**
