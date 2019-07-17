@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { YellowBox } from 'react-native';
-import { AppLoading } from 'expo';
 
 import defaultFilters from './src/config/options.json';
 import { getUrl } from './src/api/fetchData';
@@ -16,15 +15,8 @@ export default class App extends PureComponent {
   };
 
   async componentDidMount() {
-    const notificationSettings = await initNotifications();
-    this.setState(
-      {
-        notificationSettings
-      },
-      () => {
-        this.updateData();
-      }
-    );
+    await initNotifications();
+    this.updateData();
   }
 
   getFilters = () => {
@@ -58,9 +50,6 @@ export default class App extends PureComponent {
   };
 
   render() {
-    if (!Object.keys(this.state.notificationSettings).length) {
-      return <AppLoading />;
-    }
     return (
       <StackNavigatorContainer
         screenProps={{
