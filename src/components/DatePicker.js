@@ -1,34 +1,18 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-
-import DatePicker from 'react-native-datepicker';
 import moment from 'moment';
 
-const SettingsDatePicker = props => (
-  <View
-    style={[
-      styles.settingsItem,
-      {
-        paddingLeft: props.subItem ? 20 : 0,
-        opacity: props.enabled ? 1 : 0.5
-      }
-    ]}
-  >
-    <Text
-      style={[
-        styles.settingsItemLabel,
-        {
-          fontWeight: props.subItem ? 'normal' : 'bold'
-        }
-      ]}
-    >
-      {props.label}
-    </Text>
+import DatePicker from 'react-native-datepicker';
+import SettingsItem from './SettingsItem';
+import SettingsItemLabel from './SettingsItemLabel';
+
+const SettingsDatePicker = ({ date, disabled, label, onValueChange }) => (
+  <SettingsItem subItem disabled={disabled}>
+    <SettingsItemLabel subItem>{label}</SettingsItemLabel>
 
     <DatePicker
-      style={{ width: 200, alignSelf: 'center' }}
-      date={props.date}
-      disabled={!props.enabled}
+      style={styles.datePicker}
+      date={date}
+      disabled={disabled}
       mode="date"
       placeholder="select date"
       format="YYYY-MM-DD"
@@ -37,19 +21,28 @@ const SettingsDatePicker = props => (
       confirmBtnText="Select"
       cancelBtnText="Cancel"
       customStyles={{
-        dateIcon: {
-          position: 'absolute',
-          left: 0,
-          top: 4,
-          marginLeft: 0
-        },
-        dateInput: {
-          marginLeft: 36
-        }
+        dateIcon: styles.dateIcon,
+        dateInput: styles.dateInput
       }}
-      onDateChange={props.onValueChange}
+      onDateChange={onValueChange}
     />
-  </View>
+  </SettingsItem>
 );
+
+const styles = {
+  dateIcon: {
+    position: 'absolute',
+    left: 0,
+    top: 4,
+    marginLeft: 0
+  },
+  dateInput: {
+    marginLeft: 36
+  },
+  datePicker: {
+    width: 200,
+    alignSelf: 'center'
+  }
+};
 
 export default SettingsDatePicker;
