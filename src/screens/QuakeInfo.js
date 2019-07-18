@@ -1,24 +1,26 @@
 import React, { PureComponent } from 'react';
 import { BackHandler, Linking, Text, View } from 'react-native';
 
-import Button from '../components/Button';
-
 import { formatRGBA } from '../lib/util/colorUtil';
 import { formatTime, formatMagnitude } from '../lib/util/formatData';
-import colors from '../config/colors.json';
-import styles from '../config/styles';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 export default class QuakeInfo extends PureComponent {
   state = {
-    data: {}
+    quakeData: {},
+    shakeMapData: {}
+  };
+
+  static navigationOptions = {
+    title: 'Earthquake'
   };
 
   async componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     try {
       const res = await fetch(this.props.navigation.state.params.url);
-      const data = await res.json();
-      this.setState({ data });
+      const quakeData = await res.json();
+      this.setState({ quakeData });
     } catch (err) {
       console.error(err.message);
     }
@@ -28,10 +30,6 @@ export default class QuakeInfo extends PureComponent {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
   }
 
-  static navigationOptions = {
-    title: 'Earthquake'
-  };
-
   handleBackPress = () => {
     this.props.navigation.goBack();
     return true;
@@ -39,11 +37,11 @@ export default class QuakeInfo extends PureComponent {
 
   render() {
     if (!Object.keys(this.state.data).length) {
-      return null;
+      return <LoadingSpinner />;
     }
 
     const color = this.props.navigation.state.params.color;
-    const data = this.state.data;
+    const data = this.state.quakeData;
     const url = data.properties.products.shakemap
       ? data.properties.products.shakemap[0].contents['download/cont_mi.json']
           .url
@@ -82,7 +80,7 @@ export default class QuakeInfo extends PureComponent {
         <Text style={{ color: 'black' }}>
           Significance: {data.properties.sig}
         </Text>
-        <Button
+        {/* <Button
           text="ShakeMap"
           color={colors.header}
           textColor="black"
@@ -94,8 +92,32 @@ export default class QuakeInfo extends PureComponent {
               url
             })
           }
-        />
+        /> */}
       </View>
     );
   }
 }
+
+const styles = {
+  infoLink: {
+    height: 40,
+    color: 'blue',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    textDecorationLine: 'underline'
+  },
+  infoTitle: {
+    height: 50,
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'center',
+    textAlignVertical: 'center'
+  },
+  infoView: {
+    borderRadius: 10,
+    flex: 1,
+    margin: 5,
+    padding: 10
+  }
+};

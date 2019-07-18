@@ -4,8 +4,6 @@ import { Text, View } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import moment from 'moment';
 
-import styles from '../config/styles';
-
 const SettingsDatePicker = props => (
   <View
     style={[

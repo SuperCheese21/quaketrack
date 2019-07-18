@@ -2,8 +2,6 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import Slider from 'react-native-slider';
 
-import styles from '../config/styles';
-
 const SettingsSlider = props => (
   <View style={{ height: 65 }}>
     <View style={{ flexDirection: 'row', flex: 1 }}>
@@ -28,5 +26,15 @@ const SettingsSlider = props => (
     </View>
   </View>
 );
+
+const styles = {
+  settingsSliderValue: {
+    fontSize: 16,
+    color: 'black',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    flex: 0.2
+  }
+};
 
 export default SettingsSlider;

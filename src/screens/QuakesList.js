@@ -4,8 +4,7 @@ import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
 import QuakesListItem from '../components/QuakesListItem';
 import { formatTime } from '../lib/util/formatData';
-
-import styles from '../config/styles';
+import colors from '../config/colors.json';
 
 export default class QuakesList extends PureComponent {
   static navigationOptions = ({ navigation }) => ({
@@ -49,3 +48,24 @@ export default class QuakesList extends PureComponent {
     );
   }
 }
+
+const styles = {
+  listInfo: {
+    fontSize: 12,
+    color: 'black',
+    textAlign: 'center',
+    height: 30
+  },
+  listTitle: {
+    fontSize: 15,
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textAlignVertical: 'bottom',
+    height: 30
+  },
+  listView: {
+    backgroundColor: colors.background,
+    flex: 1
+  }
+};

@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Picker, Text, View } from 'react-native';
-import Button from '../components/Button';
 
 import DatePicker from '../components/DatePicker';
 import Switch from '../components/Switch';
 import Slider from '../components/Slider';
 
-import styles from '../config/styles';
+import colors from '../config/colors.json';
 
 export default class Filters extends PureComponent {
   state = this.props.screenProps.getFilters();
@@ -97,26 +96,25 @@ export default class Filters extends PureComponent {
             <Picker.Item label="Magnitude (ascending)" value="magnitude-asc" />
           </Picker>
         </View>
-
-        <View style={styles.settingsItem}>
-          <Button
-            text="Cancel"
-            color="#ff0000"
-            textColor="#ffffff"
-            onPress={() => this.props.navigation.goBack()}
-          />
-          <Button
-            text="Save and Close"
-            color="#0000ff"
-            textColor="#ffffff"
-            onPress={() => {
-              this.props.screenProps.setFilters(this.state);
-              this.props.navigation.goBack();
-              this.props.screenProps.onRefresh();
-            }}
-          />
-        </View>
       </View>
     );
   }
 }
+
+const styles = {
+  settingsView: {
+    flex: 1,
+    backgroundColor: colors.background,
+    padding: 10
+  },
+  settingsItem: {
+    height: 65,
+    flexDirection: 'row'
+  },
+  settingsItemLabel: {
+    fontSize: 16,
+    color: 'black',
+    textAlignVertical: 'center',
+    flex: 1
+  }
+};

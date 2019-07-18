@@ -10,7 +10,6 @@ export default class App extends PureComponent {
   state = {
     filters: defaultFilters,
     data: {},
-    notificationSettings: {},
     isLoading: true
   };
 
