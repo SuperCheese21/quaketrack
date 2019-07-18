@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
-import { Picker } from 'react-native';
+import { Picker, Text } from 'react-native';
+import { Switch } from 'react-native-paper';
 
 import DatePicker from '../components/DatePicker';
 import SettingsContainer from '../components/SettingsContainer';
 import SettingsItem from '../components/SettingsItem';
 import SettingsItemLabel from '../components/SettingsItemLabel';
-import Switch from '../components/Switch';
 import Slider from '../components/Slider';
+
+import colors from '../config/colors.json';
 
 export default class Filters extends PureComponent {
   state = this.props.screenProps.getFilters();
@@ -19,28 +21,31 @@ export default class Filters extends PureComponent {
     return (
       <SettingsContainer>
         <SettingsItem>
-          <Slider
-            label="Minimum Magnitude"
-            minimumValue={1}
-            maximumValue={9}
-            step={0.1}
-            value={this.state.minmagnitude}
-            onValueChange={value =>
-              this.setState({
-                minmagnitude: Math.round(10 * value) / 10
-              })
-            }
-          />
+          <SettingsItemLabel text="Minimum Magnitude" />
+          <Text style={styles.settingsSliderValue}>
+            {this.state.minmagnitude}
+          </Text>
         </SettingsItem>
 
+        <Slider
+          label="Minimum Magnitude"
+          minimumValue={1}
+          maximumValue={9}
+          step={0.1}
+          value={this.state.minmagnitude}
+          onValueChange={value =>
+            this.setState({
+              minmagnitude: Math.round(10 * value) / 10
+            })
+          }
+        />
+
         <SettingsItem>
-          <SettingsItemLabel>Number of Earthquakes</SettingsItemLabel>
+          <SettingsItemLabel text="Number of Earthquakes" />
           <Picker
             style={{ flex: 1, alignSelf: 'center' }}
             selectedValue={this.state.limit}
-            onValueChange={value => {
-              this.setState({ limit: value });
-            }}
+            onValueChange={limit => this.setState({ limit })}
           >
             <Picker.Item label="10" value={10} />
             <Picker.Item label="50" value={50} />
@@ -51,44 +56,38 @@ export default class Filters extends PureComponent {
         </SettingsItem>
 
         <SettingsItem>
+          <SettingsItemLabel text="Set Date Range" />
           <Switch
-            label="Set Date Range"
             value={this.state.dateEnabled}
-            onValueChange={value => {
-              this.setState({ dateEnabled: value });
-            }}
+            onValueChange={dateEnabled => this.setState({ dateEnabled })}
+            color={colors.accent}
           />
+        </SettingsItem>
 
+        <SettingsItem subItem disabled={!this.state.dateEnabled}>
+          <SettingsItemLabel subItem text="Start Time" />
           <DatePicker
-            label="Start Time"
             date={this.state.starttime}
-            subItem
-            enabled={this.state.dateEnabled}
-            onValueChange={value => {
-              this.setState({ starttime: value });
-            }}
+            disabled={!this.state.dateEnabled}
+            onValueChange={starttime => this.setState({ starttime })}
           />
+        </SettingsItem>
 
+        <SettingsItem subItem disabled={!this.state.dateEnabled}>
+          <SettingsItemLabel subItem text="End Time" />
           <DatePicker
-            label="End Time"
             date={this.state.endtime}
-            subItem
-            enabled={this.state.dateEnabled}
-            onValueChange={value => {
-              this.setState({ endtime: value });
-            }}
+            disabled={!this.state.dateEnabled}
+            onValueChange={endtime => this.setState({ endtime })}
           />
         </SettingsItem>
 
         <SettingsItem>
-          <SettingsItemLabel>Order By</SettingsItemLabel>
-
+          <SettingsItemLabel text="Order By" />
           <Picker
             style={{ flex: 1, alignSelf: 'center' }}
             selectedValue={this.state.orderby}
-            onValueChange={value => {
-              this.setState({ orderby: value });
-            }}
+            onValueChange={orderby => this.setState({ orderby })}
           >
             <Picker.Item label="Time (descending)" value="time" />
             <Picker.Item label="Time (ascending)" value="time-asc" />
@@ -100,3 +99,13 @@ export default class Filters extends PureComponent {
     );
   }
 }
+
+const styles = {
+  settingsSliderValue: {
+    fontSize: 16,
+    color: 'black',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    flex: 0.2
+  }
+};
