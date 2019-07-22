@@ -3,19 +3,21 @@ import { YellowBox } from 'react-native';
 
 import defaultFilters from './src/config/options.json';
 import { getUrl } from './src/api/fetchData';
-import { initNotifications } from './src/api/firebase';
+import { getFirebaseUsername, initNotifications } from './src/api/firebase';
 import StackNavigatorContainer from './src/navigation/StackNavigator';
 
 export default class App extends PureComponent {
   state = {
     filters: defaultFilters,
     data: {},
-    isLoading: true
+    isLoading: true,
+    uid: null
   };
 
   async componentDidMount() {
-    await initNotifications();
-    this.updateData();
+    const uid = await getFirebaseUsername();
+    await initNotifications(uid);
+    this.setState({ uid }, () => this.updateData());
   }
 
   getFilters = () => {
@@ -54,6 +56,7 @@ export default class App extends PureComponent {
         screenProps={{
           data: this.state.data,
           isLoading: this.state.isLoading,
+          uid: this.state.uid,
           onRefresh: this.onRefresh,
           getFilters: this.getFilters,
           setFilters: this.setFilters

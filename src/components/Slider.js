@@ -3,6 +3,10 @@ import Slider from 'react-native-slider';
 
 const SettingsSlider = props => (
   <Slider
+    disabled={props.disabled}
+    style={{
+      opacity: props.disabled ? 0.5 : 1
+    }}
     minimumValue={props.minimumValue}
     maximumValue={props.maximumValue}
     step={props.step}

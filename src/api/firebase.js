@@ -11,7 +11,7 @@ import firebaseConfig from '../config/firebaseConfig.json';
  * [initNotifications description]
  * @return {[type]} [description]
  */
-export async function initNotifications() {
+export async function initNotifications(uid) {
   // Create new notification channel on Android device
   if (Platform.OS === 'android') {
     await Notifications.createChannelAndroidAsync('quake-alerts', {
@@ -29,7 +29,6 @@ export async function initNotifications() {
   }
 
   // Get user's notification settings from database
-  const uid = await getFirebaseUsername();
   const data = await getNotificationSettings(uid);
 
   // Get user's location and expo push token
@@ -67,7 +66,7 @@ export async function getNotificationSettings(uid) {
   // Get user's notification settings from firebase
   const ref = firebase.database().ref('users');
   const snapshot = await ref.once('value');
-  return snapshot.child(uid);
+  return snapshot.child(uid).val();
 }
 
 /**
@@ -86,7 +85,7 @@ export async function updateNotificationSettings(uid, settings) {
  * [getFirebaseUsername description]
  * @return {[type]} [description]
  */
-function getFirebaseUsername() {
+export function getFirebaseUsername() {
   return new Promise((resolve, reject) => {
     // Initialize firebase app
     firebase.initializeApp(firebaseConfig);
