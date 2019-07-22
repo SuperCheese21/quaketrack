@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react';
 import { BackHandler, Linking, Text, View } from 'react-native';
 
+import LoadingSpinner from '../components/LoadingSpinner';
+import ShakeMap from '../components/ShakeMap';
 import { formatRGBA } from '../lib/util/colorUtil';
 import { formatTime, formatMagnitude } from '../lib/util/formatData';
-import LoadingSpinner from '../components/LoadingSpinner';
 
 export default class QuakeInfo extends PureComponent {
   state = {
-    quakeData: {},
-    shakeMapData: {}
+    shakeMapData: [],
+    quakeData: {}
   };
 
   static navigationOptions = {
@@ -20,7 +21,8 @@ export default class QuakeInfo extends PureComponent {
     try {
       const res = await fetch(this.props.navigation.state.params.url);
       const quakeData = await res.json();
-      this.setState({ quakeData });
+      const shakeMapData = await this.getShakeMapData(quakeData);
+      this.setState({ shakeMapData, quakeData });
     } catch (err) {
       console.error(err.message);
     }
@@ -30,22 +32,40 @@ export default class QuakeInfo extends PureComponent {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
   }
 
+  getShakeMapData = async ({
+    properties: {
+      products: { shakemap }
+    }
+  }) => {
+    if (shakemap) {
+      const res = await fetch(
+        shakemap[0].contents['download/cont_mi.json'].url
+      );
+      const json = await res.json();
+      return json.features;
+    } else {
+      return {};
+    }
+  };
+
   handleBackPress = () => {
     this.props.navigation.goBack();
     return true;
   };
 
   render() {
-    if (!Object.keys(this.state.data).length) {
+    if (!Object.keys(this.state.quakeData).length) {
       return <LoadingSpinner />;
     }
 
-    const color = this.props.navigation.state.params.color;
-    const data = this.state.quakeData;
-    const url = data.properties.products.shakemap
-      ? data.properties.products.shakemap[0].contents['download/cont_mi.json']
-          .url
-      : '';
+    const { color } = this.props.navigation.state.params;
+    const {
+      shakeMapData,
+      quakeData: {
+        geometry: { coordinates },
+        properties
+      }
+    } = this.state;
 
     return (
       <View
@@ -56,43 +76,34 @@ export default class QuakeInfo extends PureComponent {
           }
         ]}
       >
-        <Text style={styles.infoTitle}>
-          {'M ' + formatMagnitude(data.properties.mag, 2)}
-        </Text>
-        <Text
-          style={styles.infoLink}
-          onPress={() => Linking.openURL(data.properties.url)}
-        >
-          {data.properties.place}
-        </Text>
-        <Text style={{ color: 'black' }}>
-          Depth: {data.geometry.coordinates[2]} km
-        </Text>
-        <Text style={{ color: 'black' }}>
-          Occurred {formatTime(data.properties.time)}
-        </Text>
-        <Text style={{ color: 'black' }}>
-          Updated {formatTime(data.properties.updated)}
-        </Text>
-        <Text style={{ color: 'black' }}>
-          Felt: {data.properties.felt || 'N/A'}
-        </Text>
-        <Text style={{ color: 'black' }}>
-          Significance: {data.properties.sig}
-        </Text>
-        {/* <Button
-          text="ShakeMap"
-          color={colors.header}
-          textColor="black"
-          height={50}
-          onPress={() =>
-            this.props.navigation.navigate('ShakeMap', {
-              color,
-              data,
-              url
-            })
-          }
-        /> */}
+        <View style={{ marginBottom: 5 }}>
+          <Text style={styles.infoTitle}>
+            {'M ' + formatMagnitude(properties.mag, 2)}
+          </Text>
+          <Text
+            style={styles.infoLink}
+            onPress={() => Linking.openURL(properties.url)}
+          >
+            {properties.place}
+          </Text>
+          <Text style={{ color: 'black' }}>Depth: {coordinates[2]} km</Text>
+          <Text style={{ color: 'black' }}>
+            Occurred {formatTime(properties.time)}
+          </Text>
+          <Text style={{ color: 'black' }}>
+            Updated {formatTime(properties.updated)}
+          </Text>
+          <Text style={{ color: 'black' }}>
+            Felt: {properties.felt || 'N/A'}
+          </Text>
+          <Text style={{ color: 'black' }}>Significance: {properties.sig}</Text>
+        </View>
+
+        <ShakeMap
+          color={color}
+          coordinates={coordinates}
+          shakeMapData={shakeMapData}
+        />
       </View>
     );
   }

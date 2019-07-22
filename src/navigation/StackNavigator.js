@@ -2,7 +2,6 @@ import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 import TabNavigator from './TabNavigator';
 import QuakeInfo from '../screens/QuakeInfo';
-import ShakeMap from '../components/ShakeMap';
 import Filters from '../screens/Filters';
 import Notifications from '../screens/Notifications';
 import colors from '../config/colors.json';
@@ -12,7 +11,6 @@ const StackNavigator = createAppContainer(
     {
       TabNavigator,
       QuakeInfo,
-      ShakeMap,
       Filters,
       Notifications
     },

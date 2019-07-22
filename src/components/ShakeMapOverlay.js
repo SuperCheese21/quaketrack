@@ -1,9 +1,9 @@
 import React from 'react';
 import { Polyline } from 'react-native-maps';
 
-const ShakeMapOverlay = props => {
-  if (props.data.length) {
-    return props.data.map((feature, i) =>
+const ShakeMapOverlay = ({ data }) => {
+  if (data.length) {
+    return data.map((feature, i) =>
       feature.geometry.coordinates.map((line, j) => (
         <Polyline
           key={i + '_' + j}
