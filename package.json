@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "babel-preset-expo": "^5.2.0",
-    "eslint": "^6.0.1",
+    "eslint": "^6.1.0",
     "eslint-config-universe": "^1.0.7",
     "jest-expo": "^33.0.2",
     "prettier": "^1.18.2",
@@ -30,7 +30,7 @@
     "expo-constants": "~5.0.1",
     "expo-location": "~5.0.1",
     "expo-permissions": "~5.0.1",
-    "firebase": "^6.3.0",
+    "firebase": "^6.3.1",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-datepicker": "^1.7.2",

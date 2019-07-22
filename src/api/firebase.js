@@ -23,7 +23,7 @@ export async function initNotifications() {
     await Notifications.createChannelAndroidAsync('quake-updates', {
       name: 'Updates',
       sound: false,
-      priority: 'min',
+      priority: 'default',
       vibrate: false
     });
   }
