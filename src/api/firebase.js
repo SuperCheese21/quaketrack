@@ -20,6 +20,12 @@ export async function initNotifications() {
       priority: 'max',
       vibrate: true
     });
+    await Notifications.createChannelAndroidAsync('quake-updates', {
+      name: 'Updates',
+      sound: false,
+      priority: 'min',
+      vibrate: false
+    });
   }
 
   // Get user's notification settings from database

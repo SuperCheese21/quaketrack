@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Picker, Text } from 'react-native';
-import { Switch } from 'react-native-paper';
+import { Button, Switch } from 'react-native-paper';
 
 import DatePicker from '../components/DatePicker';
 import SettingsContainer from '../components/SettingsContainer';
@@ -94,6 +94,29 @@ export default class Filters extends PureComponent {
             <Picker.Item label="Magnitude (descending)" value="magnitude" />
             <Picker.Item label="Magnitude (ascending)" value="magnitude-asc" />
           </Picker>
+        </SettingsItem>
+
+        <SettingsItem
+          style={{ height: 'auto', justifyContent: 'space-around' }}
+        >
+          <Button
+            mode="contained"
+            color="red"
+            onPress={() => this.props.navigation.goBack()}
+          >
+            Cancel
+          </Button>
+          <Button
+            mode="contained"
+            color={colors.accent}
+            onPress={() => {
+              this.props.screenProps.setFilters(this.state);
+              this.props.navigation.goBack();
+              this.props.screenProps.onRefresh();
+            }}
+          >
+            Save & Close
+          </Button>
         </SettingsItem>
       </SettingsContainer>
     );
