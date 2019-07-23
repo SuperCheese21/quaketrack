@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
+import { MapView } from 'expo';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
-import MapView, { Marker } from 'react-native-maps';
 
 import QuakesMapOverlay from '../components/QuakesMapOverlay';
 
@@ -59,7 +59,7 @@ export default class QuakesMap extends PureComponent {
           {quakes.map(data => {
             const color = getRGB(data.properties.mag, 1.0, 9.5);
             return (
-              <Marker
+              <MapView.Marker
                 key={data.id}
                 coordinate={{
                   latitude: data.geometry.coordinates[1],

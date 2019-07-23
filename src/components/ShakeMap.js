@@ -1,5 +1,5 @@
 import React from 'react';
-import MapView, { Marker } from 'react-native-maps';
+import { MapView } from 'expo';
 
 import ShakeMapOverlay from './ShakeMapOverlay';
 
@@ -20,7 +20,7 @@ const ShakeMap = ({ color, coordinates, shakeMapData }) => (
   >
     <ShakeMapOverlay data={shakeMapData} />
 
-    <Marker
+    <MapView.Marker
       coordinate={{
         latitude: coordinates[1],
         longitude: coordinates[0]

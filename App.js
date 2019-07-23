@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { YellowBox } from 'react-native';
+import { Font } from 'expo';
 
 import defaultFilters from './src/config/options.json';
 import { getUrl } from './src/api/fetchData';
@@ -15,9 +16,10 @@ export default class App extends PureComponent {
   };
 
   async componentDidMount() {
+    await this.updateData();
     const uid = await getFirebaseUsername();
     await initNotifications(uid);
-    this.setState({ uid }, () => this.updateData());
+    this.setState({ uid });
   }
 
   getFilters = () => {
@@ -29,14 +31,7 @@ export default class App extends PureComponent {
   };
 
   onRefresh = () => {
-    this.setState(
-      {
-        isLoading: true
-      },
-      () => {
-        this.updateData();
-      }
-    );
+    this.setState({ isLoading: true }, this.updateData);
   };
 
   updateData = async () => {

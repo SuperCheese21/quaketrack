@@ -1,11 +1,11 @@
 import React from 'react';
-import { Polyline } from 'react-native-maps';
+import { MapView } from 'expo';
 
 const ShakeMapOverlay = ({ data }) => {
   if (data.length) {
     return data.map((feature, i) =>
       feature.geometry.coordinates.map((line, j) => (
-        <Polyline
+        <MapView.Polyline
           key={i + '_' + j}
           coordinates={line.map(coords => ({
             latitude: parseFloat(coords[1]),
