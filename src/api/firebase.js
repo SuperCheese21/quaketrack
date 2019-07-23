@@ -29,7 +29,7 @@ export async function initNotifications(uid) {
   }
 
   // Get user's notification settings from database
-  const data = await getNotificationSettings(uid);
+  const data = (await getNotificationSettings(uid)) || {};
 
   // Get user's location and expo push token
   const token = await getPushToken();
