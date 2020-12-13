@@ -3,13 +3,14 @@
     "name": "QuakeTrack",
     "description": "Earthquake map and alerts app for Android and iOS built on React Native",
     "version": "0.3.0",
-    "sdkVersion": "33.0.0",
     "scheme": "quaketrack",
     "githubUrl": "https://github.com/SuperCheese21/quaketrack",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "slug": "quaketrack",
     "orientation": "portrait",
     "ios": {
