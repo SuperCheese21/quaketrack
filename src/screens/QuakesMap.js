@@ -13,12 +13,12 @@ import regions from '../lib/data/tectonic_regions.json';
 
 export default class QuakesMap extends PureComponent {
   state = {
-    isLoading: true
+    isLoading: true,
   };
 
   componentDidMount() {
     this.setState({
-      isLoading: false
+      isLoading: false,
     });
   }
 
@@ -26,7 +26,7 @@ export default class QuakesMap extends PureComponent {
     title: 'Map',
     tabBarIcon: ({ tintColor }) => {
       return <Icon name={'map-marker'} size={20} color={tintColor} />;
-    }
+    },
   });
 
   render() {
@@ -39,7 +39,7 @@ export default class QuakesMap extends PureComponent {
             latitude: 0,
             longitude: 0,
             latitudeDelta: 150,
-            longitudeDelta: 75
+            longitudeDelta: 75,
           }}
           rotateEnabled={false}
           customMapStyle={mapStyle}
@@ -56,21 +56,21 @@ export default class QuakesMap extends PureComponent {
             fillOpacity={0.1}
           />
 
-          {quakes.map(data => {
+          {quakes.map((data) => {
             const color = getRGB(data.properties.mag, 1.0, 9.5);
             return (
               <MapView.Marker
                 key={data.id}
                 coordinate={{
                   latitude: data.geometry.coordinates[1],
-                  longitude: data.geometry.coordinates[0]
+                  longitude: data.geometry.coordinates[0],
                 }}
                 title={'M' + data.properties.mag}
                 description={formatTime(data.properties.time)}
                 onCalloutPress={() =>
                   this.props.screenProps.stackNavigation.navigate('QuakeInfo', {
                     color,
-                    url: data.properties.detail
+                    url: data.properties.detail,
                   })
                 }
                 pinColor={formatRGB(color)}

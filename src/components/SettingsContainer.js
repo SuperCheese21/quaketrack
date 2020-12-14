@@ -11,8 +11,8 @@ const styles = {
   settingsContainer: {
     flex: 1,
     backgroundColor: colors.background,
-    padding: 10
-  }
+    padding: 10,
+  },
 };
 
 export default SettingsContainer;

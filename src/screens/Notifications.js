@@ -9,18 +9,18 @@ import SettingsItemLabel from '../components/SettingsItemLabel';
 import Slider from '../components/Slider';
 import {
   getNotificationSettings,
-  updateNotificationSettings
+  updateNotificationSettings,
 } from '../api/firebase';
 import colors from '../config/colors.json';
 
 export default class Notifications extends PureComponent {
   state = {
     isLoading: true,
-    settings: {}
+    settings: {},
   };
 
   static navigationOptions = {
-    title: 'Notifications'
+    title: 'Notifications',
   };
 
   async componentDidMount() {
@@ -28,22 +28,22 @@ export default class Notifications extends PureComponent {
     const {
       notifications,
       minMagnitude,
-      updates
+      updates,
     } = await getNotificationSettings(uid);
     this.setState({
       settings: {
         notifications,
         minMagnitude,
-        updates
+        updates,
       },
-      isLoading: false
+      isLoading: false,
     });
   }
 
   updateSettings = (property, value) => {
     const settings = {
       ...this.state.settings,
-      [property]: value
+      [property]: value,
     };
     this.setState({ settings });
   };
@@ -51,7 +51,7 @@ export default class Notifications extends PureComponent {
   onSaveAndClose = async () => {
     const {
       navigation,
-      screenProps: { uid }
+      screenProps: { uid },
     } = this.props;
     this.setState({ isLoading: true });
     await updateNotificationSettings(uid, this.state.settings);
@@ -72,7 +72,9 @@ export default class Notifications extends PureComponent {
           <SettingsItemLabel text="Notifications" />
           <Switch
             value={settings.notifications}
-            onValueChange={value => this.updateSettings('notifications', value)}
+            onValueChange={(value) =>
+              this.updateSettings('notifications', value)
+            }
             color={colors.accent}
           />
         </SettingsItem>
@@ -91,14 +93,14 @@ export default class Notifications extends PureComponent {
           maximumValue={8}
           step={0.5}
           value={settings.minMagnitude}
-          onValueChange={value => this.updateSettings('minMagnitude', value)}
+          onValueChange={(value) => this.updateSettings('minMagnitude', value)}
         />
 
         <SettingsItem disabled={!settings.notifications}>
           <SettingsItemLabel text="Updates" />
           <Switch
             value={settings.updates}
-            onValueChange={value => this.updateSettings('updates', value)}
+            onValueChange={(value) => this.updateSettings('updates', value)}
             color={colors.accent}
           />
         </SettingsItem>
@@ -132,6 +134,6 @@ const styles = {
     color: 'black',
     textAlign: 'center',
     textAlignVertical: 'center',
-    flex: 0.2
-  }
+    flex: 0.2,
+  },
 };

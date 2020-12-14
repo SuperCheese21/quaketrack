@@ -13,8 +13,8 @@ const LoadingSpinner = () => (
 const styles = {
   loadingSpinner: {
     flex: 1,
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 };
 
 export default LoadingSpinner;

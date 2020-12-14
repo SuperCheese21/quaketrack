@@ -7,7 +7,7 @@ import { formatTime, formatMagnitude } from '../lib/util/formatData';
 
 const QuakesListItem = ({ data, stackNavigation }) => {
   const {
-    properties: { time, place, mag, detail }
+    properties: { time, place, mag, detail },
   } = data;
   const color = getRGB(mag, 1.0, 9.5);
 
@@ -16,13 +16,13 @@ const QuakesListItem = ({ data, stackNavigation }) => {
       style={[
         styles.listItem,
         {
-          backgroundColor: formatRGB(color)
-        }
+          backgroundColor: formatRGB(color),
+        },
       ]}
       onPress={() =>
         stackNavigation.navigate('QuakeInfo', {
           color,
-          url: detail
+          url: detail,
         })
       }
       activeOpacity={0.5}
@@ -69,27 +69,27 @@ const styles = {
     marginBottom: 2.5,
     marginLeft: 5,
     marginRight: 5,
-    padding: 5
+    padding: 5,
   },
   locationText: {
     marginLeft: 3,
     textAlignVertical: 'center',
     color: 'black',
     fontWeight: 'bold',
-    flex: 1
+    flex: 1,
   },
   magnitudeText: {
     textAlignVertical: 'center',
     textAlign: 'center',
     color: 'white',
     fontSize: 28,
-    flex: 1
+    flex: 1,
   },
   timestampText: {
     marginLeft: 3,
     textAlignVertical: 'center',
-    color: 'black'
-  }
+    color: 'black',
+  },
 };
 
 export default QuakesListItem;

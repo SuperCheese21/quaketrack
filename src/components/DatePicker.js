@@ -17,7 +17,7 @@ const SettingsDatePicker = ({ date, disabled, onValueChange }) => (
     cancelBtnText="Cancel"
     customStyles={{
       dateIcon: styles.dateIcon,
-      dateInput: styles.dateInput
+      dateInput: styles.dateInput,
     }}
     onDateChange={onValueChange}
   />
@@ -28,15 +28,15 @@ const styles = {
     position: 'absolute',
     left: 0,
     top: 4,
-    marginLeft: 0
+    marginLeft: 0,
   },
   dateInput: {
-    marginLeft: 36
+    marginLeft: 36,
   },
   datePicker: {
     width: 200,
-    alignSelf: 'center'
-  }
+    alignSelf: 'center',
+  },
 };
 
 export default SettingsDatePicker;

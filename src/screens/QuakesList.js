@@ -11,7 +11,7 @@ export default class QuakesList extends PureComponent {
     title: 'List',
     tabBarIcon: ({ tintColor }) => {
       return <Icon name={'format-list-bulleted'} size={20} color={tintColor} />;
-    }
+    },
   });
 
   _keyExtractor = (item, index) => item.id;
@@ -21,7 +21,7 @@ export default class QuakesList extends PureComponent {
       onRefresh,
       isLoading,
       data,
-      stackNavigation
+      stackNavigation,
     } = this.props.screenProps;
 
     return (
@@ -54,7 +54,7 @@ const styles = {
     fontSize: 12,
     color: 'black',
     textAlign: 'center',
-    height: 30
+    height: 30,
   },
   listTitle: {
     fontSize: 15,
@@ -62,10 +62,10 @@ const styles = {
     fontWeight: 'bold',
     textAlign: 'center',
     textAlignVertical: 'bottom',
-    height: 30
+    height: 30,
   },
   listView: {
     backgroundColor: colors.background,
-    flex: 1
-  }
+    flex: 1,
+  },
 };

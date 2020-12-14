@@ -14,7 +14,7 @@ export function getUrl(options) {
     starttime: options.dateEnabled ? options.starttime : null,
     endtime: options.dateEnabled ? options.endtime : null,
     orderby: options.orderby,
-    format: 'geojson'
+    format: 'geojson',
   };
 
   const url = constants.urls.usgs.DATABASE + _queryStringify(query);
@@ -30,6 +30,6 @@ export function getUrl(options) {
 function _queryStringify(query) {
   return qs.stringify(query, {
     addQueryPrefix: true,
-    skipNulls: true
+    skipNulls: true,
   });
 }

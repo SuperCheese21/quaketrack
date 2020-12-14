@@ -18,13 +18,13 @@ export async function initNotifications(uid) {
       name: 'Alerts',
       sound: true,
       priority: 'max',
-      vibrate: true
+      vibrate: true,
     });
     await Notifications.createChannelAndroidAsync('quake-updates', {
       name: 'Updates',
       sound: false,
       priority: 'low',
-      vibrate: false
+      vibrate: false,
     });
   }
 
@@ -44,12 +44,12 @@ export async function initNotifications(uid) {
     location: {
       coords: {
         latitude: location.coords.latitude,
-        longitude: location.coords.longitude
+        longitude: location.coords.longitude,
       },
       accuracy: location.coords.accuracy,
-      mocked: location.mocked
+      mocked: location.mocked,
     },
-    updated: location.timestamp
+    updated: location.timestamp,
   };
   await updateNotificationSettings(uid, notificationSettings);
 
@@ -74,11 +74,7 @@ export async function getNotificationSettings(uid) {
  * @param  {[type]} uid [description]
  */
 export async function updateNotificationSettings(uid, settings) {
-  await firebase
-    .database()
-    .ref('users')
-    .child(uid)
-    .update(settings);
+  await firebase.database().ref('users').child(uid).update(settings);
 }
 
 /**
@@ -93,10 +89,10 @@ export function getFirebaseUsername() {
     // Sign in to firebase anonymously
     // TODO: Add google auth
     const auth = firebase.auth();
-    auth.signInAnonymously().catch(err => {
+    auth.signInAnonymously().catch((err) => {
       reject(err.message);
     });
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         resolve(user.uid);
       }
@@ -148,7 +144,7 @@ async function getLocation() {
 
     return await Location.getCurrentPositionAsync({
       accuracy: 1,
-      maximumAge: 3600000
+      maximumAge: 3600000,
     });
   }
 }

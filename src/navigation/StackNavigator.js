@@ -12,19 +12,19 @@ const StackNavigator = createAppContainer(
       TabNavigator,
       QuakeInfo,
       Filters,
-      Notifications
+      Notifications,
     },
     {
       defaultNavigationOptions: {
         title: 'QuakeTrack',
         headerStyle: {
-          backgroundColor: colors.header
+          backgroundColor: colors.header,
         },
         headerTitleStyle: {
-          fontSize: 28
-        }
+          fontSize: 28,
+        },
       },
-      headerLayoutPreset: 'center'
+      headerLayoutPreset: 'center',
     }
   )
 );

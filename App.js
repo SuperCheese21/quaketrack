@@ -12,7 +12,7 @@ export default class App extends PureComponent {
     filters: defaultFilters,
     data: {},
     isLoading: true,
-    uid: null
+    uid: null,
   };
 
   async componentDidMount() {
@@ -26,7 +26,7 @@ export default class App extends PureComponent {
     return this.state.filters;
   };
 
-  setFilters = filters => {
+  setFilters = (filters) => {
     this.setState({ filters });
   };
 
@@ -54,7 +54,7 @@ export default class App extends PureComponent {
           uid: this.state.uid,
           onRefresh: this.onRefresh,
           getFilters: this.getFilters,
-          setFilters: this.setFilters
+          setFilters: this.setFilters,
         }}
       />
     );
@@ -65,5 +65,5 @@ export default class App extends PureComponent {
 YellowBox.ignoreWarnings([
   'Warning: isMounted(...) is deprecated',
   'Module RCTImageLoader',
-  'Setting a timer'
+  'Setting a timer',
 ]);

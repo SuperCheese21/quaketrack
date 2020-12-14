@@ -13,7 +13,7 @@ const ShakeMap = ({ color, coordinates, shakeMapData }) => (
       latitude: coordinates[1],
       longitude: coordinates[0],
       latitudeDelta: 8,
-      longitudeDelta: 4
+      longitudeDelta: 4,
     }}
     rotateEnabled={false}
     customMapStyle={mapStyle}
@@ -23,7 +23,7 @@ const ShakeMap = ({ color, coordinates, shakeMapData }) => (
     <MapView.Marker
       coordinate={{
         latitude: coordinates[1],
-        longitude: coordinates[0]
+        longitude: coordinates[0],
       }}
       pinColor={formatRGB(color)}
     />

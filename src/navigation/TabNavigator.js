@@ -10,7 +10,7 @@ import colors from '../config/colors.json';
 export default class TabNavigatorContainer extends PureComponent {
   static navigationOptions = ({ navigation: stackNavigation }) => ({
     headerLeft: <NotificationIcon stackNavigation={stackNavigation} />,
-    headerRight: <FilterIcon stackNavigation={stackNavigation} />
+    headerRight: <FilterIcon stackNavigation={stackNavigation} />,
   });
 
   render() {
@@ -18,7 +18,7 @@ export default class TabNavigatorContainer extends PureComponent {
       <TabNavigator
         screenProps={{
           stackNavigation: this.props.navigation,
-          ...this.props.screenProps
+          ...this.props.screenProps,
         }}
       />
     );
@@ -29,16 +29,16 @@ const TabNavigator = createAppContainer(
   createMaterialBottomTabNavigator(
     {
       QuakesList,
-      QuakesMap
+      QuakesMap,
     },
     {
       shifting: true,
       activeColor: 'blue',
       inactiveColor: 'black',
       barStyle: {
-        backgroundColor: colors.header
+        backgroundColor: colors.header,
       },
-      lazy: false
+      lazy: false,
     }
   )
 );

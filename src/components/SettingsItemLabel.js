@@ -8,7 +8,7 @@ const SettingsItemLabel = ({ subItem, text }) => (
       fontWeight: subItem ? 'normal' : 'bold',
       color: 'black',
       textAlignVertical: 'center',
-      flex: 1
+      flex: 1,
     }}
   >
     {text}

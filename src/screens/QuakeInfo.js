@@ -9,11 +9,11 @@ import { formatTime, formatMagnitude } from '../lib/util/formatData';
 export default class QuakeInfo extends PureComponent {
   state = {
     shakeMapData: [],
-    quakeData: {}
+    quakeData: {},
   };
 
   static navigationOptions = {
-    title: 'Earthquake'
+    title: 'Earthquake',
   };
 
   async componentDidMount() {
@@ -34,8 +34,8 @@ export default class QuakeInfo extends PureComponent {
 
   getShakeMapData = async ({
     properties: {
-      products: { shakemap }
-    }
+      products: { shakemap },
+    },
   }) => {
     if (shakemap) {
       const res = await fetch(
@@ -63,8 +63,8 @@ export default class QuakeInfo extends PureComponent {
       shakeMapData,
       quakeData: {
         geometry: { coordinates },
-        properties
-      }
+        properties,
+      },
     } = this.state;
 
     return (
@@ -72,8 +72,8 @@ export default class QuakeInfo extends PureComponent {
         style={[
           styles.infoView,
           {
-            backgroundColor: formatRGBA(color, 0.5)
-          }
+            backgroundColor: formatRGBA(color, 0.5),
+          },
         ]}
       >
         <View style={{ marginBottom: 5 }}>
@@ -115,7 +115,7 @@ const styles = {
     color: 'blue',
     textAlign: 'center',
     textAlignVertical: 'center',
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
   },
   infoTitle: {
     height: 50,
@@ -123,12 +123,12 @@ const styles = {
     fontWeight: 'bold',
     color: 'black',
     textAlign: 'center',
-    textAlignVertical: 'center'
+    textAlignVertical: 'center',
   },
   infoView: {
     borderRadius: 10,
     flex: 1,
     margin: 5,
-    padding: 10
-  }
+    padding: 10,
+  },
 };
