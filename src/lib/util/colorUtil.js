@@ -28,7 +28,7 @@ export function getRGB(val, low, high) {
   return [
     _calcRed(val, low, high),
     _calcGreen(val, low, high),
-    _calcBlue(val, low, high)
+    _calcBlue(val, low, high),
   ];
 }
 

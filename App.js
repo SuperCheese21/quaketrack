@@ -1,69 +1,56 @@
-import React, { PureComponent } from 'react';
-import { YellowBox } from 'react-native';
-import { Font } from 'expo';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import defaultFilters from './src/config/options.json';
 import { getUrl } from './src/api/fetchData';
 import { getFirebaseUsername, initNotifications } from './src/api/firebase';
 import StackNavigatorContainer from './src/navigation/StackNavigator';
 
-export default class App extends PureComponent {
-  state = {
-    filters: defaultFilters,
-    data: {},
-    isLoading: true,
-    uid: null,
-  };
+const App = () => {
+  const [data, setData] = useState({});
+  const [filters, setFilters] = useState(defaultFilters);
+  const [isLoading, setIsLoading] = useState(true);
+  const [uid, setUid] = useState(null);
 
-  async componentDidMount() {
-    await this.updateData();
-    const uid = await getFirebaseUsername();
-    await initNotifications(uid);
-    this.setState({ uid });
-  }
-
-  getFilters = () => {
-    return this.state.filters;
-  };
-
-  setFilters = filters => {
-    this.setState({ filters });
-  };
-
-  onRefresh = () => {
-    this.setState({ isLoading: true }, this.updateData);
-  };
-
-  updateData = async () => {
-    const url = getUrl(this.state.filters);
+  const updateData = useCallback(async () => {
+    const url = getUrl(filters);
     try {
       const res = await fetch(url);
-      const data = await res.json();
-      this.setState({ isLoading: false, data });
+      const json = await res.json();
+      setIsLoading(false);
+      setData(json);
     } catch (err) {
-      console.error(err.message);
+      console.error(err);
     }
+  }, [filters]);
+
+  const initData = useCallback(async () => {
+    await updateData();
+    const username = await getFirebaseUsername();
+    await initNotifications(username);
+    setUid(username);
+  }, [updateData]);
+
+  useEffect(() => {
+    initData();
+  }, [initData]);
+
+  const onRefresh = () => {
+    setIsLoading(true);
+    updateData();
   };
 
-  render() {
-    return (
-      <StackNavigatorContainer
-        screenProps={{
-          data: this.state.data,
-          isLoading: this.state.isLoading,
-          uid: this.state.uid,
-          onRefresh: this.onRefresh,
-          getFilters: this.getFilters,
-          setFilters: this.setFilters,
-        }}
-      />
-    );
-  }
-}
+  return (
+    <StackNavigatorContainer
+      screenProps={{
+        data,
+        isLoading,
+        uid,
+        onRefresh,
+        filters,
+        setFilters,
+      }}
+    />
+  );
+};
 
-// React bug - ignore warning on deprecated lifecycle method
-YellowBox.ignoreWarnings([
-  'Warning: isMounted(...) is deprecated',
-  'Module RCTImageLoader',
-  'Setting a timer',
-]);
+export default App;

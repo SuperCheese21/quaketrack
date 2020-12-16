@@ -1,0 +1,29 @@
+{
+    "env": {
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb",
+        "airbnb/hooks",
+        "prettier",
+        "prettier/react"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "globals": {
+        "fetch": false
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "no-console": "off",
+        "react/jsx-filename-extension": "off"
+    }
+}
