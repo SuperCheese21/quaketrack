@@ -39,7 +39,7 @@ export default class QuakeInfo extends PureComponent {
   }) => {
     if (shakemap) {
       const res = await fetch(
-        shakemap[0].contents['download/cont_mi.json'].url
+        shakemap[0].contents['download/cont_mi.json'].url,
       );
       const json = await res.json();
       return json.features;

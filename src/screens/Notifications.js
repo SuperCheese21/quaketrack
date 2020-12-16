@@ -72,9 +72,7 @@ export default class Notifications extends PureComponent {
           <SettingsItemLabel text="Notifications" />
           <Switch
             value={settings.notifications}
-            onValueChange={(value) =>
-              this.updateSettings('notifications', value)
-            }
+            onValueChange={value => this.updateSettings('notifications', value)}
             color={colors.accent}
           />
         </SettingsItem>
@@ -93,14 +91,14 @@ export default class Notifications extends PureComponent {
           maximumValue={8}
           step={0.5}
           value={settings.minMagnitude}
-          onValueChange={(value) => this.updateSettings('minMagnitude', value)}
+          onValueChange={value => this.updateSettings('minMagnitude', value)}
         />
 
         <SettingsItem disabled={!settings.notifications}>
           <SettingsItemLabel text="Updates" />
           <Switch
             value={settings.updates}
-            onValueChange={(value) => this.updateSettings('updates', value)}
+            onValueChange={value => this.updateSettings('updates', value)}
             color={colors.accent}
           />
         </SettingsItem>

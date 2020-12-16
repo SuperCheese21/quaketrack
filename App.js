@@ -26,7 +26,7 @@ export default class App extends PureComponent {
     return this.state.filters;
   };
 
-  setFilters = (filters) => {
+  setFilters = filters => {
     this.setState({ filters });
   };
 

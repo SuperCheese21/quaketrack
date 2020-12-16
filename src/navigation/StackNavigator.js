@@ -25,8 +25,8 @@ const StackNavigator = createAppContainer(
         },
       },
       headerLayoutPreset: 'center',
-    }
-  )
+    },
+  ),
 );
 
 export default StackNavigator;

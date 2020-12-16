@@ -56,7 +56,7 @@ export default class QuakesMap extends PureComponent {
             fillOpacity={0.1}
           />
 
-          {quakes.map((data) => {
+          {quakes.map(data => {
             const color = getRGB(data.properties.mag, 1.0, 9.5);
             return (
               <MapView.Marker

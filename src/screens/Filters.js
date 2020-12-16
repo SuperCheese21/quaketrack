@@ -33,7 +33,7 @@ export default class Filters extends PureComponent {
           maximumValue={9}
           step={0.1}
           value={this.state.minmagnitude}
-          onValueChange={(value) =>
+          onValueChange={value =>
             this.setState({
               minmagnitude: Math.round(10 * value) / 10,
             })
@@ -45,7 +45,7 @@ export default class Filters extends PureComponent {
           <Picker
             style={{ flex: 1, alignSelf: 'center' }}
             selectedValue={this.state.limit}
-            onValueChange={(limit) => this.setState({ limit })}
+            onValueChange={limit => this.setState({ limit })}
           >
             <Picker.Item label="10" value={10} />
             <Picker.Item label="50" value={50} />
@@ -59,7 +59,7 @@ export default class Filters extends PureComponent {
           <SettingsItemLabel text="Set Date Range" />
           <Switch
             value={this.state.dateEnabled}
-            onValueChange={(dateEnabled) => this.setState({ dateEnabled })}
+            onValueChange={dateEnabled => this.setState({ dateEnabled })}
             color={colors.accent}
           />
         </SettingsItem>
@@ -69,7 +69,7 @@ export default class Filters extends PureComponent {
           <DatePicker
             date={this.state.starttime}
             disabled={!this.state.dateEnabled}
-            onValueChange={(starttime) => this.setState({ starttime })}
+            onValueChange={starttime => this.setState({ starttime })}
           />
         </SettingsItem>
 
@@ -78,7 +78,7 @@ export default class Filters extends PureComponent {
           <DatePicker
             date={this.state.endtime}
             disabled={!this.state.dateEnabled}
-            onValueChange={(endtime) => this.setState({ endtime })}
+            onValueChange={endtime => this.setState({ endtime })}
           />
         </SettingsItem>
 
@@ -87,7 +87,7 @@ export default class Filters extends PureComponent {
           <Picker
             style={{ flex: 1, alignSelf: 'center' }}
             selectedValue={this.state.orderby}
-            onValueChange={(orderby) => this.setState({ orderby })}
+            onValueChange={orderby => this.setState({ orderby })}
           >
             <Picker.Item label="Time (descending)" value="time" />
             <Picker.Item label="Time (ascending)" value="time-asc" />

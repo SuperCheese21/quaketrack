@@ -7,14 +7,14 @@ const ShakeMapOverlay = ({ data }) => {
       feature.geometry.coordinates.map((line, j) => (
         <MapView.Polyline
           key={i + '_' + j}
-          coordinates={line.map((coords) => ({
+          coordinates={line.map(coords => ({
             latitude: parseFloat(coords[1]),
             longitude: parseFloat(coords[0]),
           }))}
           strokeWidth={feature.properties.weight / 2}
           strokeColor={feature.properties.color}
         />
-      ))
+      )),
     );
   }
   return null;

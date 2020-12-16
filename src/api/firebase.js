@@ -89,10 +89,10 @@ export function getFirebaseUsername() {
     // Sign in to firebase anonymously
     // TODO: Add google auth
     const auth = firebase.auth();
-    auth.signInAnonymously().catch((err) => {
+    auth.signInAnonymously().catch(err => {
       reject(err.message);
     });
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         resolve(user.uid);
       }
@@ -106,7 +106,7 @@ export function getFirebaseUsername() {
  */
 async function getPushToken() {
   const { status: existingStatus } = await Permissions.getAsync(
-    Permissions.NOTIFICATIONS
+    Permissions.NOTIFICATIONS,
   );
   let finalStatus = existingStatus;
 
@@ -129,7 +129,7 @@ async function getPushToken() {
 async function getLocation() {
   if (Platform.OS !== 'android' || Constants.isDevice) {
     const { status: existingStatus } = await Permissions.askAsync(
-      Permissions.LOCATION
+      Permissions.LOCATION,
     );
     let finalStatus = existingStatus;
 

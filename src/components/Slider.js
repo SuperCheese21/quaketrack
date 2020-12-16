@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-native-slider';
 
-const SettingsSlider = (props) => (
+const SettingsSlider = props => (
   <Slider
     disabled={props.disabled}
     style={{

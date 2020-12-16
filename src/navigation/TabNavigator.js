@@ -39,6 +39,6 @@ const TabNavigator = createAppContainer(
         backgroundColor: colors.header,
       },
       lazy: false,
-    }
-  )
+    },
+  ),
 );
