@@ -3635,6 +3635,13 @@ eslint-plugin-react@^7.21.5:
     resolve "^1.18.1"
     string.prototype.matchall "^4.0.2"
 
+eslint-plugin-you-dont-need-momentjs@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-you-dont-need-momentjs/-/eslint-plugin-you-dont-need-momentjs-1.6.0.tgz#c5209783e8a9fa772f8e3c4d4d4a03813d8f9a1e"
+  integrity sha512-u12WanwuAL5B6/Kx6AtMDI04OojkS/twDueDwBgxsnKLy33VM4npP7ZlU2o7pxD1z8LbzPP6Y6/e7cPf6ZhatQ==
+  dependencies:
+    kebab-case "^1.0.0"
+
 eslint-scope@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-5.1.1.tgz#e786e59a66cb92b3f6c1fb0d508aab174848f48c"
@@ -5144,6 +5151,11 @@ jws@^4.0.0:
   dependencies:
     jwa "^2.0.0"
     safe-buffer "^5.0.1"
+
+kebab-case@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/kebab-case/-/kebab-case-1.0.0.tgz#3f9e4990adcad0c686c0e701f7645868f75f91eb"
+  integrity sha1-P55JkK3K0MaGwOcB92RYaPdfkes=
 
 kind-of@^1.1.0:
   version "1.1.0"
