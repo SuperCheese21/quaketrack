@@ -1,35 +1,38 @@
-import qs from 'qs';
+import querystring from 'querystring';
 
 import constants from '../config/constants.json';
 
-/**
- * [fetchData description]
- * @param  {[type]} options [description]
- * @return {[type]}         [description]
- */
-export function getUrl(options) {
-  const query = {
-    minmagnitude: options.minmagnitude,
-    limit: options.limit,
-    starttime: options.dateEnabled ? options.starttime : null,
-    endtime: options.dateEnabled ? options.endtime : null,
-    orderby: options.orderby,
-    format: 'geojson',
-  };
-
-  const url = constants.urls.usgs.DATABASE + _queryStringify(query);
-
-  return url;
-}
-
-/**
- * [queryStringify description]
- * @param  {[type]} query [description]
- * @return {[type]}       [description]
- */
-function _queryStringify(query) {
-  return qs.stringify(query, {
-    addQueryPrefix: true,
-    skipNulls: true,
+const queryStringify = query =>
+  querystring.stringify(query, {
+    skipNull: true,
   });
-}
+
+export const getUrl = ({
+  minmagnitude,
+  limit,
+  dateEnabled,
+  starttime,
+  endtime,
+  orderby,
+}) => {
+  const queryString = queryStringify({
+    minmagnitude,
+    limit,
+    starttime: dateEnabled ? starttime : null,
+    endtime: dateEnabled ? endtime : null,
+    orderby,
+    format: 'geojson',
+  });
+  return `${constants.urls.usgs.DATABASE}?${queryString}`;
+};
+
+export default async filters => {
+  const url = getUrl(filters);
+  try {
+    const res = await fetch(url);
+    return res.json();
+  } catch (err) {
+    console.error(err);
+    return {};
+  }
+};
