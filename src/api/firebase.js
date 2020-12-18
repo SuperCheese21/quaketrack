@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 import { useCallback, useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 
-import firebaseConfig from '../config/firebaseConfig.json';
+import firebaseConfig from '../config/firebase.json';
 
 export const useFirebaseUsername = initialValue => {
   const [uid, setUid] = useState(initialValue);
