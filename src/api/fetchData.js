@@ -7,7 +7,7 @@ const queryStringify = query =>
     skipNull: true,
   });
 
-export const getUrl = ({
+const getUrl = ({
   minmagnitude,
   limit,
   dateEnabled,

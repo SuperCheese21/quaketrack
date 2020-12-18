@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import { useLocation, usePushToken } from './src/api/expo';
 import fetchData from './src/api/fetchData';
-import { getFirebaseUsername, initNotifications } from './src/api/firebase';
+import { initNotifications, useFirebaseUsername } from './src/api/firebase';
 import defaultFilters from './src/config/options.json';
 import StackNavigatorContainer from './src/navigation/StackNavigator';
 
@@ -9,24 +10,27 @@ const App = () => {
   const [data, setData] = useState({});
   const [filters, setFilters] = useState(defaultFilters);
   const [isLoading, setIsLoading] = useState(true);
-  const [uid, setUid] = useState(null);
+
+  const expoPushToken = usePushToken(null);
+  const location = useLocation(null);
+  const uid = useFirebaseUsername(null);
+
+  useEffect(
+    () =>
+      initNotifications({
+        expoPushToken,
+        location,
+        uid,
+      }),
+    [expoPushToken, location, uid],
+  );
 
   const updateData = useCallback(async () => {
     const json = await fetchData(filters);
     setIsLoading(false);
     setData(json);
   }, [filters]);
-
-  const initData = useCallback(async () => {
-    await updateData();
-    const username = await getFirebaseUsername();
-    await initNotifications(username);
-    setUid(username);
-  }, [updateData]);
-
-  useEffect(() => {
-    initData();
-  }, [initData]);
+  useEffect(updateData, [updateData]);
 
   const onRefresh = () => {
     setIsLoading(true);
