@@ -1,10 +1,11 @@
-import querystring from 'querystring';
+import qs from 'qs';
 
 import constants from '../config/constants.json';
 
 const queryStringify = query =>
-  querystring.stringify(query, {
-    skipNull: true,
+  qs.stringify(query, {
+    skipNulls: true,
+    addQueryPrefix: true,
   });
 
 const getUrl = ({
@@ -23,7 +24,7 @@ const getUrl = ({
     orderby,
     format: 'geojson',
   });
-  return `${constants.urls.usgs.DATABASE}?${queryString}`;
+  return `${constants.urls.usgs.DATABASE}${queryString}`;
 };
 
 export default async filters => {
