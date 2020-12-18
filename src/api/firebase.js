@@ -1,17 +1,19 @@
 import dayjs from 'dayjs';
-import { createChannelAndroidAsync } from 'expo-notifications';
 import * as firebase from 'firebase';
 import { useCallback, useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 
+import { createNotificationChannelsAndroid } from './expo';
 import firebaseConfig from '../config/firebase.json';
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const usersRef = firebase.database().ref('users');
 
 export const useFirebaseUsername = initialValue => {
   const [uid, setUid] = useState(initialValue);
   const initFirebase = useCallback(async () => {
     const username = await new Promise((resolve, reject) => {
-      firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
       auth.signInAnonymously().catch(err => reject(err.message));
       auth.onAuthStateChanged(user => user && resolve(user.uid));
     });
@@ -24,30 +26,16 @@ export const useFirebaseUsername = initialValue => {
 };
 
 export const getNotificationSettings = async uid => {
-  const ref = firebase.database().ref('users');
-  const snapshot = await ref.once('value');
+  const snapshot = await usersRef.once('value');
   return snapshot.child(uid).val();
 };
 
 export const updateNotificationSettings = ({ uid, settings }) =>
-  firebase.database().ref('users').child(uid).update(settings);
+  usersRef.child(uid).update(settings);
 
 export const initNotifications = async ({ expoPushToken, location, uid }) => {
-  if (!expoPushToken || !location || !uid) return;
-
   if (Platform.OS === 'android') {
-    await createChannelAndroidAsync('quake-alerts', {
-      name: 'Alerts',
-      sound: true,
-      priority: 'max',
-      vibrate: true,
-    });
-    await createChannelAndroidAsync('quake-updates', {
-      name: 'Updates',
-      sound: false,
-      priority: 'low',
-      vibrate: false,
-    });
+    await createNotificationChannelsAndroid();
   }
 
   const data = (await getNotificationSettings(uid)) || {};

@@ -4,28 +4,22 @@ import {
   requestPermissionsAsync as requestLocationPermissions,
 } from 'expo-location';
 import {
+  createChannelAndroidAsync,
   getExpoPushTokenAsync,
   getPermissionsAsync as getNotificationPermissions,
   requestPermissionsAsync as requestNotificationPermissions,
 } from 'expo-notifications';
 import { useCallback, useEffect, useState } from 'react';
 
-const usePermissionStatus = ({ getPermissions, requestPermissions }) => {
-  const [status, setStatus] = useState(null);
-  const initPermissions = useCallback(async () => {
-    const { status: existingStatus } = await getPermissions();
-    if (existingStatus === 'granted') {
-      setStatus(existingStatus);
-      return;
-    }
-    const { status: newStatus } = await requestPermissions();
-    setStatus(newStatus);
-  }, [getPermissions, requestPermissions]);
-  useEffect(() => {
-    initPermissions();
-  }, [initPermissions]);
-  return status;
-};
+import { notificationChannels } from '../config/constants.json';
+import { usePermissionStatus } from '../lib/util/usePermissionStatus';
+
+export const createNotificationChannelsAndroid = () =>
+  Promise.all(
+    notificationChannels.map(({ id, ...rest }) =>
+      createChannelAndroidAsync(id, rest),
+    ),
+  );
 
 export const useLocation = initialValue => {
   const [location, setLocation] = useState(initialValue);

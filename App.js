@@ -15,15 +15,14 @@ const App = () => {
   const location = useLocation(null);
   const uid = useFirebaseUsername(null);
 
-  useEffect(
-    () =>
-      initNotifications({
-        expoPushToken,
-        location,
-        uid,
-      }),
-    [expoPushToken, location, uid],
-  );
+  useEffect(() => {
+    if (!expoPushToken || !location || !uid) return;
+    initNotifications({
+      expoPushToken,
+      location,
+      uid,
+    });
+  }, [expoPushToken, location, uid]);
 
   const updateData = useCallback(async () => {
     const json = await fetchData(filters);
