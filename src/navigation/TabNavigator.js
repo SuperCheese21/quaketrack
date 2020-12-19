@@ -9,8 +9,8 @@ import colors from '../config/colors.json';
 
 export default class TabNavigatorContainer extends PureComponent {
   static navigationOptions = ({ navigation: stackNavigation }) => ({
-    headerLeft: <NotificationIcon stackNavigation={stackNavigation} />,
-    headerRight: <FilterIcon stackNavigation={stackNavigation} />,
+    headerLeft: () => <NotificationIcon stackNavigation={stackNavigation} />,
+    headerRight: () => <FilterIcon stackNavigation={stackNavigation} />,
   });
 
   render() {

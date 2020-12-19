@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapView } from 'expo';
+import MapView from 'react-native-maps';
 
 const ShakeMapOverlay = ({ data }) => {
   if (data.length) {

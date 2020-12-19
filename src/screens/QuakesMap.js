@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
-import { MapView } from 'expo';
+import MapView from 'react-native-maps';
 import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
 import QuakesMapOverlay from '../components/QuakesMapOverlay';

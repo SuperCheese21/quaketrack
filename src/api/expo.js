@@ -4,20 +4,20 @@ import {
   requestPermissionsAsync as requestLocationPermissions,
 } from 'expo-location';
 import {
-  createChannelAndroidAsync,
   getExpoPushTokenAsync,
   getPermissionsAsync as getNotificationPermissions,
   requestPermissionsAsync as requestNotificationPermissions,
+  setNotificationChannelAsync,
 } from 'expo-notifications';
 import { useCallback, useEffect, useState } from 'react';
 
-import { notificationChannels } from '../config/constants.json';
+import constants from '../config/constants';
 import { usePermissionStatus } from '../lib/util/usePermissionStatus';
 
 export const createNotificationChannelsAndroid = () =>
   Promise.all(
-    notificationChannels.map(({ id, ...rest }) =>
-      createChannelAndroidAsync(id, rest),
+    constants.notificationChannels.map(({ id, ...rest }) =>
+      setNotificationChannelAsync(id, rest),
     ),
   );
 

@@ -29,7 +29,9 @@ const App = () => {
     setIsLoading(false);
     setData(json);
   }, [filters]);
-  useEffect(updateData, [updateData]);
+  useEffect(() => {
+    updateData();
+  }, [updateData]);
 
   const onRefresh = () => {
     setIsLoading(true);
