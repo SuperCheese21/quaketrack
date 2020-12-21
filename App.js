@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { LogBox } from 'react-native';
 
 import { useLocation, usePushToken } from './src/api/expo';
 import fetchData from './src/api/fetchData';
@@ -51,5 +52,11 @@ const App = () => {
     />
   );
 };
+
+// React Native bug - ignore warning on long timers
+LogBox.ignoreLogs([
+  'Setting a timer',
+  'Your project is accessing the following APIs',
+]);
 
 export default App;

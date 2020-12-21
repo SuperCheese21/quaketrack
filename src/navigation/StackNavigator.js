@@ -20,11 +20,11 @@ const StackNavigator = createStackNavigator(
       headerStyle: {
         backgroundColor: colors.header,
       },
+      headerTitleAlign: 'center',
       headerTitleStyle: {
         fontSize: 28,
       },
     },
-    headerLayoutPreset: 'center',
   },
 );
 

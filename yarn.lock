@@ -6633,11 +6633,6 @@ react-navigation-material-bottom-tabs@^2.3.3:
   resolved "https://registry.yarnpkg.com/react-navigation-material-bottom-tabs/-/react-navigation-material-bottom-tabs-2.3.3.tgz#9c9efa4b7c3d813bc31808efcf95e888f92f5341"
   integrity sha512-/r7f4zNpauc7wMI7ES5IKXRAe7rJ0dv9NG5bsjrsoleIxSpVnoBh0ZOBscDvtp35bxNfKO/EQpRvld0rrk8k3Q==
 
-react-navigation-slide-from-right-transition@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-navigation-slide-from-right-transition/-/react-navigation-slide-from-right-transition-1.0.4.tgz#e189b1e6e7d107cf32f6d5c07271a415646abc68"
-  integrity sha512-sPE1VXrO6U4dEc5s0PXKi0QLz8doHoTGQK8Lyhsl5ToiiKsSK/WP1vxJbhCl39Xn9L/aOVBJ5G0iHmoq95GNhw==
-
 react-navigation-stack@^2.10.2:
   version "2.10.2"
   resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-2.10.2.tgz#9b6d38503496f9ef519acc6cad270ec0ace4ccbd"
