@@ -58,7 +58,7 @@ const calcBlue = (val, low, high) => {
 export const formatRGB = ([red, green, blue]) => `rgb(${red},${green},${blue})`;
 
 export const formatRGBA = ([red, green, blue], opacity) =>
-  `rgb(${red},${green},${blue},${opacity})`;
+  `rgba(${red},${green},${blue},${opacity})`;
 
 export const getRGB = (val, low, high) => [
   calcRed(val, low, high),

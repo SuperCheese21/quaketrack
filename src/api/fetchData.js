@@ -1,6 +1,6 @@
 import qs from 'qs';
 
-import constants from '../config/constants';
+import { URLS } from '../config/constants';
 
 const queryStringify = query =>
   qs.stringify(query, {
@@ -19,12 +19,12 @@ const getUrl = ({
   const queryString = queryStringify({
     minmagnitude,
     limit,
-    starttime: dateEnabled ? starttime : null,
-    endtime: dateEnabled ? endtime : null,
+    starttime: dateEnabled ? starttime.format('YYYY-MM-DD') : null,
+    endtime: dateEnabled ? endtime.format('YYYY-MM-DD') : null,
     orderby,
     format: 'geojson',
   });
-  return `${constants.urls.usgs.DATABASE}${queryString}`;
+  return `${URLS.USGS.DATABASE}${queryString}`;
 };
 
 export default async filters => {

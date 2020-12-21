@@ -11,12 +11,12 @@ import {
 } from 'expo-notifications';
 import { useCallback, useEffect, useState } from 'react';
 
-import constants from '../config/constants';
+import { NOTIFICATION_CHANNELS } from '../config/constants';
 import { usePermissionStatus } from '../lib/util/usePermissionStatus';
 
 export const createNotificationChannelsAndroid = () =>
   Promise.all(
-    constants.notificationChannels.map(({ id, ...rest }) =>
+    NOTIFICATION_CHANNELS.map(({ id, ...rest }) =>
       setNotificationChannelAsync(id, rest),
     ),
   );

@@ -10,6 +10,37 @@ const QuakesListItem = ({ data, stackNavigation }) => {
     properties: { time, place, mag, detail },
   } = data;
   const color = getRGB(mag, 1.0, 9.5);
+  const styles = {
+    listItem: {
+      flexDirection: 'row',
+      height: 75,
+      borderRadius: 5,
+      marginTop: 2.5,
+      marginBottom: 2.5,
+      marginLeft: 5,
+      marginRight: 5,
+      padding: 5,
+    },
+    locationText: {
+      marginLeft: 3,
+      textAlignVertical: 'center',
+      color: 'black',
+      fontWeight: 'bold',
+      flex: 1,
+    },
+    magnitudeText: {
+      textAlignVertical: 'center',
+      textAlign: 'center',
+      color: 'white',
+      fontSize: 28,
+      flex: 1,
+    },
+    timestampText: {
+      marginLeft: 3,
+      textAlignVertical: 'center',
+      color: 'black',
+    },
+  };
 
   return (
     <TouchableOpacity
@@ -58,38 +89,6 @@ const QuakesListItem = ({ data, stackNavigation }) => {
       </View>
     </TouchableOpacity>
   );
-};
-
-const styles = {
-  listItem: {
-    flexDirection: 'row',
-    height: 75,
-    borderRadius: 5,
-    marginTop: 2.5,
-    marginBottom: 2.5,
-    marginLeft: 5,
-    marginRight: 5,
-    padding: 5,
-  },
-  locationText: {
-    marginLeft: 3,
-    textAlignVertical: 'center',
-    color: 'black',
-    fontWeight: 'bold',
-    flex: 1,
-  },
-  magnitudeText: {
-    textAlignVertical: 'center',
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 28,
-    flex: 1,
-  },
-  timestampText: {
-    marginLeft: 3,
-    textAlignVertical: 'center',
-    color: 'black',
-  },
 };
 
 export default QuakesListItem;

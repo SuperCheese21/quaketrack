@@ -4,12 +4,12 @@ import { LogBox } from 'react-native';
 import { useLocation, usePushToken } from './src/api/expo';
 import fetchData from './src/api/fetchData';
 import { initNotifications, useFirebaseUsername } from './src/api/firebase';
-import defaultFilters from './src/config/options.json';
+import { DEFAULT_FILTERS } from './src/config/constants';
 import StackNavigatorContainer from './src/navigation/StackNavigator';
 
 const App = () => {
   const [data, setData] = useState({});
-  const [filters, setFilters] = useState(defaultFilters);
+  const [filters, setFilters] = useState(DEFAULT_FILTERS);
   const [isLoading, setIsLoading] = useState(true);
 
   const expoPushToken = usePushToken(null);
@@ -30,6 +30,7 @@ const App = () => {
     setIsLoading(false);
     setData(json);
   }, [filters]);
+
   useEffect(() => {
     updateData();
   }, [updateData]);
