@@ -10,6 +10,7 @@
         "prettier/react",
         "plugin:you-dont-need-momentjs/recommended"
     ],
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true

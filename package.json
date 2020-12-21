@@ -39,6 +39,7 @@
     "react-navigation-stack": "^2.10.2"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "babel-preset-expo": "8.3.0",
     "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
