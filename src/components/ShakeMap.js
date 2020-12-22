@@ -6,12 +6,16 @@ import ShakeMapOverlay from './ShakeMapOverlay';
 import { formatRGB } from '../lib/util/colorUtil';
 import mapStyle from '../config/map_styles/map_style.json';
 
-const ShakeMap = ({ color, coordinates, shakeMapData }) => (
+const ShakeMap = ({
+  color,
+  coordinates: [longitude, latitude],
+  shakeMapData,
+}) => (
   <MapView
     style={{ flex: 1 }}
     initialRegion={{
-      latitude: coordinates[1],
-      longitude: coordinates[0],
+      latitude,
+      longitude,
       latitudeDelta: 8,
       longitudeDelta: 4,
     }}
@@ -22,8 +26,8 @@ const ShakeMap = ({ color, coordinates, shakeMapData }) => (
 
     <MapView.Marker
       coordinate={{
-        latitude: coordinates[1],
-        longitude: coordinates[0],
+        latitude,
+        longitude,
       }}
       pinColor={formatRGB(color)}
     />
