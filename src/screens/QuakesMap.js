@@ -10,27 +10,18 @@ import { formatTime } from '../lib/util/formatData';
 import mapStyle from '../config/map_styles/map_style.json';
 import plates from '../lib/data/tectonic_plates.json';
 import regions from '../lib/data/tectonic_regions.json';
+import { QuakesContext } from '../components/QuakesProvider';
 
-export default class QuakesMap extends PureComponent {
-  state = {
-    isLoading: true,
+class QuakesMap extends PureComponent {
+  static navigationOptions = {
+    title: 'Map',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="map-marker" size={20} color={tintColor} />
+    ),
   };
 
-  componentDidMount() {
-    this.setState({
-      isLoading: false,
-    });
-  }
-
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Map',
-    tabBarIcon: ({ tintColor }) => {
-      return <Icon name={'map-marker'} size={20} color={tintColor} />;
-    },
-  });
-
   render() {
-    const quakes = this.props.screenProps.data.features;
+    const { data } = this.context;
     return (
       <View style={{ flex: 1 }}>
         <MapView
@@ -56,23 +47,18 @@ export default class QuakesMap extends PureComponent {
             fillOpacity={0.1}
           />
 
-          {quakes.map(data => {
-            const color = getRGB(data.properties.mag, 1.0, 9.5);
+          {data?.quakes?.map(({ geometry, id, properties }) => {
+            const color = getRGB(properties.mag, 1.0, 9.5);
             return (
               <MapView.Marker
-                key={data.id}
+                key={id}
                 coordinate={{
-                  latitude: data.geometry.coordinates[1],
-                  longitude: data.geometry.coordinates[0],
+                  latitude: geometry.coordinates[1],
+                  longitude: geometry.coordinates[0],
                 }}
-                title={'M' + data.properties.mag}
-                description={formatTime(data.properties.time)}
-                onCalloutPress={() =>
-                  this.props.screenProps.stackNavigation.navigate('QuakeInfo', {
-                    color,
-                    url: data.properties.detail,
-                  })
-                }
+                title={`M + ${properties.mag}`}
+                description={formatTime(properties.time)}
+                onCalloutPress={() => {}}
                 pinColor={formatRGB(color)}
               />
             );
@@ -82,3 +68,7 @@ export default class QuakesMap extends PureComponent {
     );
   }
 }
+
+QuakesMap.contextType = QuakesContext;
+
+export default QuakesMap;

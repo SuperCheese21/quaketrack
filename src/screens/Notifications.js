@@ -12,19 +12,33 @@ import {
   updateNotificationSettings,
 } from '../api/firebase';
 import colors from '../config/colors.json';
+import { QuakesContext } from '../components/QuakesProvider';
 
-export default class Notifications extends PureComponent {
-  state = {
-    isLoading: true,
-    settings: {},
-  };
+const styles = {
+  settingsSliderValue: {
+    fontSize: 16,
+    color: 'black',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    flex: 0.2,
+  },
+};
 
+class Notifications extends PureComponent {
   static navigationOptions = {
     title: 'Notifications',
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+      settings: {},
+    };
+  }
+
   async componentDidMount() {
-    const { uid } = this.props.screenProps;
+    const { uid } = this.context;
     const {
       notifications,
       minMagnitude,
@@ -41,26 +55,31 @@ export default class Notifications extends PureComponent {
   }
 
   updateSettings = (property, value) => {
-    const settings = {
-      ...this.state.settings,
+    const { settings } = this.state;
+    const newSettings = {
+      ...settings,
       [property]: value,
     };
-    this.setState({ settings });
+    this.setState({ settings: newSettings });
   };
 
   onSaveAndClose = async () => {
-    const {
-      navigation,
-      screenProps: { uid },
-    } = this.props;
+    const { navigation } = this.props;
+    const { settings } = this.state;
+    const { uid } = this.context;
+
     this.setState({ isLoading: true });
-    await updateNotificationSettings(uid, this.state.settings);
+    await updateNotificationSettings(uid, settings);
     this.setState({ isLoading: false });
+
     navigation.goBack();
   };
 
   render() {
-    if (this.state.isLoading) {
+    const { navigation } = this.props;
+    const { isLoading } = this.state;
+
+    if (isLoading) {
       return <LoadingSpinner />;
     }
 
@@ -109,7 +128,7 @@ export default class Notifications extends PureComponent {
           <Button
             mode="contained"
             color="red"
-            onPress={() => this.props.navigation.goBack()}
+            onPress={() => navigation.goBack()}
           >
             Cancel
           </Button>
@@ -126,12 +145,6 @@ export default class Notifications extends PureComponent {
   }
 }
 
-const styles = {
-  settingsSliderValue: {
-    fontSize: 16,
-    color: 'black',
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    flex: 0.2,
-  },
-};
+Notifications.contextType = QuakesContext;
+
+export default Notifications;

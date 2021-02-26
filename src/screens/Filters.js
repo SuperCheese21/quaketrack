@@ -1,9 +1,9 @@
-import dayjs from 'dayjs';
 import React, { PureComponent } from 'react';
 import { Picker, Text } from 'react-native';
 import { Button, Switch } from 'react-native-paper';
 
 import DatePicker from '../components/DatePicker';
+import { QuakesContext } from '../components/QuakesProvider';
 import SettingsContainer from '../components/SettingsContainer';
 import SettingsItem from '../components/SettingsItem';
 import SettingsItemLabel from '../components/SettingsItemLabel';
@@ -11,14 +11,15 @@ import Slider from '../components/Slider';
 
 import colors from '../config/colors.json';
 
-export default class Filters extends PureComponent {
+class Filters extends PureComponent {
   static navigationOptions = {
     title: 'Filters',
   };
 
   constructor(props) {
     super(props);
-    this.state = props.screenProps.filters;
+    const { filters } = this.context;
+    this.state = { ...filters };
   }
 
   render() {
@@ -39,7 +40,8 @@ export default class Filters extends PureComponent {
       orderby,
       starttime,
     } = this.state;
-    const { navigation, screenProps } = this.props;
+    const { navigation } = this.props;
+    const { onRefresh, setFilters } = this.context;
     return (
       <SettingsContainer>
         <SettingsItem>
@@ -130,9 +132,9 @@ export default class Filters extends PureComponent {
             mode="contained"
             color={colors.accent}
             onPress={() => {
-              screenProps.setFilters(this.state);
+              setFilters(this.state);
               navigation.goBack();
-              screenProps.onRefresh();
+              onRefresh();
             }}
           >
             Save & Close
@@ -142,3 +144,7 @@ export default class Filters extends PureComponent {
     );
   }
 }
+
+Filters.contextType = QuakesContext;
+
+export default Filters;
