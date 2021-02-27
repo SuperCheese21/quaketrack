@@ -13,13 +13,6 @@ import regions from '../lib/data/tectonic_regions.json';
 import { QuakesContext } from '../components/QuakesProvider';
 
 class QuakesMap extends PureComponent {
-  static navigationOptions = {
-    title: 'Map',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="map-marker" size={20} color={tintColor} />
-    ),
-  };
-
   render() {
     const { data } = this.context;
     return (

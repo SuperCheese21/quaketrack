@@ -12,10 +12,6 @@ import Slider from '../components/Slider';
 import colors from '../config/colors.json';
 
 class Filters extends PureComponent {
-  static navigationOptions = {
-    title: 'Filters',
-  };
-
   constructor(props) {
     super(props);
     const { filters } = this.context;

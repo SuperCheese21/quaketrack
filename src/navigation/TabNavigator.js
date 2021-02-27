@@ -1,3 +1,4 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
@@ -15,7 +16,27 @@ export default () => (
     barStyle={{ backgroundColor: colors.header }}
     lazy={false}
   >
-    <Tab.Screen name="List" component={QuakesList} />
-    <Tab.Screen name="Map" component={QuakesMap} />
+    <Tab.Screen
+      name="List"
+      component={QuakesList}
+      options={{
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons
+            name="format-list-bulleted"
+            size={20}
+            color={color}
+          />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Map"
+      component={QuakesMap}
+      options={{
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="map-marker" size={20} color={color} />
+        ),
+      }}
+    />
   </Tab.Navigator>
 );

@@ -27,22 +27,10 @@ export default () => (
       <Stack.Screen
         name="QuakeTrack"
         component={TabNavigator}
-        options={{
-          headerLeft: ({ onPress, label, labelStyle }) => (
-            <NotificationIcon
-              onPress={onPress}
-              label={label}
-              labelStyle={labelStyle}
-            />
-          ),
-          headerRight: ({ onPress, label, labelStyle }) => (
-            <FilterIcon
-              onPress={onPress}
-              label={label}
-              labelStyle={labelStyle}
-            />
-          ),
-        }}
+        options={({ navigation }) => ({
+          headerLeft: () => <NotificationIcon navigation={navigation} />,
+          headerRight: () => <FilterIcon navigation={navigation} />,
+        })}
       />
       <Stack.Screen name="QuakeInfo" component={QuakeInfo} />
       <Stack.Screen name="Filters" component={Filters} />

@@ -25,10 +25,6 @@ const styles = {
 };
 
 class Notifications extends PureComponent {
-  static navigationOptions = {
-    title: 'Notifications',
-  };
-
   constructor(props) {
     super(props);
     this.state = {

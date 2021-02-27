@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { FlatList, Text, View } from 'react-native';
-import Icon from '@expo/vector-icons/MaterialCommunityIcons';
 
 import QuakesListItem from '../components/QuakesListItem';
 import { QuakesContext } from '../components/QuakesProvider';
@@ -29,13 +28,6 @@ const styles = {
 };
 
 class QuakesList extends PureComponent {
-  static navigationOptions = {
-    title: 'List',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="format-list-bulleted" size={20} color={tintColor} />
-    ),
-  };
-
   render() {
     const { onRefresh, isLoading, data, stackNavigation } = this.context;
 
