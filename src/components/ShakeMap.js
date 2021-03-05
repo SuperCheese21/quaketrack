@@ -1,10 +1,10 @@
 import React from 'react';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 import ShakeMapOverlay from './ShakeMapOverlay';
 
-import { formatRGB } from '../lib/util/colorUtil';
 import mapStyle from '../config/map_styles/map_style.json';
+import { formatRGB } from '../lib/util/colorUtil';
 
 const ShakeMap = ({
   color,
@@ -23,8 +23,7 @@ const ShakeMap = ({
     customMapStyle={mapStyle}
   >
     <ShakeMapOverlay data={shakeMapData} />
-
-    <MapView.Marker
+    <Marker
       coordinate={{
         latitude,
         longitude,
