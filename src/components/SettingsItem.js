@@ -1,7 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
+import SettingsItemLabel from './SettingsItemLabel';
 
-const SettingsItem = ({ children, disabled, subItem, style }) => (
+const SettingsItem = ({ children, disabled, label, subItem, style }) => (
   <View
     style={{
       flexDirection: 'row',
@@ -11,6 +12,7 @@ const SettingsItem = ({ children, disabled, subItem, style }) => (
       ...style,
     }}
   >
+    {label && <SettingsItemLabel text={label} />}
     {children}
   </View>
 );

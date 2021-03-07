@@ -10,7 +10,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { QuakesContext } from '../components/QuakesProvider';
 import SettingsContainer from '../components/SettingsContainer';
 import SettingsItem from '../components/SettingsItem';
-import SettingsItemLabel from '../components/SettingsItemLabel';
 import Slider from '../components/Slider';
 import colors from '../config/colors.json';
 
@@ -67,8 +66,7 @@ const Notifications = ({ navigation }) => {
 
   return (
     <SettingsContainer>
-      <SettingsItem>
-        <SettingsItemLabel text="Notifications" />
+      <SettingsItem label="Notifications">
         <Switch
           value={settings.notifications}
           onValueChange={value => updateSettings('notifications', value)}
@@ -76,8 +74,10 @@ const Notifications = ({ navigation }) => {
         />
       </SettingsItem>
 
-      <SettingsItem disabled={!settings.notifications}>
-        <SettingsItemLabel text="Minimum Magnitude" />
+      <SettingsItem
+        label="Minimum Magnitude"
+        disabled={!settings.notifications}
+      >
         <Text style={styles.settingsSliderValue}>{settings.minMagnitude}</Text>
       </SettingsItem>
 
@@ -91,8 +91,7 @@ const Notifications = ({ navigation }) => {
         onValueChange={value => updateSettings('minMagnitude', value)}
       />
 
-      <SettingsItem disabled={!settings.notifications}>
-        <SettingsItemLabel text="Updates" />
+      <SettingsItem label="Updates" disabled={!settings.notifications}>
         <Switch
           value={settings.updates}
           onValueChange={value => updateSettings('updates', value)}
