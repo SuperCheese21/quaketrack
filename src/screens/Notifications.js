@@ -97,6 +97,7 @@ const Notifications = ({ navigation }) => {
           value={settings.updates}
           onValueChange={value => updateSettings('updates', value)}
           color={colors.accent}
+          disabled={!settings.notifications}
         />
       </SettingsItem>
 
