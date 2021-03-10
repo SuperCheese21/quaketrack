@@ -1,6 +1,6 @@
 import qs from 'qs';
 
-import { URLS } from '../config/constants';
+import { DATE_FORMAT, URLS } from '../config/constants';
 
 const queryStringify = query =>
   qs.stringify(query, {
@@ -19,8 +19,8 @@ const getUrl = ({
   const queryString = queryStringify({
     minmagnitude,
     limit,
-    starttime: dateEnabled ? starttime.format('YYYY-MM-DD') : null,
-    endtime: dateEnabled ? endtime.format('YYYY-MM-DD') : null,
+    starttime: dateEnabled ? starttime.format(DATE_FORMAT) : null,
+    endtime: dateEnabled ? endtime.format(DATE_FORMAT) : null,
     orderby,
     format: 'geojson',
   });

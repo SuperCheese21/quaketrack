@@ -30,18 +30,22 @@ const Notifications = ({ navigation }) => {
   const [settings, setSettings] = useState({});
 
   const fetchSettings = useCallback(async () => {
-    const {
-      notifications,
-      minMagnitude,
-      updates,
-    } = await getNotificationSettings(uid);
-    setSettings({
-      notifications,
-      minMagnitude,
-      updates,
-    });
+    try {
+      const {
+        notifications,
+        minMagnitude,
+        updates,
+      } = await getNotificationSettings(uid);
+      setSettings({
+        notifications,
+        minMagnitude,
+        updates,
+      });
+    } catch (err) {
+      navigation.goBack();
+    }
     setIsLoading(false);
-  }, [uid]);
+  }, [navigation, uid]);
 
   useEffect(() => {
     fetchSettings();
@@ -55,9 +59,14 @@ const Notifications = ({ navigation }) => {
 
   const onSaveAndClose = async () => {
     setIsLoading(true);
-    await updateNotificationSettings(uid, settings);
+    const isUpdateSuccessful = await updateNotificationSettings({
+      uid,
+      settings,
+    });
     setIsLoading(false);
-    navigation.goBack();
+    if (isUpdateSuccessful) {
+      navigation.goBack();
+    }
   };
 
   if (isLoading) {

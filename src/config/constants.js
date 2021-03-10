@@ -11,6 +11,9 @@ export const URLS = {
   },
 };
 
+export const DATE_FORMAT = 'YYYY-MM-DD';
+export const TIMESTAMP_FORMAT = 'YYYY-MM-DD HH:mm:ss UTC';
+
 export const NOTIFICATION_CHANNELS = [
   {
     id: 'quake-alerts',
@@ -32,7 +35,7 @@ export const DEFAULT_FILTERS = {
   minmagnitude: 4,
   limit: 1000,
   dateEnabled: false,
-  starttime: dayjs().subtract(1, 'month'),
-  endtime: dayjs(),
+  starttime: dayjs().subtract(1, 'month').format(DATE_FORMAT),
+  endtime: dayjs().format(DATE_FORMAT),
   orderby: 'time',
 };

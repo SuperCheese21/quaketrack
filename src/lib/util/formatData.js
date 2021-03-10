@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
+import { TIMESTAMP_FORMAT } from '../../config/constants';
 
 dayjs.extend(utc);
 
@@ -10,8 +11,7 @@ const precisionRound = (number, precision) => {
   return Math.round(number * factor) / factor;
 };
 
-export const formatTime = time =>
-  dayjs.utc(time).format('YYYY-MM-DD HH:mm:ss UTC');
+export const formatTime = time => dayjs.utc(time).format(TIMESTAMP_FORMAT);
 
 export const formatMagnitude = (mag, precision) => {
   const formattedMag = precisionRound(mag, precision);

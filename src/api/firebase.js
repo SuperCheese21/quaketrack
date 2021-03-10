@@ -26,12 +26,24 @@ export const useFirebaseUsername = initialValue => {
 };
 
 export const getNotificationSettings = async uid => {
-  const snapshot = await usersRef.once('value');
-  return snapshot.child(uid).val();
+  try {
+    const snapshot = await usersRef.once('value');
+    return snapshot.child(uid).val();
+  } catch (err) {
+    console.error(err);
+    return {};
+  }
 };
 
-export const updateNotificationSettings = ({ uid, settings }) =>
-  usersRef.child(uid).update(settings);
+export const updateNotificationSettings = async ({ uid, settings }) => {
+  try {
+    await usersRef.child(uid).update(settings);
+    return true;
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+};
 
 export const initNotifications = async ({ expoPushToken, location, uid }) => {
   if (Platform.OS === 'android') {
