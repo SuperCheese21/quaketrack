@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useContext } from 'react';
 import { FlatList, Text, View } from 'react-native';
 
 import QuakesListItem from '../components/QuakesListItem';
@@ -27,35 +27,33 @@ const styles = {
   },
 };
 
-class QuakesList extends PureComponent {
-  render() {
-    const { onRefresh, isLoading, data, stackNavigation } = this.context;
+const QuakesList = ({ stackNavigation }) => {
+  const { data, isLoading, onRefresh } = useContext(QuakesContext);
+  const { features, metadata } = data;
 
-    return (
-      <View style={styles.listView}>
-        {data.metadata && (
-          <>
-            <Text style={styles.listTitle}>{data.metadata.title}</Text>
-            <Text style={styles.listInfo}>
-              {data.metadata.count} Earthquakes | Updated{' '}
-              {formatTime(data.metadata.generated)}
-            </Text>
-          </>
+  return (
+    <View style={styles.listView}>
+      {metadata && (
+        <>
+          <Text style={styles.listTitle}>{metadata.title}</Text>
+          <Text style={styles.listInfo}>
+            {`${metadata.count} Earthquakes | Updated ${formatTime(
+              metadata.generated,
+            )}`}
+          </Text>
+        </>
+      )}
+      <FlatList
+        onRefresh={onRefresh}
+        refreshing={isLoading}
+        data={features}
+        keyExtractor={({ id }) => id}
+        renderItem={({ item }) => (
+          <QuakesListItem stackNavigation={stackNavigation} data={item} />
         )}
-        <FlatList
-          onRefresh={onRefresh}
-          refreshing={isLoading}
-          data={data.features}
-          keyExtractor={({ id }) => id}
-          renderItem={({ item }) => (
-            <QuakesListItem stackNavigation={stackNavigation} data={item} />
-          )}
-        />
-      </View>
-    );
-  }
-}
-
-QuakesList.contextType = QuakesContext;
+      />
+    </View>
+  );
+};
 
 export default QuakesList;

@@ -1,33 +1,25 @@
 {
-    "env": {
-        "es2021": true,
-        "node": true
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "airbnb/hooks", "prettier"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "airbnb",
-        "airbnb/hooks",
-        "prettier",
-        "prettier/react",
-        "plugin:you-dont-need-momentjs/recommended"
-    ],
-    "parser": "babel-eslint",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "globals": {
-        "fetch": false
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "import/prefer-default-export": "off",
-        "no-console": "off",
-        "react/jsx-filename-extension": "off",
-        "react/prop-types": "off"
-    }
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "globals": {
+    "fetch": false
+  },
+  "plugins": ["react"],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "no-console": "off",
+    "react/jsx-filename-extension": "off",
+    "react/prop-types": "off"
+  }
 }
