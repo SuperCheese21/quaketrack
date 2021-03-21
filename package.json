@@ -12,7 +12,7 @@
     "eslint": "node_modules/.bin/eslint App.js src/**/*.js"
   },
   "dependencies": {
-    "@expo/vector-icons": "^12.0.3",
+    "@expo/vector-icons": "^12.0.4",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/material-bottom-tabs": "^5.3.14",
     "@react-navigation/native": "^5.9.3",
@@ -25,7 +25,7 @@
     "expo-permissions": "~10.0.0",
     "expo-status-bar": "~1.0.3",
     "firebase": "^8.2.9",
-    "qs": "^6.9.6",
+    "qs": "^6.10.0",
     "react": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
     "react-native-datepicker": "^1.7.2",
@@ -42,14 +42,13 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "babel-preset-expo": "8.3.0",
-    "eslint": "^7.15.0",
+    "eslint": "^7.22.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^7.0.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-you-dont-need-momentjs": "^1.6.0",
     "prettier": "^2.2.1"
   }
 }
