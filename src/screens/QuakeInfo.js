@@ -30,7 +30,7 @@ const styles = {
   },
 };
 
-const QuakeInfo = ({ navigation }) => {
+const QuakeInfo = ({ navigation, url }) => {
   const [shakeMapData, setShakeMapData] = useState([]);
   const [quakeData, setQuakeData] = useState({});
 
@@ -57,7 +57,7 @@ const QuakeInfo = ({ navigation }) => {
 
   const getQuakeData = useCallback(async () => {
     try {
-      const res = await fetch(navigation.state.params.url);
+      const res = await fetch(url);
       const updatedQuakeData = await res.json();
       const updatedShakeMapData = await getShakeMapData(updatedQuakeData);
       setQuakeData(updatedQuakeData);
@@ -65,7 +65,7 @@ const QuakeInfo = ({ navigation }) => {
     } catch (err) {
       console.error(err.message);
     }
-  }, [getShakeMapData, navigation.state.params.url]);
+  }, [getShakeMapData, url]);
 
   const handleBackPress = useCallback(() => {
     navigation.goBack();

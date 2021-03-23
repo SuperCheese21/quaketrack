@@ -10,7 +10,7 @@ import regions from '../lib/data/tectonic_regions.json';
 import { formatRGB, getRGB } from '../lib/util/colorUtil';
 import { formatTime } from '../lib/util/formatData';
 
-const QuakesMap = () => {
+const QuakesMap = ({ stackNavigation }) => {
   const { data } = useContext(QuakesContext);
 
   return (
@@ -49,7 +49,12 @@ const QuakesMap = () => {
               }}
               title={`M${properties.mag}`}
               description={formatTime(properties.time)}
-              onCalloutPress={() => {}}
+              onCalloutPress={() =>
+                stackNavigation.navigate('QuakeInfo', {
+                  color,
+                  url: data.properties.detail,
+                })
+              }
               pinColor={formatRGB(color)}
             />
           );

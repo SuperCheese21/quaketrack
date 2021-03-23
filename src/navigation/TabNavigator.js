@@ -8,7 +8,7 @@ import colors from '../config/colors.json';
 
 const Tab = createMaterialBottomTabNavigator();
 
-export default () => (
+export default ({ navigation: stackNavigation }) => (
   <Tab.Navigator
     shifting
     activeColor="blue"
@@ -18,7 +18,6 @@ export default () => (
   >
     <Tab.Screen
       name="List"
-      component={QuakesList}
       options={{
         tabBarIcon: ({ color }) => (
           <MaterialCommunityIcons
@@ -28,15 +27,18 @@ export default () => (
           />
         ),
       }}
-    />
+    >
+      {() => <QuakesList stackNavigation={stackNavigation} />}
+    </Tab.Screen>
     <Tab.Screen
       name="Map"
-      component={QuakesMap}
       options={{
         tabBarIcon: ({ color }) => (
           <MaterialCommunityIcons name="map-marker" size={20} color={color} />
         ),
       }}
-    />
+    >
+      {() => <QuakesMap stackNavigation={stackNavigation} />}
+    </Tab.Screen>
   </Tab.Navigator>
 );
