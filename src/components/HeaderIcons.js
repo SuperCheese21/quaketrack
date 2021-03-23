@@ -3,11 +3,8 @@ import { TouchableOpacity } from 'react-native';
 import MaterialIcon from '@expo/vector-icons/MaterialIcons';
 import MaterialCommunityIcon from '@expo/vector-icons/MaterialCommunityIcons';
 
-export const FilterIcon = ({ navigation }) => (
-  <TouchableOpacity
-    style={{ flex: 1 }}
-    onPress={() => navigation.push('Filters')}
-  >
+export const FilterIcon = ({ onPress }) => (
+  <TouchableOpacity style={{ flex: 1 }} onPress={onPress}>
     <MaterialCommunityIcon
       name="filter-outline"
       style={{ marginRight: 10 }}
@@ -17,11 +14,8 @@ export const FilterIcon = ({ navigation }) => (
   </TouchableOpacity>
 );
 
-export const NotificationIcon = ({ navigation }) => (
-  <TouchableOpacity
-    style={{ flex: 1 }}
-    onPress={() => navigation.push('Notifications')}
-  >
+export const NotificationIcon = ({ onPress }) => (
+  <TouchableOpacity style={{ flex: 1 }} onPress={onPress}>
     <MaterialIcon
       name="notifications"
       style={{ marginLeft: 10 }}
