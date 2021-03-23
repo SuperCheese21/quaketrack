@@ -52,7 +52,7 @@ const QuakesMap = ({ stackNavigation }) => {
               onCalloutPress={() =>
                 stackNavigation.navigate('QuakeInfo', {
                   color,
-                  url: data.properties.detail,
+                  url: properties.detail,
                 })
               }
               pinColor={formatRGB(color)}
