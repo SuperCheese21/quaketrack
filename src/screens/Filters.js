@@ -88,7 +88,7 @@ const Filters = ({ navigation }) => {
         <SettingsItemLabel subItem text="Start Time" />
         <DatePicker
           date={starttime}
-          disabled
+          disabled={!dateEnabled}
           onValueChange={value => updateFilters({ starttime: value })}
         />
       </SettingsItem>
@@ -97,7 +97,7 @@ const Filters = ({ navigation }) => {
         <SettingsItemLabel subItem text="End Time" />
         <DatePicker
           date={endtime}
-          disabled
+          disabled={!dateEnabled}
           onValueChange={value => updateFilters({ endtime: value })}
         />
       </SettingsItem>

@@ -4,7 +4,14 @@ import MaterialIcon from '@expo/vector-icons/MaterialIcons';
 import MaterialCommunityIcon from '@expo/vector-icons/MaterialCommunityIcons';
 
 export const FilterIcon = ({ onPress }) => (
-  <TouchableOpacity style={{ flex: 1 }} onPress={onPress}>
+  <TouchableOpacity
+    style={{
+      flex: 1,
+      display: 'flex',
+      justifyContent: 'center',
+    }}
+    onPress={onPress}
+  >
     <MaterialCommunityIcon
       name="filter-outline"
       style={{ marginRight: 10 }}
@@ -15,7 +22,10 @@ export const FilterIcon = ({ onPress }) => (
 );
 
 export const NotificationIcon = ({ onPress }) => (
-  <TouchableOpacity style={{ flex: 1 }} onPress={onPress}>
+  <TouchableOpacity
+    style={{ flex: 1, display: 'flex', justifyContent: 'center' }}
+    onPress={onPress}
+  >
     <MaterialIcon
       name="notifications"
       style={{ marginLeft: 10 }}
