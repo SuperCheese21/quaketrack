@@ -5,10 +5,12 @@ import ShakeMapOverlay from './ShakeMapOverlay';
 
 import mapStyle from '../config/map_styles/map_style.json';
 import { formatRGB } from '../lib/util/colorUtil';
+import { formatMagnitude } from '../lib/util/formatData';
 
 const ShakeMap = ({
   color,
   coordinates: [longitude, latitude],
+  mag,
   shakeMapData,
 }) => (
   <MapView
@@ -28,6 +30,8 @@ const ShakeMap = ({
         latitude,
         longitude,
       }}
+      title={`M ${formatMagnitude(mag, 2)}`}
+      description={`${latitude}, ${longitude}`}
       pinColor={formatRGB(color)}
     />
   </MapView>

@@ -127,6 +127,7 @@ const QuakeInfo = ({ navigation, route }) => {
       <ShakeMap
         color={color}
         coordinates={coordinates}
+        mag={properties.mag}
         shakeMapData={shakeMapData}
       />
     </View>
