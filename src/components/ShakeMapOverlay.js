@@ -1,13 +1,13 @@
+import { getRandomBytes } from 'expo-random';
 import React from 'react';
-import MapView from 'react-native-maps';
-import { v4 as uuid } from 'uuid';
+import { Polyline } from 'react-native-maps';
 
 const ShakeMapOverlay = ({ data }) => {
   if (data.length) {
-    return data.map(feature =>
+    return data.flatMap(feature =>
       feature.geometry.coordinates.map(line => (
-        <MapView.Polyline
-          key={uuid()}
+        <Polyline
+          key={getRandomBytes(32)}
           coordinates={line.map(coords => ({
             latitude: parseFloat(coords[1]),
             longitude: parseFloat(coords[0]),

@@ -1,7 +1,6 @@
 import {
   getCurrentPositionAsync,
-  getPermissionsAsync as getLocationPermissions,
-  requestPermissionsAsync as requestLocationPermissions,
+  useForegroundPermissions as useForegroundLocationPermissions,
 } from 'expo-location';
 import {
   getExpoPushTokenAsync,
@@ -23,16 +22,15 @@ export const createNotificationChannelsAndroid = () =>
 
 export const useLocation = initialValue => {
   const [location, setLocation] = useState(initialValue);
-  const status = usePermissionStatus({
-    getPermissions: getLocationPermissions,
-    requestPermissions: requestLocationPermissions,
-  });
+  const [status, requestPermission] = useForegroundLocationPermissions();
   const getLocation = useCallback(async () => {
-    if (status === 'granted') {
+    if (status?.granted) {
       const currentLocation = await getCurrentPositionAsync();
       setLocation(currentLocation);
+    } else {
+      await requestPermission();
     }
-  }, [status]);
+  }, [requestPermission, status?.granted]);
   useEffect(() => {
     getLocation();
   }, [getLocation]);

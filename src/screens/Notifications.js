@@ -31,17 +31,15 @@ const Notifications = ({ navigation }) => {
 
   const fetchSettings = useCallback(async () => {
     try {
-      const {
-        notifications,
-        minMagnitude,
-        updates,
-      } = await getNotificationSettings(uid);
+      const { notifications, minMagnitude, updates } =
+        await getNotificationSettings(uid);
       setSettings({
         notifications,
         minMagnitude,
         updates,
       });
     } catch (err) {
+      console.log(err);
       navigation.goBack();
     }
     setIsLoading(false);

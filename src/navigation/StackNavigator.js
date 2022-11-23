@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 
 import TabNavigator from './TabNavigator';
@@ -9,7 +9,7 @@ import Filters from '../screens/Filters';
 import Notifications from '../screens/Notifications';
 import QuakeInfo from '../screens/QuakeInfo';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default () => (
   <NavigationContainer>
@@ -28,6 +28,7 @@ export default () => (
         name="QuakeTrack"
         component={TabNavigator}
         options={({ navigation }) => ({
+          headerTitle: 'QuakeTrack',
           headerLeft: () => (
             <NotificationIcon
               onPress={() => navigation.navigate('Notifications')}

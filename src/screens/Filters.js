@@ -1,8 +1,9 @@
+import { Picker } from '@react-native-picker/picker';
 import React, { useContext, useState } from 'react';
-import { Picker, Text } from 'react-native';
+import { Text } from 'react-native';
 import { Button, Switch } from 'react-native-paper';
 
-import DatePicker from '../components/DatePicker';
+import DateTimePicker from '../components/DateTimePicker';
 import { QuakesContext } from '../components/QuakesProvider';
 import SettingsContainer from '../components/SettingsContainer';
 import SettingsItem from '../components/SettingsItem';
@@ -31,14 +32,7 @@ const Filters = ({ navigation }) => {
       ...update,
     }));
 
-  const {
-    dateEnabled,
-    endtime,
-    limit,
-    minmagnitude,
-    orderby,
-    starttime,
-  } = updatedFilters;
+  const { dateEnabled, limit, minmagnitude, orderby } = updatedFilters;
 
   return (
     <SettingsContainer>
@@ -86,19 +80,19 @@ const Filters = ({ navigation }) => {
 
       <SettingsItem subItem disabled={!dateEnabled}>
         <SettingsItemLabel subItem text="Start Time" />
-        <DatePicker
-          date={starttime}
+        <DateTimePicker
           disabled={!dateEnabled}
-          onValueChange={value => updateFilters({ starttime: value })}
+          value={updatedFilters.starttime}
+          onChange={value => updateFilters({ starttime: value })}
         />
       </SettingsItem>
 
       <SettingsItem subItem disabled={!dateEnabled}>
         <SettingsItemLabel subItem text="End Time" />
-        <DatePicker
-          date={endtime}
+        <DateTimePicker
           disabled={!dateEnabled}
-          onValueChange={value => updateFilters({ endtime: value })}
+          value={updatedFilters.endtime}
+          onChange={value => updateFilters({ endtime: value })}
         />
       </SettingsItem>
 

@@ -1,4 +1,10 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import { useLocation, usePushToken } from '../api/expo';
 import fetchData from '../api/fetchData';
@@ -35,23 +41,24 @@ export default ({ children }) => {
     updateData();
   }, [updateData]);
 
-  const onRefresh = () => {
+  const onRefresh = useCallback(() => {
     setIsLoading(true);
     updateData();
-  };
+  }, [updateData]);
+
+  const value = useMemo(
+    () => ({
+      data,
+      isLoading,
+      uid,
+      onRefresh,
+      filters,
+      setFilters,
+    }),
+    [data, filters, isLoading, onRefresh, uid],
+  );
 
   return (
-    <QuakesContext.Provider
-      value={{
-        data,
-        isLoading,
-        uid,
-        onRefresh,
-        filters,
-        setFilters,
-      }}
-    >
-      {children}
-    </QuakesContext.Provider>
+    <QuakesContext.Provider value={value}>{children}</QuakesContext.Provider>
   );
 };

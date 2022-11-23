@@ -4,7 +4,7 @@
     "node": true
   },
   "extends": ["plugin:react/recommended", "airbnb", "airbnb/hooks", "prettier"],
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -19,6 +19,13 @@
   "rules": {
     "import/prefer-default-export": "off",
     "no-console": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
     "react/jsx-filename-extension": "off",
     "react/prop-types": "off"
   }

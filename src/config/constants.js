@@ -12,7 +12,8 @@ export const URLS = {
 };
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
-export const TIMESTAMP_FORMAT = 'YYYY-MM-DD HH:mm:ss UTC';
+export const TIME_FORMAT = 'HH:mm:ss';
+export const TIMESTAMP_FORMAT = 'YYYY-MM-DD HH:mm UTC';
 
 export const NOTIFICATION_CHANNELS = [
   {
@@ -35,7 +36,7 @@ export const DEFAULT_FILTERS = {
   minmagnitude: 4,
   limit: 1000,
   dateEnabled: false,
-  starttime: dayjs().subtract(1, 'month').format(DATE_FORMAT),
-  endtime: dayjs().format(DATE_FORMAT),
+  starttime: dayjs().subtract(1, 'month').toDate(),
+  endtime: dayjs().toDate(),
   orderby: 'time',
 };

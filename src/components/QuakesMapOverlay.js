@@ -1,7 +1,7 @@
+import { getRandomBytes } from 'expo-random';
 import React from 'react';
 import 'react-native-get-random-values';
-import MapView from 'react-native-maps';
-import { v4 as uuid } from 'uuid';
+import { Polygon } from 'react-native-maps';
 
 import { formatRGB, formatRGBA } from '../lib/util/colorUtil';
 
@@ -9,10 +9,10 @@ const QuakesMapOverlay = ({ data, rgb, fillOpacity }) => {
   if (!data.length) {
     return null;
   }
-  return data.map(feature =>
+  return data.flatMap(feature =>
     feature.geometry.coordinates.map(polygon => (
-      <MapView.Polygon
-        key={uuid()}
+      <Polygon
+        key={getRandomBytes(32)}
         coordinates={polygon.map(([lon, lat]) => ({
           latitude: parseFloat(lat),
           longitude: parseFloat(lon),

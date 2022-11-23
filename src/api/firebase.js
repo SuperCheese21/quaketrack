@@ -1,21 +1,24 @@
 import dayjs from 'dayjs';
-import * as firebase from 'firebase';
+import { initializeApp } from 'firebase/app';
+import { getAuth, onAuthStateChanged, signInAnonymously } from 'firebase/auth';
+import { child, get, getDatabase, update, ref, set } from 'firebase/database';
 import { useCallback, useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 
 import { createNotificationChannelsAndroid } from './expo';
 import firebaseConfig from '../config/firebase.json';
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const usersRef = firebase.database().ref('users');
+initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getDatabase();
+const usersRef = ref(db, 'users');
 
 export const useFirebaseUsername = initialValue => {
   const [uid, setUid] = useState(initialValue);
   const initFirebase = useCallback(async () => {
     const username = await new Promise((resolve, reject) => {
-      auth.signInAnonymously().catch(err => reject(err.message));
-      auth.onAuthStateChanged(user => user && resolve(user.uid));
+      signInAnonymously(auth).catch(err => reject(err.message));
+      onAuthStateChanged(auth, user => user && resolve(user.uid));
     });
     setUid(username);
   }, []);
@@ -27,8 +30,12 @@ export const useFirebaseUsername = initialValue => {
 
 export const getNotificationSettings = async uid => {
   try {
-    const snapshot = await usersRef.once('value');
-    return snapshot.child(uid).val();
+    const snapshot = await get(child(usersRef, uid));
+    if (!snapshot) {
+      await set(child(usersRef, uid), null);
+      return {};
+    }
+    return snapshot;
   } catch (err) {
     console.error(err);
     return {};
@@ -37,7 +44,7 @@ export const getNotificationSettings = async uid => {
 
 export const updateNotificationSettings = async ({ uid, settings }) => {
   try {
-    await usersRef.child(uid).update(settings);
+    await update(child(usersRef, uid), settings);
     return true;
   } catch (err) {
     console.error(err);
@@ -50,14 +57,14 @@ export const initNotifications = async ({ expoPushToken, location, uid }) => {
     await createNotificationChannelsAndroid();
   }
 
-  const data = (await getNotificationSettings(uid)) || {};
+  const data = await getNotificationSettings(uid);
   const settings = {
     minMagnitude: data.minMagnitude || 5,
     notifications: data.notifications || true,
     updates: data.updates || false,
     expoPushToken,
     location,
-    updated: dayjs().format(),
+    updated: dayjs().valueOf(),
   };
 
   await updateNotificationSettings({ uid, settings });
