@@ -1,4 +1,5 @@
 import qs from 'qs';
+import { Alert } from 'react-native';
 
 import { URLS } from '../config/constants';
 
@@ -33,7 +34,7 @@ export default async filters => {
     const res = await fetch(url);
     return res.json();
   } catch (err) {
-    console.error(err);
+    Alert.alert('Error', 'Unable to fetch earthquake data');
     return {};
   }
 };

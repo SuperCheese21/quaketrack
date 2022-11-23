@@ -14,6 +14,7 @@ const ShakeMap = ({
   shakeMapData,
 }) => (
   <MapView
+    provider="google"
     style={{ flex: 1 }}
     initialRegion={{
       latitude,

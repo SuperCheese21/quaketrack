@@ -16,6 +16,7 @@ const QuakesMap = ({ stackNavigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <MapView
+        provider="google"
         style={{ flex: 1 }}
         initialRegion={{
           latitude: 0,

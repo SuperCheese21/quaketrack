@@ -1,11 +1,10 @@
 import dayjs from 'dayjs';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, signInAnonymously } from 'firebase/auth';
-import { child, get, getDatabase, update, ref, set } from 'firebase/database';
+import { child, get, getDatabase, ref, update } from 'firebase/database';
 import { useCallback, useEffect, useState } from 'react';
-import { Platform } from 'react-native';
+import { Alert } from 'react-native';
 
-import { createNotificationChannelsAndroid } from './expo';
 import firebaseConfig from '../config/firebase.json';
 
 initializeApp(firebaseConfig);
@@ -13,8 +12,8 @@ const auth = getAuth();
 const db = getDatabase();
 const usersRef = ref(db, 'users');
 
-export const useFirebaseUsername = initialValue => {
-  const [uid, setUid] = useState(initialValue);
+export const useFirebaseUsername = () => {
+  const [uid, setUid] = useState(null);
   const initFirebase = useCallback(async () => {
     const username = await new Promise((resolve, reject) => {
       signInAnonymously(auth).catch(err => reject(err.message));
@@ -28,44 +27,43 @@ export const useFirebaseUsername = initialValue => {
   return uid;
 };
 
-export const getNotificationSettings = async uid => {
+export const getUserData = async uid => {
   try {
     const snapshot = await get(child(usersRef, uid));
-    if (!snapshot) {
-      await set(child(usersRef, uid), null);
-      return {};
-    }
-    return snapshot;
+    return snapshot?.val() ?? {};
   } catch (err) {
-    console.error(err);
-    return {};
+    Alert.alert('Error', 'Unable to fetch notification settings');
+    return null;
   }
 };
 
-export const updateNotificationSettings = async ({ uid, settings }) => {
+export const updateUserData = async (uid, data) => {
   try {
-    await update(child(usersRef, uid), settings);
+    await update(child(usersRef, uid), {
+      ...data,
+      updated: dayjs().valueOf(),
+    });
     return true;
   } catch (err) {
-    console.error(err);
+    Alert.alert('Error', 'Unable to update notification settings');
     return false;
   }
 };
 
 export const initNotifications = async ({ expoPushToken, location, uid }) => {
-  if (Platform.OS === 'android') {
-    await createNotificationChannelsAndroid();
+  const userData = await getUserData(uid);
+  if (userData === null) {
+    return null;
   }
-
-  const data = await getNotificationSettings(uid);
-  const settings = {
-    minMagnitude: data.minMagnitude || 5,
-    notifications: data.notifications || true,
-    updates: data.updates || false,
+  const newSettings = {
+    notifications: userData.notifications ?? false,
+    minMagnitude: userData.minMagnitude ?? 5,
+    updates: userData.updates ?? false,
+  };
+  await updateUserData(uid, {
+    ...newSettings,
     expoPushToken,
     location,
-    updated: dayjs().valueOf(),
-  };
-
-  await updateNotificationSettings({ uid, settings });
+  });
+  return newSettings;
 };

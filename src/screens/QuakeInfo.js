@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { BackHandler, Linking, Text, View } from 'react-native';
+import { Alert, BackHandler, Linking, Text, View } from 'react-native';
 
 import LoadingSpinner from '../components/LoadingSpinner';
 import ShakeMap from '../components/ShakeMap';
@@ -49,7 +49,7 @@ const QuakeInfo = ({ navigation, route }) => {
         const json = await res.json();
         return json.features;
       } catch (err) {
-        console.error(err.message);
+        Alert.alert('Error', 'Unable to fetch shakemap data');
         return [];
       }
     },
@@ -64,7 +64,7 @@ const QuakeInfo = ({ navigation, route }) => {
       setQuakeData(updatedQuakeData);
       setShakeMapData(updatedShakeMapData);
     } catch (err) {
-      console.error(err.message);
+      Alert.alert('Error', 'Unable to fetch earthquake data');
       navigation.goBack();
     }
   }, [getShakeMapData, navigation, url]);

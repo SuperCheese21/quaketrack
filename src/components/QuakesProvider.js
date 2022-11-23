@@ -6,9 +6,10 @@ import React, {
   useState,
 } from 'react';
 
-import { useLocation, usePushToken } from '../api/expo';
+import { useLocation } from '../api/location';
 import fetchData from '../api/fetchData';
 import { initNotifications, useFirebaseUsername } from '../api/firebase';
+import { usePushNotifications } from '../api/notifications';
 import { DEFAULT_FILTERS } from '../config/constants';
 
 export const QuakesContext = createContext();
@@ -16,19 +17,23 @@ export const QuakesContext = createContext();
 export default ({ children }) => {
   const [data, setData] = useState({});
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
+  const [notificationSettings, setNotificationSettings] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const expoPushToken = usePushToken(null);
-  const location = useLocation(null);
-  const uid = useFirebaseUsername(null);
+  const expoPushToken = usePushNotifications();
+  const location = useLocation();
+  const uid = useFirebaseUsername();
 
-  useEffect(() => {
-    if (!expoPushToken || !location || !uid) return;
-    initNotifications({
+  const fetchNotificationSettings = useCallback(async () => {
+    if (!expoPushToken || !uid) return;
+    const settings = await initNotifications({
       expoPushToken,
       location,
       uid,
     });
+    if (settings !== null) {
+      setNotificationSettings(settings);
+    }
   }, [expoPushToken, location, uid]);
 
   const updateData = useCallback(async () => {
@@ -36,6 +41,16 @@ export default ({ children }) => {
     setIsLoading(false);
     setData(json);
   }, [filters]);
+
+  const updateNotificationSettings = (property, value) =>
+    setNotificationSettings(oldSettings => ({
+      ...oldSettings,
+      [property]: value,
+    }));
+
+  useEffect(() => {
+    fetchNotificationSettings();
+  }, [fetchNotificationSettings]);
 
   useEffect(() => {
     updateData();
@@ -51,11 +66,13 @@ export default ({ children }) => {
       data,
       isLoading,
       uid,
+      notificationSettings,
+      updateNotificationSettings,
       onRefresh,
       filters,
       setFilters,
     }),
-    [data, filters, isLoading, onRefresh, uid],
+    [data, filters, notificationSettings, isLoading, onRefresh, uid],
   );
 
   return (

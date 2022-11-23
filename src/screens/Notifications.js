@@ -1,11 +1,8 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Text } from 'react-native';
 import { Button, Switch } from 'react-native-paper';
 
-import {
-  getNotificationSettings,
-  updateNotificationSettings,
-} from '../api/firebase';
+import { updateUserData } from '../api/firebase';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { QuakesContext } from '../components/QuakesProvider';
 import SettingsContainer from '../components/SettingsContainer';
@@ -24,50 +21,20 @@ const styles = {
 };
 
 const Notifications = ({ navigation }) => {
-  const { uid } = useContext(QuakesContext);
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [settings, setSettings] = useState({});
-
-  const fetchSettings = useCallback(async () => {
-    try {
-      const { notifications, minMagnitude, updates } =
-        await getNotificationSettings(uid);
-      setSettings({
-        notifications,
-        minMagnitude,
-        updates,
-      });
-    } catch (err) {
-      console.log(err);
-      navigation.goBack();
-    }
-    setIsLoading(false);
-  }, [navigation, uid]);
-
-  useEffect(() => {
-    fetchSettings();
-  }, [fetchSettings]);
-
-  const updateSettings = (property, value) =>
-    setSettings(oldSettings => ({
-      ...oldSettings,
-      [property]: value,
-    }));
+  const { notificationSettings, uid, updateNotificationSettings } =
+    useContext(QuakesContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSaveAndClose = async () => {
     setIsLoading(true);
-    const isUpdateSuccessful = await updateNotificationSettings({
-      uid,
-      settings,
-    });
+    const isUpdateSuccessful = await updateUserData(uid, notificationSettings);
     setIsLoading(false);
     if (isUpdateSuccessful) {
       navigation.goBack();
     }
   };
 
-  if (isLoading) {
+  if (notificationSettings === null || isLoading) {
     return <LoadingSpinner />;
   }
 
@@ -75,35 +42,44 @@ const Notifications = ({ navigation }) => {
     <SettingsContainer>
       <SettingsItem label="Notifications">
         <Switch
-          value={settings.notifications}
-          onValueChange={value => updateSettings('notifications', value)}
+          value={notificationSettings.notifications}
+          onValueChange={value =>
+            updateNotificationSettings('notifications', value)
+          }
           color={colors.accent}
         />
       </SettingsItem>
 
       <SettingsItem
         label="Minimum Magnitude"
-        disabled={!settings.notifications}
+        disabled={!notificationSettings.notifications}
       >
-        <Text style={styles.settingsSliderValue}>{settings.minMagnitude}</Text>
+        <Text style={styles.settingsSliderValue}>
+          {notificationSettings.minMagnitude}
+        </Text>
       </SettingsItem>
 
       <Slider
-        disabled={!settings.notifications}
+        disabled={!notificationSettings.notifications}
         label="Minimum Magnitude"
         minimumValue={2}
         maximumValue={8}
         step={0.5}
-        value={settings.minMagnitude}
-        onValueChange={value => updateSettings('minMagnitude', value)}
+        value={notificationSettings.minMagnitude}
+        onValueChange={value =>
+          updateNotificationSettings('minMagnitude', value)
+        }
       />
 
-      <SettingsItem label="Updates" disabled={!settings.notifications}>
+      <SettingsItem
+        label="Updates"
+        disabled={!notificationSettings.notifications}
+      >
         <Switch
-          value={settings.updates}
-          onValueChange={value => updateSettings('updates', value)}
+          value={notificationSettings.updates}
+          onValueChange={value => updateNotificationSettings('updates', value)}
           color={colors.accent}
-          disabled={!settings.notifications}
+          disabled={!notificationSettings.notifications}
         />
       </SettingsItem>
 
