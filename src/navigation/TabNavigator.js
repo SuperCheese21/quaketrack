@@ -1,12 +1,12 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import QuakesList from '../screens/QuakesList';
 import QuakesMap from '../screens/QuakesMap';
 import colors from '../config/colors.json';
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 export default ({ navigation: stackNavigation }) => (
   <Tab.Navigator
@@ -15,6 +15,9 @@ export default ({ navigation: stackNavigation }) => (
     inactiveColor="black"
     barStyle={{ backgroundColor: colors.header }}
     lazy={false}
+    screenOptions={{
+      headerShown: false,
+    }}
   >
     <Tab.Screen
       name="List"

@@ -1,16 +1,18 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { LogBox } from 'react-native';
 
 import QuakesProvider from './src/components/QuakesProvider';
-import StackNavigatorContainer from './src/navigation/StackNavigator';
+import StackNavigator from './src/navigation/StackNavigator';
 
 const App = () => (
-  <QuakesProvider>
-    {/* eslint-disable-next-line react/style-prop-object */}
-    <StatusBar style="dark" />
-    <StackNavigatorContainer />
-  </QuakesProvider>
+  <NavigationContainer>
+    <QuakesProvider>
+      <StatusBar style="dark" />
+      <StackNavigator />
+    </QuakesProvider>
+  </NavigationContainer>
 );
 
 // React Native bug - ignore warning on long timers

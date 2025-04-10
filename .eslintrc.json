@@ -27,6 +27,7 @@
       }
     ],
     "react/jsx-filename-extension": "off",
+    "react/no-unstable-nested-components": "off",
     "react/prop-types": "off"
   }
 }
