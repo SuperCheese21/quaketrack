@@ -1,4 +1,4 @@
-import { getRandomBytes } from 'expo-random';
+import { getRandomBytes } from 'expo-crypto';
 import React from 'react';
 import 'react-native-get-random-values';
 import { Polygon } from 'react-native-maps';

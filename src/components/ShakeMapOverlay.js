@@ -1,4 +1,4 @@
-import { getRandomBytes } from 'expo-random';
+import { getRandomBytes } from 'expo-crypto';
 import React from 'react';
 import { Polyline } from 'react-native-maps';
 
