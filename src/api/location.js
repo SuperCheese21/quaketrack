@@ -5,7 +5,7 @@ import {
 import { useCallback, useEffect, useState } from 'react';
 
 export const useLocation = () => {
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState(undefined);
   const [status, requestPermission] = useForegroundLocationPermissions();
   const getLocation = useCallback(async () => {
     if (status?.granted) {

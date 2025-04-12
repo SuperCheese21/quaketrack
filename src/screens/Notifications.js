@@ -21,13 +21,16 @@ const styles = {
 };
 
 const Notifications = ({ navigation }) => {
-  const { notificationSettings, uid, updateNotificationSettings } =
+  const { notificationSettings, expoPushToken, updateNotificationSettings } =
     useContext(QuakesContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const onSaveAndClose = async () => {
     setIsLoading(true);
-    const isUpdateSuccessful = await updateUserData(uid, notificationSettings);
+    const isUpdateSuccessful = await updateUserData(
+      expoPushToken,
+      notificationSettings,
+    );
     setIsLoading(false);
     if (isUpdateSuccessful) {
       navigation.goBack();

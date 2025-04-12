@@ -8,7 +8,7 @@ import React, {
 
 import { useLocation } from '../api/location';
 import fetchData from '../api/fetchData';
-import { initNotifications, useFirebaseUsername } from '../api/firebase';
+import { initNotifications } from '../api/firebase';
 import { usePushNotifications } from '../api/notifications';
 import { DEFAULT_FILTERS } from '../config/constants';
 
@@ -22,19 +22,17 @@ export default ({ children }) => {
 
   const expoPushToken = usePushNotifications();
   const location = useLocation();
-  const uid = useFirebaseUsername();
 
   const fetchNotificationSettings = useCallback(async () => {
-    if (!expoPushToken || !uid) return;
+    if (!expoPushToken) return;
     const settings = await initNotifications({
       expoPushToken,
       location,
-      uid,
     });
     if (settings !== null) {
       setNotificationSettings(settings);
     }
-  }, [expoPushToken, location, uid]);
+  }, [expoPushToken, location]);
 
   const updateData = useCallback(async () => {
     const json = await fetchData(filters);
@@ -65,14 +63,14 @@ export default ({ children }) => {
     () => ({
       data,
       isLoading,
-      uid,
+      expoPushToken,
       notificationSettings,
       updateNotificationSettings,
       onRefresh,
       filters,
       setFilters,
     }),
-    [data, filters, notificationSettings, isLoading, onRefresh, uid],
+    [data, expoPushToken, filters, isLoading, notificationSettings, onRefresh],
   );
 
   return (

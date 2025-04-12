@@ -1,35 +1,21 @@
 import dayjs from 'dayjs';
 import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged, signInAnonymously } from 'firebase/auth';
 import { child, get, getDatabase, ref, update } from 'firebase/database';
-import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 
 import firebaseConfig from '../config/firebase.json';
 
 initializeApp(firebaseConfig);
-const auth = getAuth();
 const db = getDatabase();
 const usersRef = ref(db, 'users');
 
-export const useFirebaseUsername = () => {
-  const [uid, setUid] = useState(null);
-  const initFirebase = useCallback(async () => {
-    const username = await new Promise((resolve, reject) => {
-      signInAnonymously(auth).catch(err => reject(err.message));
-      onAuthStateChanged(auth, user => user && resolve(user.uid));
-    });
-    setUid(username);
-  }, []);
-  useEffect(() => {
-    initFirebase();
-  }, [initFirebase]);
-  return uid;
-};
+const getKeyFromExpoPushToken = expoPushToken =>
+  expoPushToken.split('ExponentPushToken[')[1].split(']')[0];
 
-export const getUserData = async uid => {
+export const getUserData = async expoPushToken => {
   try {
-    const snapshot = await get(child(usersRef, uid));
+    const expoPushTokenKey = getKeyFromExpoPushToken(expoPushToken);
+    const snapshot = await get(child(usersRef, expoPushTokenKey));
     return snapshot?.val() ?? {};
   } catch (err) {
     Alert.alert('Error', 'Unable to fetch notification settings');
@@ -37,9 +23,10 @@ export const getUserData = async uid => {
   }
 };
 
-export const updateUserData = async (uid, data) => {
+export const updateUserData = async (expoPushToken, data) => {
   try {
-    await update(child(usersRef, uid), {
+    const expoPushTokenKey = getKeyFromExpoPushToken(expoPushToken);
+    await update(child(usersRef, expoPushTokenKey), {
       ...data,
       updated: dayjs().valueOf(),
     });
@@ -50,8 +37,8 @@ export const updateUserData = async (uid, data) => {
   }
 };
 
-export const initNotifications = async ({ expoPushToken, location, uid }) => {
-  const userData = await getUserData(uid);
+export const initNotifications = async ({ expoPushToken, location }) => {
+  const userData = await getUserData(expoPushToken);
   if (userData === null) {
     return null;
   }
@@ -60,9 +47,8 @@ export const initNotifications = async ({ expoPushToken, location, uid }) => {
     minMagnitude: userData.minMagnitude ?? 5,
     updates: userData.updates ?? false,
   };
-  await updateUserData(uid, {
+  await updateUserData(expoPushToken, {
     ...newSettings,
-    expoPushToken,
     location,
   });
   return newSettings;
