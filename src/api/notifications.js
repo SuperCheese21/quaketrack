@@ -1,3 +1,4 @@
+import Constants from 'expo-constants';
 import { isDevice } from 'expo-device';
 import {
   getExpoPushTokenAsync,
@@ -7,9 +8,9 @@ import {
 } from 'expo-notifications';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert, Platform } from 'react-native';
-import { EXPERIENCE_ID, NOTIFICATION_CHANNELS } from '../config/constants';
+import { NOTIFICATION_CHANNELS } from '../config/constants';
 
-export const createNotificationChannelsAndroid = () =>
+const createNotificationChannelsAndroid = () =>
   Promise.all(
     NOTIFICATION_CHANNELS.map(({ id, ...rest }) =>
       setNotificationChannelAsync(id, rest),
@@ -17,14 +18,10 @@ export const createNotificationChannelsAndroid = () =>
   );
 
 export const registerForPushNotificationsAsync = async () => {
-  try {
-    if (Platform.OS === 'android') {
-      await createNotificationChannelsAndroid();
-    }
-    if (!isDevice) {
-      Alert.alert('Error', 'Must use physical device for Push Notifications');
-      return null;
-    }
+  if (Platform.OS === 'android') {
+    await createNotificationChannelsAndroid();
+  }
+  if (isDevice) {
     const { status: existingStatus } = await getPermissionsAsync();
     let finalStatus = existingStatus;
     if (existingStatus !== 'granted') {
@@ -32,14 +29,31 @@ export const registerForPushNotificationsAsync = async () => {
       finalStatus = status;
     }
     if (finalStatus !== 'granted') {
-      Alert.alert('Error', 'Failed to get push token for push notification!');
+      Alert.alert(
+        'Unable to register for push notifications',
+        'Permission not granted to get push token for push notification!',
+      );
       return null;
     }
-    return (await getExpoPushTokenAsync({ experienceId: EXPERIENCE_ID })).data;
-  } catch (err) {
+    const projectId =
+      Constants?.expoConfig?.extra?.eas?.projectId ??
+      Constants?.easConfig?.projectId;
+    if (!projectId) {
+      Alert.alert(
+        'Unable to register for push notifications',
+        'Project ID not found',
+      );
+    }
+    try {
+      return (await getExpoPushTokenAsync({ projectId })).data;
+    } catch (e) {
+      Alert.alert('Unable to register for push notifications', `${e}`);
+      return null;
+    }
+  } else {
     Alert.alert(
-      'Error',
-      'Unable to register for push notifications. Please try again later.',
+      'Unable to register for push notifications',
+      'Must use physical device for push notifications',
     );
     return null;
   }

@@ -1,8 +1,6 @@
 import dayjs from 'dayjs';
 import { AndroidImportance } from 'expo-notifications';
 
-export const EXPERIENCE_ID = '@supercheese21/quaketrack';
-
 export const URLS = {
   USGS: {
     FEED: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/',
